@@ -1,0 +1,61 @@
+name: Python LocalStack Client / Run Test
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/test.yml
+      - localstack-sdk/**
+  push:
+    branches:
+      - main
+
+jobs:
+
+  test_python:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Update pip
+      run: |
+        python -m pip install --upgrade pip
+
+    - name: Install project
+      run: |
+        make install-dev
+
+    - name: Install LocalStack
+      run: |
+        pip install --pre --upgrade localstack
+
+    - name: Pull image
+      run: |
+        docker pull localstack/localstack-pro
+
+    - name: Start Localstack
+      env:
+       LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+      run: |
+          source .venv/bin/activate
+          DEBUG=1 DISABLE_EVENTS="1" IMAGE_NAME="localstack/localstack-pro:latest" localstack start -d
+          localstack wait -t 120 || (python -m localstack.cli.main logs && false)
+
+    - name: Run Python Tests
+      env:
+        LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+      run: |
+        make test
+
+    - name: Stop Localstack
+      if: always()
+      run: |
+          source .venv/bin/activate
+          localstack logs
+          localstack stop

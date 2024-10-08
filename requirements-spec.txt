@@ -1,0 +1,2 @@
+localstack-core==3.8.1.dev4
+localstack-ext==3.8.1.dev1

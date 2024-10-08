@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "localstack-sdk-python"
+readme = "README.md"
+description = "Python SDK for LocalStack"
+authors = [
+        { name = "LocalStack Team", email = "info@localstack.cloud"}
+]
+version = "0.1"
+
+dependencies = [
+]
+
+[project.optional-dependencies]
+test=[
+    "pytest"
+]
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.dynamic]
+readme = { file = ["README.md"], content-type = "text/markdown"}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+exclude = ["tests*"]
+
+[tool.ruff]
+# Extend the ruff config in the root dir
+extend = "../ruff.toml"
+# Always generate Python 3.8-compatible code.
+target-version = "py38"
+line-length = 100
+src = ["tests", "localstack"]
+exclude = [
+    ".venv*",
+    "venv*",
+    "dist",
+    "build",
+    "target",
+    "*.egg-info",
+    ".git",
+]
