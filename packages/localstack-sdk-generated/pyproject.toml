@@ -25,6 +25,6 @@ build-backend = "setuptools.build_meta"
 package-dir = { "" = "."}
 
 [tool.setuptools.packages.find]
-where = ["localstack-sdk-generated"]
-include = ["localstack*"]
+where = ["src"]
+include = ["*"]
 exclude = ["tests*"]

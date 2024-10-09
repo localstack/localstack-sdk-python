@@ -14,24 +14,24 @@ class ChaosClient(BaseClient):
         self._client = ChaosApi(self._api_client)
 
     def set_fault_rules(self, fault_rules: list[FaultRule]) -> list[FaultRule]:
-        return self._client.set_fault_rules(fault_rule=fault_rules)
+        return self._client.set_fault_rules_0(fault_rule=fault_rules)
 
     def add_fault_rules(self, fault_rules: list[FaultRule]) -> list[FaultRule]:
-        return self._client.add_fault_rules(fault_rule=fault_rules)
+        return self._client.add_fault_rules_0(fault_rule=fault_rules)
 
     def delete_fault_rules(self, fault_rules: list[FaultRule]) -> list[FaultRule]:
-        return self._client.delete_fault_rules(fault_rule=fault_rules)
+        return self._client.delete_fault_rules_0(fault_rule=fault_rules)
 
     def get_fault_rules(self) -> list[FaultRule]:
-        return self._client.get_fault_rules()
+        return self._client.get_fault_rules_0()
 
     def get_network_effects(self) -> NetworkEffectsConfig:
-        return self._client.get_network_effects()
+        return self._client.get_network_effects_0()
 
     def set_network_effects(
         self, network_effects_config: NetworkEffectsConfig
     ) -> NetworkEffectsConfig:
-        return self._client.set_network_effects(
+        return self._client.set_network_effects_0(
             network_effects_config=network_effects_config
         )
 

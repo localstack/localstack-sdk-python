@@ -10,7 +10,7 @@ PIP_CMD ?= pip
 
 venv: $(VENV_ACTIVATE)    ## Create a new (empty) virtual environment
 
-$(VENV_ACTIVATE): localstack-sdk-python/pyproject.toml
+$(VENV_ACTIVATE): src
 	test -d $(VENV_DIR) || $(VENV_BIN) $(VENV_DIR)
 	$(VENV_RUN); $(PIP_CMD) install --upgrade pip
 	touch $(VENV_ACTIVATE)

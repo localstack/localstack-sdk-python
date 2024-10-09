@@ -21,13 +21,16 @@ dev-dependencies=[
 ]
 
 [tool.uv.sources]
-localstack-sdk-generated = { path = "../localstack-sdk-generated", editable = true }
+localstack-sdk-generated = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
 
 [tool.setuptools]
 include-package-data = false
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["*"]
 exclude = ["tests*"]
 
