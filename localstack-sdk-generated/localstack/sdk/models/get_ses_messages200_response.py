@@ -18,19 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from localstack.models.cloud_watch_metrics_metrics_inner_d_inner_v import CloudWatchMetricsMetricsInnerDInnerV
+from localstack.sdk.models.ses_sent_email import SesSentEmail
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CloudWatchMetricsMetricsInnerDInner(BaseModel):
+class GetSesMessages200Response(BaseModel):
     """
-    CloudWatchMetricsMetricsInnerDInner
+    GetSesMessages200Response
     """ # noqa: E501
-    n: StrictStr = Field(description="Dimension name")
-    v: CloudWatchMetricsMetricsInnerDInnerV
-    __properties: ClassVar[List[str]] = ["n", "v"]
+    messages: List[SesSentEmail]
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["messages"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class CloudWatchMetricsMetricsInnerDInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CloudWatchMetricsMetricsInnerDInner from a JSON string"""
+        """Create an instance of GetSesMessages200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -62,8 +62,10 @@ class CloudWatchMetricsMetricsInnerDInner(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -71,14 +73,23 @@ class CloudWatchMetricsMetricsInnerDInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of v
-        if self.v:
-            _dict['v'] = self.v.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
+        _items = []
+        if self.messages:
+            for _item_messages in self.messages:
+                if _item_messages:
+                    _items.append(_item_messages.to_dict())
+            _dict['messages'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CloudWatchMetricsMetricsInnerDInner from a dict"""
+        """Create an instance of GetSesMessages200Response from a dict"""
         if obj is None:
             return None
 
@@ -86,9 +97,13 @@ class CloudWatchMetricsMetricsInnerDInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "n": obj.get("n"),
-            "v": CloudWatchMetricsMetricsInnerDInnerV.from_dict(obj["v"]) if obj.get("v") is not None else None
+            "messages": [SesSentEmail.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

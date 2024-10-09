@@ -18,28 +18,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from localstack.models.ses_sent_email_body import SesSentEmailBody
+from localstack.sdk.models.get_diagnostics200_response_version_host import GetDiagnostics200ResponseVersionHost
+from localstack.sdk.models.get_diagnostics200_response_version_image_version import GetDiagnostics200ResponseVersionImageVersion
+from localstack.sdk.models.get_diagnostics200_response_version_localstack_version import GetDiagnostics200ResponseVersionLocalstackVersion
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SesSentEmail(BaseModel):
+class GetDiagnostics200ResponseVersion(BaseModel):
     """
-    SesSentEmail
+    GetDiagnostics200ResponseVersion
     """ # noqa: E501
-    body: SesSentEmailBody = Field(alias="Body")
-    destination: StrictStr = Field(alias="Destination")
-    id: StrictStr = Field(alias="Id")
-    raw_data: StrictStr = Field(alias="RawData")
-    region: StrictStr = Field(alias="Region")
-    source: StrictStr = Field(alias="Source")
-    subject: StrictStr = Field(alias="Subject")
-    template: StrictStr = Field(alias="Template")
-    template_data: StrictStr = Field(alias="TemplateData")
-    timestamp: StrictStr = Field(alias="Timestamp")
+    host: GetDiagnostics200ResponseVersionHost
+    image_version: GetDiagnostics200ResponseVersionImageVersion = Field(alias="image-version")
+    localstack_version: GetDiagnostics200ResponseVersionLocalstackVersion = Field(alias="localstack-version")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["Body", "Destination", "Id", "RawData", "Region", "Source", "Subject", "Template", "TemplateData", "Timestamp"]
+    __properties: ClassVar[List[str]] = ["host", "image-version", "localstack-version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -59,7 +54,7 @@ class SesSentEmail(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SesSentEmail from a JSON string"""
+        """Create an instance of GetDiagnostics200ResponseVersion from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,9 +77,15 @@ class SesSentEmail(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of body
-        if self.body:
-            _dict['Body'] = self.body.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of host
+        if self.host:
+            _dict['host'] = self.host.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of image_version
+        if self.image_version:
+            _dict['image-version'] = self.image_version.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of localstack_version
+        if self.localstack_version:
+            _dict['localstack-version'] = self.localstack_version.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -94,7 +95,7 @@ class SesSentEmail(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SesSentEmail from a dict"""
+        """Create an instance of GetDiagnostics200ResponseVersion from a dict"""
         if obj is None:
             return None
 
@@ -102,16 +103,9 @@ class SesSentEmail(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "Body": SesSentEmailBody.from_dict(obj["Body"]) if obj.get("Body") is not None else None,
-            "Destination": obj.get("Destination"),
-            "Id": obj.get("Id"),
-            "RawData": obj.get("RawData"),
-            "Region": obj.get("Region"),
-            "Source": obj.get("Source"),
-            "Subject": obj.get("Subject"),
-            "Template": obj.get("Template"),
-            "TemplateData": obj.get("TemplateData"),
-            "Timestamp": obj.get("Timestamp")
+            "host": GetDiagnostics200ResponseVersionHost.from_dict(obj["host"]) if obj.get("host") is not None else None,
+            "image-version": GetDiagnostics200ResponseVersionImageVersion.from_dict(obj["image-version"]) if obj.get("image-version") is not None else None,
+            "localstack-version": GetDiagnostics200ResponseVersionLocalstackVersion.from_dict(obj["localstack-version"]) if obj.get("localstack-version") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

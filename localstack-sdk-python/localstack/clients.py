@@ -1,7 +1,7 @@
 import os
 
-from localstack.api_client import ApiClient
-from localstack.configuration import Configuration
+from localstack.sdk.api_client import ApiClient
+from localstack.sdk.configuration import Configuration
 
 
 class BaseClient:

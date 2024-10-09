@@ -20,17 +20,19 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from localstack.models.ses_sent_email import SesSentEmail
+from localstack.sdk.models.init_scripts_completed import InitScriptsCompleted
+from localstack.sdk.models.init_scripts_scripts_inner import InitScriptsScriptsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GetSesMessages200Response(BaseModel):
+class InitScripts(BaseModel):
     """
-    GetSesMessages200Response
+    InitScripts
     """ # noqa: E501
-    messages: List[SesSentEmail]
+    completed: InitScriptsCompleted
+    scripts: List[InitScriptsScriptsInner]
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["messages"]
+    __properties: ClassVar[List[str]] = ["completed", "scripts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +52,7 @@ class GetSesMessages200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetSesMessages200Response from a JSON string"""
+        """Create an instance of InitScripts from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,13 +75,16 @@ class GetSesMessages200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
+        # override the default output from pydantic by calling `to_dict()` of completed
+        if self.completed:
+            _dict['completed'] = self.completed.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in scripts (list)
         _items = []
-        if self.messages:
-            for _item_messages in self.messages:
-                if _item_messages:
-                    _items.append(_item_messages.to_dict())
-            _dict['messages'] = _items
+        if self.scripts:
+            for _item_scripts in self.scripts:
+                if _item_scripts:
+                    _items.append(_item_scripts.to_dict())
+            _dict['scripts'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -89,7 +94,7 @@ class GetSesMessages200Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetSesMessages200Response from a dict"""
+        """Create an instance of InitScripts from a dict"""
         if obj is None:
             return None
 
@@ -97,7 +102,8 @@ class GetSesMessages200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "messages": [SesSentEmail.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None
+            "completed": InitScriptsCompleted.from_dict(obj["completed"]) if obj.get("completed") is not None else None,
+            "scripts": [InitScriptsScriptsInner.from_dict(_item) for _item in obj["scripts"]] if obj.get("scripts") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

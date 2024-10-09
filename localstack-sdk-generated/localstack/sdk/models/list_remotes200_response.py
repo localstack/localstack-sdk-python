@@ -20,16 +20,16 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from localstack.models.pod_versions_versions_inner import PodVersionsVersionsInner
+from localstack.sdk.models.list_remotes200_response_remotes_inner import ListRemotes200ResponseRemotesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PodVersions(BaseModel):
+class ListRemotes200Response(BaseModel):
     """
-    PodVersions
+    ListRemotes200Response
     """ # noqa: E501
-    versions: Optional[List[PodVersionsVersionsInner]] = None
-    __properties: ClassVar[List[str]] = ["versions"]
+    remotes: Optional[List[ListRemotes200ResponseRemotesInner]] = None
+    __properties: ClassVar[List[str]] = ["remotes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +49,7 @@ class PodVersions(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PodVersions from a JSON string"""
+        """Create an instance of ListRemotes200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,18 +70,18 @@ class PodVersions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in versions (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in remotes (list)
         _items = []
-        if self.versions:
-            for _item_versions in self.versions:
-                if _item_versions:
-                    _items.append(_item_versions.to_dict())
-            _dict['versions'] = _items
+        if self.remotes:
+            for _item_remotes in self.remotes:
+                if _item_remotes:
+                    _items.append(_item_remotes.to_dict())
+            _dict['remotes'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PodVersions from a dict"""
+        """Create an instance of ListRemotes200Response from a dict"""
         if obj is None:
             return None
 
@@ -89,7 +89,7 @@ class PodVersions(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "versions": [PodVersionsVersionsInner.from_dict(_item) for _item in obj["versions"]] if obj.get("versions") is not None else None
+            "remotes": [ListRemotes200ResponseRemotesInner.from_dict(_item) for _item in obj["remotes"]] if obj.get("remotes") is not None else None
         })
         return _obj
 

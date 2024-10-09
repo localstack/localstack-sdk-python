@@ -30,7 +30,7 @@ clean:         	## Clean up
 	rm -rf $(VENV_DIR)
 
 clean-generated:	## Cleanup generated code
-	rm -rf localstack-sdk-generated/localstack/generated
+	rm -rf localstack-sdk-generated/localstack/
 
 format:            		  ## Run ruff to format the whole codebase
 	($(VENV_RUN); python -m ruff format .; python -m ruff check --output-format=full --exclude localstack-sdk/localstack/generated --fix .)

@@ -18,7 +18,7 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, Dict, List, Optional
-from localstack.models.remote_config_one_of import RemoteConfigOneOf
+from localstack.sdk.models.remote_config_one_of import RemoteConfigOneOf
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self

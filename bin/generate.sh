@@ -6,7 +6,7 @@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
     -g python \
     -o /local/localstack-sdk-generated \
     --global-property models,apis,supportingFiles \
-    -p packageName=localstack \
+    -p packageName=localstack.sdk \
     --template-dir /local/localstack-sdk-generated/templates \
     --global-property apiTests=false,modelTests=false \
     --global-property apiDocs=false,modelDocs=False

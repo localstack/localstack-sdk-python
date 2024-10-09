@@ -1,6 +1,6 @@
 import localstack.chaos
 from localstack.chaos.managers import fault_configuration
-from localstack.models import FaultRule
+from localstack.sdk.models import FaultRule
 
 
 class TestLocalStackClient:

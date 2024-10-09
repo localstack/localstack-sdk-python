@@ -18,20 +18,28 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
-from localstack.models.init_scripts_stage_scripts_inner import InitScriptsStageScriptsInner
+from localstack.sdk.models.ses_sent_email_body import SesSentEmailBody
 from typing import Optional, Set
 from typing_extensions import Self
 
-class InitScriptsStage(BaseModel):
+class SesSentEmail(BaseModel):
     """
-    InitScriptsStage
+    SesSentEmail
     """ # noqa: E501
-    completed: StrictBool
-    scripts: List[InitScriptsStageScriptsInner]
+    body: SesSentEmailBody = Field(alias="Body")
+    destination: StrictStr = Field(alias="Destination")
+    id: StrictStr = Field(alias="Id")
+    raw_data: StrictStr = Field(alias="RawData")
+    region: StrictStr = Field(alias="Region")
+    source: StrictStr = Field(alias="Source")
+    subject: StrictStr = Field(alias="Subject")
+    template: StrictStr = Field(alias="Template")
+    template_data: StrictStr = Field(alias="TemplateData")
+    timestamp: StrictStr = Field(alias="Timestamp")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["completed", "scripts"]
+    __properties: ClassVar[List[str]] = ["Body", "Destination", "Id", "RawData", "Region", "Source", "Subject", "Template", "TemplateData", "Timestamp"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +59,7 @@ class InitScriptsStage(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of InitScriptsStage from a JSON string"""
+        """Create an instance of SesSentEmail from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,13 +82,9 @@ class InitScriptsStage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in scripts (list)
-        _items = []
-        if self.scripts:
-            for _item_scripts in self.scripts:
-                if _item_scripts:
-                    _items.append(_item_scripts.to_dict())
-            _dict['scripts'] = _items
+        # override the default output from pydantic by calling `to_dict()` of body
+        if self.body:
+            _dict['Body'] = self.body.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -90,7 +94,7 @@ class InitScriptsStage(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of InitScriptsStage from a dict"""
+        """Create an instance of SesSentEmail from a dict"""
         if obj is None:
             return None
 
@@ -98,8 +102,16 @@ class InitScriptsStage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "completed": obj.get("completed"),
-            "scripts": [InitScriptsStageScriptsInner.from_dict(_item) for _item in obj["scripts"]] if obj.get("scripts") is not None else None
+            "Body": SesSentEmailBody.from_dict(obj["Body"]) if obj.get("Body") is not None else None,
+            "Destination": obj.get("Destination"),
+            "Id": obj.get("Id"),
+            "RawData": obj.get("RawData"),
+            "Region": obj.get("Region"),
+            "Source": obj.get("Source"),
+            "Subject": obj.get("Subject"),
+            "Template": obj.get("Template"),
+            "TemplateData": obj.get("TemplateData"),
+            "Timestamp": obj.get("Timestamp")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

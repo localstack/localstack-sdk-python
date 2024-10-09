@@ -1,9 +1,9 @@
 import base64
 import json
 
-from localstack.api import PodsApi
+from localstack.sdk.api import PodsApi
 from localstack.clients import BaseClient
-from localstack.models import RemoteConfig, PodSaveRequest
+from localstack.sdk.models import RemoteConfig, PodSaveRequest
 
 
 def _empty_remote_config() -> RemoteConfig:

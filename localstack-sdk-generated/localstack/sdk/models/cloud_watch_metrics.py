@@ -20,19 +20,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from localstack.models.init_scripts_completed import InitScriptsCompleted
-from localstack.models.init_scripts_scripts_inner import InitScriptsScriptsInner
+from localstack.sdk.models.cloud_watch_metrics_metrics_inner import CloudWatchMetricsMetricsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class InitScripts(BaseModel):
+class CloudWatchMetrics(BaseModel):
     """
-    InitScripts
+    CloudWatchMetrics
     """ # noqa: E501
-    completed: InitScriptsCompleted
-    scripts: List[InitScriptsScriptsInner]
+    metrics: List[CloudWatchMetricsMetricsInner]
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["completed", "scripts"]
+    __properties: ClassVar[List[str]] = ["metrics"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +50,7 @@ class InitScripts(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of InitScripts from a JSON string"""
+        """Create an instance of CloudWatchMetrics from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,16 +73,13 @@ class InitScripts(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of completed
-        if self.completed:
-            _dict['completed'] = self.completed.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in scripts (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in metrics (list)
         _items = []
-        if self.scripts:
-            for _item_scripts in self.scripts:
-                if _item_scripts:
-                    _items.append(_item_scripts.to_dict())
-            _dict['scripts'] = _items
+        if self.metrics:
+            for _item_metrics in self.metrics:
+                if _item_metrics:
+                    _items.append(_item_metrics.to_dict())
+            _dict['metrics'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -94,7 +89,7 @@ class InitScripts(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of InitScripts from a dict"""
+        """Create an instance of CloudWatchMetrics from a dict"""
         if obj is None:
             return None
 
@@ -102,8 +97,7 @@ class InitScripts(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "completed": InitScriptsCompleted.from_dict(obj["completed"]) if obj.get("completed") is not None else None,
-            "scripts": [InitScriptsScriptsInner.from_dict(_item) for _item in obj["scripts"]] if obj.get("scripts") is not None else None
+            "metrics": [CloudWatchMetricsMetricsInner.from_dict(_item) for _item in obj["metrics"]] if obj.get("metrics") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

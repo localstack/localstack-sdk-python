@@ -21,7 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
-from localstack.models.fault_rule_error import FaultRuleError
+from localstack.sdk.models.fault_rule_error import FaultRuleError
 from typing import Optional, Set
 from typing_extensions import Self
 

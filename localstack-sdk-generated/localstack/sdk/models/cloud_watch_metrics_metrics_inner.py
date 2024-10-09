@@ -18,19 +18,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
-from localstack.models.cloud_watch_metrics_metrics_inner import CloudWatchMetricsMetricsInner
+from localstack.sdk.models.cloud_watch_metrics_metrics_inner_d_inner import CloudWatchMetricsMetricsInnerDInner
+from localstack.sdk.models.cloud_watch_metrics_metrics_inner_t import CloudWatchMetricsMetricsInnerT
+from localstack.sdk.models.cloud_watch_metrics_metrics_inner_v import CloudWatchMetricsMetricsInnerV
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CloudWatchMetrics(BaseModel):
+class CloudWatchMetricsMetricsInner(BaseModel):
     """
-    CloudWatchMetrics
+    CloudWatchMetricsMetricsInner
     """ # noqa: E501
-    metrics: List[CloudWatchMetricsMetricsInner]
-    additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["metrics"]
+    account: StrictStr = Field(description="Account ID")
+    d: List[CloudWatchMetricsMetricsInnerDInner] = Field(description="Dimensions")
+    n: StrictStr = Field(description="Metric name")
+    ns: StrictStr = Field(description="Namespace")
+    region: StrictStr = Field(description="Region name")
+    t: CloudWatchMetricsMetricsInnerT
+    v: CloudWatchMetricsMetricsInnerV
+    __properties: ClassVar[List[str]] = ["account", "d", "n", "ns", "region", "t", "v"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +57,7 @@ class CloudWatchMetrics(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CloudWatchMetrics from a JSON string"""
+        """Create an instance of CloudWatchMetricsMetricsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -62,10 +69,8 @@ class CloudWatchMetrics(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -73,23 +78,24 @@ class CloudWatchMetrics(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in metrics (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in d (list)
         _items = []
-        if self.metrics:
-            for _item_metrics in self.metrics:
-                if _item_metrics:
-                    _items.append(_item_metrics.to_dict())
-            _dict['metrics'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
+        if self.d:
+            for _item_d in self.d:
+                if _item_d:
+                    _items.append(_item_d.to_dict())
+            _dict['d'] = _items
+        # override the default output from pydantic by calling `to_dict()` of t
+        if self.t:
+            _dict['t'] = self.t.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of v
+        if self.v:
+            _dict['v'] = self.v.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CloudWatchMetrics from a dict"""
+        """Create an instance of CloudWatchMetricsMetricsInner from a dict"""
         if obj is None:
             return None
 
@@ -97,13 +103,14 @@ class CloudWatchMetrics(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "metrics": [CloudWatchMetricsMetricsInner.from_dict(_item) for _item in obj["metrics"]] if obj.get("metrics") is not None else None
+            "account": obj.get("account"),
+            "d": [CloudWatchMetricsMetricsInnerDInner.from_dict(_item) for _item in obj["d"]] if obj.get("d") is not None else None,
+            "n": obj.get("n"),
+            "ns": obj.get("ns"),
+            "region": obj.get("region"),
+            "t": CloudWatchMetricsMetricsInnerT.from_dict(obj["t"]) if obj.get("t") is not None else None,
+            "v": CloudWatchMetricsMetricsInnerV.from_dict(obj["v"]) if obj.get("v") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

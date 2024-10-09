@@ -21,9 +21,9 @@ from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 
-from localstack.api_client import ApiClient, RequestSerialized
-from localstack.api_response import ApiResponse
-from localstack.rest import RESTResponseType
+from localstack.sdk.api_client import ApiClient, RequestSerialized
+from localstack.sdk.api_response import ApiResponse
+from localstack.sdk.rest import RESTResponseType
 
 
 class DefaultApi:

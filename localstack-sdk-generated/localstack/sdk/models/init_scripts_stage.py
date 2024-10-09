@@ -18,23 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, StrictBool
 from typing import Any, ClassVar, Dict, List
-from localstack.models.get_diagnostics200_response_version_host import GetDiagnostics200ResponseVersionHost
-from localstack.models.get_diagnostics200_response_version_image_version import GetDiagnostics200ResponseVersionImageVersion
-from localstack.models.get_diagnostics200_response_version_localstack_version import GetDiagnostics200ResponseVersionLocalstackVersion
+from localstack.sdk.models.init_scripts_stage_scripts_inner import InitScriptsStageScriptsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GetDiagnostics200ResponseVersion(BaseModel):
+class InitScriptsStage(BaseModel):
     """
-    GetDiagnostics200ResponseVersion
+    InitScriptsStage
     """ # noqa: E501
-    host: GetDiagnostics200ResponseVersionHost
-    image_version: GetDiagnostics200ResponseVersionImageVersion = Field(alias="image-version")
-    localstack_version: GetDiagnostics200ResponseVersionLocalstackVersion = Field(alias="localstack-version")
+    completed: StrictBool
+    scripts: List[InitScriptsStageScriptsInner]
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["host", "image-version", "localstack-version"]
+    __properties: ClassVar[List[str]] = ["completed", "scripts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -54,7 +51,7 @@ class GetDiagnostics200ResponseVersion(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetDiagnostics200ResponseVersion from a JSON string"""
+        """Create an instance of InitScriptsStage from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,15 +74,13 @@ class GetDiagnostics200ResponseVersion(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of host
-        if self.host:
-            _dict['host'] = self.host.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of image_version
-        if self.image_version:
-            _dict['image-version'] = self.image_version.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of localstack_version
-        if self.localstack_version:
-            _dict['localstack-version'] = self.localstack_version.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in scripts (list)
+        _items = []
+        if self.scripts:
+            for _item_scripts in self.scripts:
+                if _item_scripts:
+                    _items.append(_item_scripts.to_dict())
+            _dict['scripts'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -95,7 +90,7 @@ class GetDiagnostics200ResponseVersion(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetDiagnostics200ResponseVersion from a dict"""
+        """Create an instance of InitScriptsStage from a dict"""
         if obj is None:
             return None
 
@@ -103,9 +98,8 @@ class GetDiagnostics200ResponseVersion(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "host": GetDiagnostics200ResponseVersionHost.from_dict(obj["host"]) if obj.get("host") is not None else None,
-            "image-version": GetDiagnostics200ResponseVersionImageVersion.from_dict(obj["image-version"]) if obj.get("image-version") is not None else None,
-            "localstack-version": GetDiagnostics200ResponseVersionLocalstackVersion.from_dict(obj["localstack-version"]) if obj.get("localstack-version") is not None else None
+            "completed": obj.get("completed"),
+            "scripts": [InitScriptsStageScriptsInner.from_dict(_item) for _item in obj["scripts"]] if obj.get("scripts") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

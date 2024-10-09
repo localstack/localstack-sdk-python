@@ -1,7 +1,7 @@
 from contextlib import contextmanager
 
 from localstack.chaos.client import get_default
-from localstack.models import FaultRule
+from localstack.sdk.models import FaultRule
 
 
 @contextmanager

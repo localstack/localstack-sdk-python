@@ -20,9 +20,9 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from localstack.models.get_diagnostics200_response_logs import GetDiagnostics200ResponseLogs
-from localstack.models.get_diagnostics200_response_version import GetDiagnostics200ResponseVersion
-from localstack.models.session_info import SessionInfo
+from localstack.sdk.models.get_diagnostics200_response_logs import GetDiagnostics200ResponseLogs
+from localstack.sdk.models.get_diagnostics200_response_version import GetDiagnostics200ResponseVersion
+from localstack.sdk.models.session_info import SessionInfo
 from typing import Optional, Set
 from typing_extensions import Self
 

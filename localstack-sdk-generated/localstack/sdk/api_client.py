@@ -27,11 +27,11 @@ from urllib.parse import quote
 from typing import Tuple, Optional, List, Dict, Union
 from pydantic import SecretStr
 
-from localstack.configuration import Configuration
-from localstack.api_response import ApiResponse, T as ApiResponseT
-import localstack.models
-from localstack import rest
-from localstack.exceptions import (
+from localstack.sdk.configuration import Configuration
+from localstack.sdk.api_response import ApiResponse, T as ApiResponseT
+import localstack.sdk.models
+from localstack.sdk import rest
+from localstack.sdk.exceptions import (
     ApiValueError,
     ApiException,
     BadRequestException,
@@ -450,7 +450,7 @@ class ApiClient:
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(localstack.models, klass)
+                klass = getattr(localstack.sdk.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)
