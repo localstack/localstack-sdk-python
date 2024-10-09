@@ -1,10 +1,10 @@
-import localstack.chaos
-from localstack.chaos.managers import fault_configuration
-from localstack.models import FaultRule
+import localstack.sdk.chaos
+from localstack.sdk.chaos.managers import fault_configuration
+from localstack.sdk.models import FaultRule
 
 
 class TestLocalStackClient:
-    client = localstack.chaos.ChaosClient()
+    client = localstack.sdk.chaos.ChaosClient()
 
     def test_rules_crud(self):
         rule_one = FaultRule(region="us-east-1", service="s3")

@@ -1,4 +1,4 @@
-from localstack.pods import PodsClient
+from localstack.sdk.pods import PodsClient
 
 POD_NAME = f"ls-sdk-integration"
 
