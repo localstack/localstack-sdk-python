@@ -47,7 +47,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_forgot_password_get(
+    def aws_cognito_idp_forgot_password_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -62,7 +62,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_forgot_password_get
+        """aws_cognito_idp_forgot_password_get_0
 
         Cognito forgot password endpoint
 
@@ -88,7 +88,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_forgot_password_get_serialize(
+        _param = self._aws_cognito_idp_forgot_password_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109,7 +109,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_forgot_password_get_with_http_info(
+    def aws_cognito_idp_forgot_password_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -124,7 +124,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_forgot_password_get
+        """aws_cognito_idp_forgot_password_get_0
 
         Cognito forgot password endpoint
 
@@ -150,7 +150,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_forgot_password_get_serialize(
+        _param = self._aws_cognito_idp_forgot_password_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -171,7 +171,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_forgot_password_get_without_preload_content(
+    def aws_cognito_idp_forgot_password_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -186,7 +186,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_forgot_password_get
+        """aws_cognito_idp_forgot_password_get_0
 
         Cognito forgot password endpoint
 
@@ -212,7 +212,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_forgot_password_get_serialize(
+        _param = self._aws_cognito_idp_forgot_password_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -228,7 +228,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_forgot_password_get_serialize(
+    def _aws_cognito_idp_forgot_password_get_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -282,7 +282,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_forgot_password_post(
+    def aws_cognito_idp_forgot_password_post_0(
         self,
         _request_timeout: Union[
             None,
@@ -297,7 +297,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_forgot_password_post
+        """aws_cognito_idp_forgot_password_post_0
 
         Cognito forgot password endpoint
 
@@ -323,7 +323,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_forgot_password_post_serialize(
+        _param = self._aws_cognito_idp_forgot_password_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -344,7 +344,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_forgot_password_post_with_http_info(
+    def aws_cognito_idp_forgot_password_post_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -359,7 +359,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_forgot_password_post
+        """aws_cognito_idp_forgot_password_post_0
 
         Cognito forgot password endpoint
 
@@ -385,7 +385,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_forgot_password_post_serialize(
+        _param = self._aws_cognito_idp_forgot_password_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -406,7 +406,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_forgot_password_post_without_preload_content(
+    def aws_cognito_idp_forgot_password_post_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -421,7 +421,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_forgot_password_post
+        """aws_cognito_idp_forgot_password_post_0
 
         Cognito forgot password endpoint
 
@@ -447,7 +447,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_forgot_password_post_serialize(
+        _param = self._aws_cognito_idp_forgot_password_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -463,7 +463,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_forgot_password_post_serialize(
+    def _aws_cognito_idp_forgot_password_post_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -517,7 +517,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_login_get(
+    def aws_cognito_idp_login_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -532,7 +532,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_login_get
+        """aws_cognito_idp_login_get_0
 
         Cognito login endpoint
 
@@ -558,7 +558,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_login_get_serialize(
+        _param = self._aws_cognito_idp_login_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -579,7 +579,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_login_get_with_http_info(
+    def aws_cognito_idp_login_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -594,7 +594,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_login_get
+        """aws_cognito_idp_login_get_0
 
         Cognito login endpoint
 
@@ -620,7 +620,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_login_get_serialize(
+        _param = self._aws_cognito_idp_login_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -641,7 +641,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_login_get_without_preload_content(
+    def aws_cognito_idp_login_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -656,7 +656,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_login_get
+        """aws_cognito_idp_login_get_0
 
         Cognito login endpoint
 
@@ -682,7 +682,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_login_get_serialize(
+        _param = self._aws_cognito_idp_login_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -698,7 +698,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_login_get_serialize(
+    def _aws_cognito_idp_login_get_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -752,7 +752,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_login_post(
+    def aws_cognito_idp_login_post_0(
         self,
         _request_timeout: Union[
             None,
@@ -767,7 +767,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_login_post
+        """aws_cognito_idp_login_post_0
 
         Cognito login endpoint
 
@@ -793,7 +793,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_login_post_serialize(
+        _param = self._aws_cognito_idp_login_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -814,7 +814,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_login_post_with_http_info(
+    def aws_cognito_idp_login_post_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -829,7 +829,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_login_post
+        """aws_cognito_idp_login_post_0
 
         Cognito login endpoint
 
@@ -855,7 +855,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_login_post_serialize(
+        _param = self._aws_cognito_idp_login_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -876,7 +876,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_login_post_without_preload_content(
+    def aws_cognito_idp_login_post_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -891,7 +891,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_login_post
+        """aws_cognito_idp_login_post_0
 
         Cognito login endpoint
 
@@ -917,7 +917,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_login_post_serialize(
+        _param = self._aws_cognito_idp_login_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -933,7 +933,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_login_post_serialize(
+    def _aws_cognito_idp_login_post_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -987,7 +987,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_logout_get(
+    def aws_cognito_idp_logout_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -1002,7 +1002,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_logout_get
+        """aws_cognito_idp_logout_get_0
 
         Cognito logout endpoint
 
@@ -1028,7 +1028,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_logout_get_serialize(
+        _param = self._aws_cognito_idp_logout_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1049,7 +1049,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_logout_get_with_http_info(
+    def aws_cognito_idp_logout_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -1064,7 +1064,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_logout_get
+        """aws_cognito_idp_logout_get_0
 
         Cognito logout endpoint
 
@@ -1090,7 +1090,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_logout_get_serialize(
+        _param = self._aws_cognito_idp_logout_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1111,7 +1111,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_logout_get_without_preload_content(
+    def aws_cognito_idp_logout_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1126,7 +1126,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_logout_get
+        """aws_cognito_idp_logout_get_0
 
         Cognito logout endpoint
 
@@ -1152,7 +1152,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_logout_get_serialize(
+        _param = self._aws_cognito_idp_logout_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1168,7 +1168,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_logout_get_serialize(
+    def _aws_cognito_idp_logout_get_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1222,7 +1222,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_logout_post(
+    def aws_cognito_idp_logout_post_0(
         self,
         _request_timeout: Union[
             None,
@@ -1237,7 +1237,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_logout_post
+        """aws_cognito_idp_logout_post_0
 
         Cognito logout endpoint
 
@@ -1263,7 +1263,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_logout_post_serialize(
+        _param = self._aws_cognito_idp_logout_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1284,7 +1284,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_logout_post_with_http_info(
+    def aws_cognito_idp_logout_post_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -1299,7 +1299,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_logout_post
+        """aws_cognito_idp_logout_post_0
 
         Cognito logout endpoint
 
@@ -1325,7 +1325,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_logout_post_serialize(
+        _param = self._aws_cognito_idp_logout_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1346,7 +1346,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_logout_post_without_preload_content(
+    def aws_cognito_idp_logout_post_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1361,7 +1361,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_logout_post
+        """aws_cognito_idp_logout_post_0
 
         Cognito logout endpoint
 
@@ -1387,7 +1387,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_logout_post_serialize(
+        _param = self._aws_cognito_idp_logout_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1403,7 +1403,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_logout_post_serialize(
+    def _aws_cognito_idp_logout_post_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1457,7 +1457,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_authorize_get(
+    def aws_cognito_idp_oauth2_authorize_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -1472,7 +1472,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_oauth2_authorize_get
+        """aws_cognito_idp_oauth2_authorize_get_0
 
         Cognito OAuth 2.0 authorization endpoint
 
@@ -1498,7 +1498,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_authorize_get_serialize(
+        _param = self._aws_cognito_idp_oauth2_authorize_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1519,7 +1519,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_authorize_get_with_http_info(
+    def aws_cognito_idp_oauth2_authorize_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -1534,7 +1534,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_oauth2_authorize_get
+        """aws_cognito_idp_oauth2_authorize_get_0
 
         Cognito OAuth 2.0 authorization endpoint
 
@@ -1560,7 +1560,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_authorize_get_serialize(
+        _param = self._aws_cognito_idp_oauth2_authorize_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1581,7 +1581,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_authorize_get_without_preload_content(
+    def aws_cognito_idp_oauth2_authorize_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1596,7 +1596,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_oauth2_authorize_get
+        """aws_cognito_idp_oauth2_authorize_get_0
 
         Cognito OAuth 2.0 authorization endpoint
 
@@ -1622,7 +1622,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_authorize_get_serialize(
+        _param = self._aws_cognito_idp_oauth2_authorize_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1638,7 +1638,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_oauth2_authorize_get_serialize(
+    def _aws_cognito_idp_oauth2_authorize_get_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1692,7 +1692,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_revoke_post(
+    def aws_cognito_idp_oauth2_revoke_post_0(
         self,
         _request_timeout: Union[
             None,
@@ -1707,7 +1707,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_oauth2_revoke_post
+        """aws_cognito_idp_oauth2_revoke_post_0
 
         Cognito OAuth 2.0 token revocation endpoint
 
@@ -1733,7 +1733,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_revoke_post_serialize(
+        _param = self._aws_cognito_idp_oauth2_revoke_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1754,7 +1754,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_revoke_post_with_http_info(
+    def aws_cognito_idp_oauth2_revoke_post_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -1769,7 +1769,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_oauth2_revoke_post
+        """aws_cognito_idp_oauth2_revoke_post_0
 
         Cognito OAuth 2.0 token revocation endpoint
 
@@ -1795,7 +1795,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_revoke_post_serialize(
+        _param = self._aws_cognito_idp_oauth2_revoke_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1816,7 +1816,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_revoke_post_without_preload_content(
+    def aws_cognito_idp_oauth2_revoke_post_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1831,7 +1831,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_oauth2_revoke_post
+        """aws_cognito_idp_oauth2_revoke_post_0
 
         Cognito OAuth 2.0 token revocation endpoint
 
@@ -1857,7 +1857,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_revoke_post_serialize(
+        _param = self._aws_cognito_idp_oauth2_revoke_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1873,7 +1873,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_oauth2_revoke_post_serialize(
+    def _aws_cognito_idp_oauth2_revoke_post_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1927,7 +1927,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_token_post(
+    def aws_cognito_idp_oauth2_token_post_0(
         self,
         _request_timeout: Union[
             None,
@@ -1942,7 +1942,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_oauth2_token_post
+        """aws_cognito_idp_oauth2_token_post_0
 
         Cognito OAuth 2.0 token endpoint
 
@@ -1968,7 +1968,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_token_post_serialize(
+        _param = self._aws_cognito_idp_oauth2_token_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1989,7 +1989,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_token_post_with_http_info(
+    def aws_cognito_idp_oauth2_token_post_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -2004,7 +2004,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_oauth2_token_post
+        """aws_cognito_idp_oauth2_token_post_0
 
         Cognito OAuth 2.0 token endpoint
 
@@ -2030,7 +2030,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_token_post_serialize(
+        _param = self._aws_cognito_idp_oauth2_token_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2051,7 +2051,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_token_post_without_preload_content(
+    def aws_cognito_idp_oauth2_token_post_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -2066,7 +2066,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_oauth2_token_post
+        """aws_cognito_idp_oauth2_token_post_0
 
         Cognito OAuth 2.0 token endpoint
 
@@ -2092,7 +2092,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_token_post_serialize(
+        _param = self._aws_cognito_idp_oauth2_token_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2108,7 +2108,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_oauth2_token_post_serialize(
+    def _aws_cognito_idp_oauth2_token_post_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -2162,7 +2162,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_user_info_get(
+    def aws_cognito_idp_oauth2_user_info_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -2177,7 +2177,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_oauth2_user_info_get
+        """aws_cognito_idp_oauth2_user_info_get_0
 
         Cognito OpenID Connect userInfo endpoint
 
@@ -2203,7 +2203,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_user_info_get_serialize(
+        _param = self._aws_cognito_idp_oauth2_user_info_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2224,7 +2224,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_user_info_get_with_http_info(
+    def aws_cognito_idp_oauth2_user_info_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -2239,7 +2239,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_oauth2_user_info_get
+        """aws_cognito_idp_oauth2_user_info_get_0
 
         Cognito OpenID Connect userInfo endpoint
 
@@ -2265,7 +2265,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_user_info_get_serialize(
+        _param = self._aws_cognito_idp_oauth2_user_info_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2286,7 +2286,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_oauth2_user_info_get_without_preload_content(
+    def aws_cognito_idp_oauth2_user_info_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -2301,7 +2301,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_oauth2_user_info_get
+        """aws_cognito_idp_oauth2_user_info_get_0
 
         Cognito OpenID Connect userInfo endpoint
 
@@ -2327,7 +2327,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_oauth2_user_info_get_serialize(
+        _param = self._aws_cognito_idp_oauth2_user_info_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2343,7 +2343,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_oauth2_user_info_get_serialize(
+    def _aws_cognito_idp_oauth2_user_info_get_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -2397,7 +2397,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_saml2_idpresponse_get(
+    def aws_cognito_idp_saml2_idpresponse_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -2412,7 +2412,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_saml2_idpresponse_get
+        """aws_cognito_idp_saml2_idpresponse_get_0
 
         Cognito SAML 2.0 idpresponse endpoint
 
@@ -2438,7 +2438,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_saml2_idpresponse_get_serialize(
+        _param = self._aws_cognito_idp_saml2_idpresponse_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2459,7 +2459,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_saml2_idpresponse_get_with_http_info(
+    def aws_cognito_idp_saml2_idpresponse_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -2474,7 +2474,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_saml2_idpresponse_get
+        """aws_cognito_idp_saml2_idpresponse_get_0
 
         Cognito SAML 2.0 idpresponse endpoint
 
@@ -2500,7 +2500,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_saml2_idpresponse_get_serialize(
+        _param = self._aws_cognito_idp_saml2_idpresponse_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2521,7 +2521,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_saml2_idpresponse_get_without_preload_content(
+    def aws_cognito_idp_saml2_idpresponse_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -2536,7 +2536,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_saml2_idpresponse_get
+        """aws_cognito_idp_saml2_idpresponse_get_0
 
         Cognito SAML 2.0 idpresponse endpoint
 
@@ -2562,7 +2562,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_saml2_idpresponse_get_serialize(
+        _param = self._aws_cognito_idp_saml2_idpresponse_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2578,7 +2578,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_saml2_idpresponse_get_serialize(
+    def _aws_cognito_idp_saml2_idpresponse_get_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -2632,7 +2632,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_saml2_idpresponse_post(
+    def aws_cognito_idp_saml2_idpresponse_post_0(
         self,
         _request_timeout: Union[
             None,
@@ -2647,7 +2647,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_saml2_idpresponse_post
+        """aws_cognito_idp_saml2_idpresponse_post_0
 
         Cognito SAML 2.0 idpresponse endpoint
 
@@ -2673,7 +2673,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_saml2_idpresponse_post_serialize(
+        _param = self._aws_cognito_idp_saml2_idpresponse_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2694,7 +2694,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_saml2_idpresponse_post_with_http_info(
+    def aws_cognito_idp_saml2_idpresponse_post_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -2709,7 +2709,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_saml2_idpresponse_post
+        """aws_cognito_idp_saml2_idpresponse_post_0
 
         Cognito SAML 2.0 idpresponse endpoint
 
@@ -2735,7 +2735,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_saml2_idpresponse_post_serialize(
+        _param = self._aws_cognito_idp_saml2_idpresponse_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2756,7 +2756,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_saml2_idpresponse_post_without_preload_content(
+    def aws_cognito_idp_saml2_idpresponse_post_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -2771,7 +2771,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_saml2_idpresponse_post
+        """aws_cognito_idp_saml2_idpresponse_post_0
 
         Cognito SAML 2.0 idpresponse endpoint
 
@@ -2797,7 +2797,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_saml2_idpresponse_post_serialize(
+        _param = self._aws_cognito_idp_saml2_idpresponse_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2813,7 +2813,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_saml2_idpresponse_post_serialize(
+    def _aws_cognito_idp_saml2_idpresponse_post_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -2867,7 +2867,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_signup_get(
+    def aws_cognito_idp_signup_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -2882,7 +2882,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_signup_get
+        """aws_cognito_idp_signup_get_0
 
         Cognito signup endpoint
 
@@ -2908,7 +2908,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_signup_get_serialize(
+        _param = self._aws_cognito_idp_signup_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2929,7 +2929,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_signup_get_with_http_info(
+    def aws_cognito_idp_signup_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -2944,7 +2944,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_signup_get
+        """aws_cognito_idp_signup_get_0
 
         Cognito signup endpoint
 
@@ -2970,7 +2970,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_signup_get_serialize(
+        _param = self._aws_cognito_idp_signup_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2991,7 +2991,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_signup_get_without_preload_content(
+    def aws_cognito_idp_signup_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -3006,7 +3006,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_signup_get
+        """aws_cognito_idp_signup_get_0
 
         Cognito signup endpoint
 
@@ -3032,7 +3032,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_signup_get_serialize(
+        _param = self._aws_cognito_idp_signup_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3048,7 +3048,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_signup_get_serialize(
+    def _aws_cognito_idp_signup_get_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -3102,7 +3102,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_signup_post(
+    def aws_cognito_idp_signup_post_0(
         self,
         _request_timeout: Union[
             None,
@@ -3117,7 +3117,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_cognito_idp_signup_post
+        """aws_cognito_idp_signup_post_0
 
         Cognito signup endpoint
 
@@ -3143,7 +3143,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_signup_post_serialize(
+        _param = self._aws_cognito_idp_signup_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3164,7 +3164,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_signup_post_with_http_info(
+    def aws_cognito_idp_signup_post_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -3179,7 +3179,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_cognito_idp_signup_post
+        """aws_cognito_idp_signup_post_0
 
         Cognito signup endpoint
 
@@ -3205,7 +3205,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_signup_post_serialize(
+        _param = self._aws_cognito_idp_signup_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3226,7 +3226,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_cognito_idp_signup_post_without_preload_content(
+    def aws_cognito_idp_signup_post_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -3241,7 +3241,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_cognito_idp_signup_post
+        """aws_cognito_idp_signup_post_0
 
         Cognito signup endpoint
 
@@ -3267,7 +3267,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_cognito_idp_signup_post_serialize(
+        _param = self._aws_cognito_idp_signup_post_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3283,7 +3283,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_cognito_idp_signup_post_serialize(
+    def _aws_cognito_idp_signup_post_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -3337,7 +3337,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_iot_local_stack_io_t_root_ca_pem_get(
+    def aws_iot_local_stack_io_t_root_ca_pem_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -3352,7 +3352,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """aws_iot_local_stack_io_t_root_ca_pem_get
+        """aws_iot_local_stack_io_t_root_ca_pem_get_0
 
         Retrieve certificate for LocalStack IoT root certificate authority
 
@@ -3378,7 +3378,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_iot_local_stack_io_t_root_ca_pem_get_serialize(
+        _param = self._aws_iot_local_stack_io_t_root_ca_pem_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3399,7 +3399,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_iot_local_stack_io_t_root_ca_pem_get_with_http_info(
+    def aws_iot_local_stack_io_t_root_ca_pem_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -3414,7 +3414,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """aws_iot_local_stack_io_t_root_ca_pem_get
+        """aws_iot_local_stack_io_t_root_ca_pem_get_0
 
         Retrieve certificate for LocalStack IoT root certificate authority
 
@@ -3440,7 +3440,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_iot_local_stack_io_t_root_ca_pem_get_serialize(
+        _param = self._aws_iot_local_stack_io_t_root_ca_pem_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3461,7 +3461,7 @@ class AwsApi:
 
 
     @validate_call
-    def aws_iot_local_stack_io_t_root_ca_pem_get_without_preload_content(
+    def aws_iot_local_stack_io_t_root_ca_pem_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -3476,7 +3476,7 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """aws_iot_local_stack_io_t_root_ca_pem_get
+        """aws_iot_local_stack_io_t_root_ca_pem_get_0
 
         Retrieve certificate for LocalStack IoT root certificate authority
 
@@ -3502,7 +3502,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._aws_iot_local_stack_io_t_root_ca_pem_get_serialize(
+        _param = self._aws_iot_local_stack_io_t_root_ca_pem_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3518,7 +3518,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _aws_iot_local_stack_io_t_root_ca_pem_get_serialize(
+    def _aws_iot_local_stack_io_t_root_ca_pem_get_0_serialize(
         self,
         _request_auth,
         _content_type,
