@@ -63,4 +63,5 @@ localstack/sdk/models/update_config_option200_response.py
 localstack/sdk/models/update_config_option_request.py
 localstack/sdk/py.typed
 localstack/sdk/rest.py
+pyproject.toml
 requirements.txt

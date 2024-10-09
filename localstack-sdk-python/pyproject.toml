@@ -6,33 +6,30 @@ authors = [
         { name = "LocalStack Team", email = "info@localstack.cloud"}
 ]
 version = "0.0.1"
+dependencies = [
+    "localstack-sdk-generated"
+]
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-dependencies = [
-    "localstack-sdk-generated"
+[tool.uv]
+dev-dependencies=[
+    "pytest",
+    "ruff"
 ]
 
-[project.optional-dependencies]
-test=[
-    "pytest"
-]
+[tool.uv.sources]
+localstack-sdk-generated = { path = "../localstack-sdk-generated", editable = true }
 
 [tool.setuptools]
 include-package-data = false
-
-[tool.setuptools.dynamic]
-readme = { file = ["README.md"], content-type = "text/markdown"}
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["*"]
 exclude = ["tests*"]
-
-[tool.uv]
-localstack-sdk-generated = { path = "../localstack-sdk-generated"}
 
 [tool.ruff]
 # Extend the ruff config in the root dir
