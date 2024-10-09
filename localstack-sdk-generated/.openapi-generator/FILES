@@ -1,5 +1,4 @@
 .gitignore
-localstack/sdk/__init__.py
 localstack/sdk/api/__init__.py
 localstack/sdk/api/aws_api.py
 localstack/sdk/api/chaos_api.py
