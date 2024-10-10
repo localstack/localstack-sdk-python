@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 
 import yaml
+
 from localstack.utils.openapi import get_localstack_openapi_spec
 
 openapi_path = Path(os.path.dirname(__file__)) / ".." / "openapi.yaml"

@@ -6,6 +6,7 @@ from localstack.sdk.configuration import Configuration
 
 class BaseClient:
     """A BaseClient creates a configuration and instantiate a ApiClient"""
+
     configuration: Configuration
     _api_client: ApiClient
     auth_token: str | None

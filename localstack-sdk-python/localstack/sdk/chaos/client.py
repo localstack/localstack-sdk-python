@@ -31,9 +31,7 @@ class ChaosClient(BaseClient):
     def set_network_effects(
         self, network_effects_config: NetworkEffectsConfig
     ) -> NetworkEffectsConfig:
-        return self._client.set_network_effects_0(
-            network_effects_config=network_effects_config
-        )
+        return self._client.set_network_effects_0(network_effects_config=network_effects_config)
 
 
 def get_default(**args) -> ChaosClient:

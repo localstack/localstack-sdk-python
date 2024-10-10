@@ -36,7 +36,7 @@ format:            		  ## Run ruff to format the whole codebase
 	($(VENV_RUN); python -m ruff format .; python -m ruff check --output-format=full --exclude packages --fix .)
 
 lint:
-	($(VENV_RUN); python -m ruff check --exclude localstack-sdk/localstack/generated --output-format=full . && python -m ruff format --exclude packages --check .)
+	($(VENV_RUN); python -m ruff check --exclude packages --output-format=full . && python -m ruff format --exclude packages --check .)
 
 test:              		  ## Run automated tests
 	($(VENV_RUN); $(TEST_EXEC) pytest --durations=10 --log-cli-level=$(PYTEST_LOGLEVEL) $(PYTEST_ARGS) $(TEST_PATH))
