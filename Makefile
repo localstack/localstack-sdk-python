@@ -10,7 +10,7 @@ PIP_CMD ?= pip
 
 venv: $(VENV_ACTIVATE)    ## Create a new (empty) virtual environment
 
-$(VENV_ACTIVATE): localstack-sdk-python/pyproject.toml
+$(VENV_ACTIVATE): src
 	test -d $(VENV_DIR) || $(VENV_BIN) $(VENV_DIR)
 	$(VENV_RUN); $(PIP_CMD) install --upgrade pip
 	touch $(VENV_ACTIVATE)
@@ -30,13 +30,13 @@ clean:         	## Clean up
 	rm -rf $(VENV_DIR)
 
 clean-generated:	## Cleanup generated code
-	rm -rf localstack-sdk-generated/localstack/
+	rm -rf packages/localstack-sdk-generated/localstack/
 
 format:            		  ## Run ruff to format the whole codebase
-	($(VENV_RUN); python -m ruff format .; python -m ruff check --output-format=full --exclude localstack-sdk/localstack/generated --fix .)
+	($(VENV_RUN); python -m ruff format .; python -m ruff check --output-format=full --exclude packages --fix .)
 
 lint:
-	($(VENV_RUN); python -m ruff check --exclude localstack-sdk/localstack/generated --output-format=full . && python -m ruff format --exclude localstack-sdk/localstack/generated --check .)
+	($(VENV_RUN); python -m ruff check --exclude localstack-sdk/localstack/generated --output-format=full . && python -m ruff format --exclude packages --check .)
 
 test:              		  ## Run automated tests
 	($(VENV_RUN); $(TEST_EXEC) pytest --durations=10 --log-cli-level=$(PYTEST_LOGLEVEL) $(PYTEST_ARGS) $(TEST_PATH))

@@ -39,7 +39,7 @@ class PodsClient(BaseClient):
         :raise exception if the save does not succeed
         """
         try:
-            response = self._client.save_pod_with_http_info(name=pod_name, pod_save_request=PodSaveRequest())
+            response = self._client.save_pod_0_with_http_info(name=pod_name, pod_save_request=PodSaveRequest())
         except Exception as e:
             raise(e)
         if response.status_code != 200:
@@ -54,7 +54,7 @@ class PodsClient(BaseClient):
         """
         :raise exception if the load does not succeed
         """
-        response = self._client.load_pod_with_http_info(name=pod_name, remote_config=_empty_remote_config())
+        response = self._client.load_pod_0_with_http_info(name=pod_name, remote_config=_empty_remote_config())
         if response.status_code != 200:
             pass
         streamed_response = _read_ndjson(response.raw_data)
@@ -64,11 +64,11 @@ class PodsClient(BaseClient):
             raise Exception(completion_event.get("message"))
 
     def delete_pod(self, pod_name: str) -> None:
-        return self._client.delete_pod(name=pod_name, remote_config=_empty_remote_config())
+        return self._client.delete_pod_0(name=pod_name, remote_config=_empty_remote_config())
 
     def list_pods(self):
         # todo: fix CloudPodInner model;
-        pods = self._client.list_pods(remote_config=_empty_remote_config())
+        pods = self._client.list_pods_0(remote_config=_empty_remote_config())
         return pods
 
 

@@ -1,7 +1,3 @@
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "localstack-sdk-python"
 readme = "README.md"
@@ -9,24 +5,32 @@ description = "Python SDK for LocalStack"
 authors = [
         { name = "LocalStack Team", email = "info@localstack.cloud"}
 ]
-version = "0.1"
-
+version = "0.0.1"
 dependencies = [
+    "localstack-sdk-generated"
 ]
 
-[project.optional-dependencies]
-test=[
-    "pytest"
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+dev-dependencies=[
+    "pytest",
+    "ruff"
 ]
+
+[tool.uv.sources]
+localstack-sdk-generated = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
 
 [tool.setuptools]
 include-package-data = false
 
-[tool.setuptools.dynamic]
-readme = { file = ["README.md"], content-type = "text/markdown"}
-
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["*"]
 exclude = ["tests*"]
 

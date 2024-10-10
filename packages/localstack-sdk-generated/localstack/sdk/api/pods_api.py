@@ -48,7 +48,7 @@ class PodsApi:
 
 
     @validate_call
-    def create_remote(
+    def create_remote_0(
         self,
         name: Annotated[StrictStr, Field(description="The name of the new remote.")],
         create_remote_request: CreateRemoteRequest,
@@ -95,7 +95,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_remote_serialize(
+        _param = self._create_remote_0_serialize(
             name=name,
             create_remote_request=create_remote_request,
             _request_auth=_request_auth,
@@ -119,7 +119,7 @@ class PodsApi:
 
 
     @validate_call
-    def create_remote_with_http_info(
+    def create_remote_0_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="The name of the new remote.")],
         create_remote_request: CreateRemoteRequest,
@@ -166,7 +166,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_remote_serialize(
+        _param = self._create_remote_0_serialize(
             name=name,
             create_remote_request=create_remote_request,
             _request_auth=_request_auth,
@@ -190,7 +190,7 @@ class PodsApi:
 
 
     @validate_call
-    def create_remote_without_preload_content(
+    def create_remote_0_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="The name of the new remote.")],
         create_remote_request: CreateRemoteRequest,
@@ -237,7 +237,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_remote_serialize(
+        _param = self._create_remote_0_serialize(
             name=name,
             create_remote_request=create_remote_request,
             _request_auth=_request_auth,
@@ -256,7 +256,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _create_remote_serialize(
+    def _create_remote_0_serialize(
         self,
         name,
         create_remote_request,
@@ -329,7 +329,7 @@ class PodsApi:
 
 
     @validate_call
-    def delete_pod(
+    def delete_pod_0(
         self,
         name: StrictStr,
         local: Annotated[Optional[StrictStr], Field(description="If true, the pod will be deleted only from the local storage")] = None,
@@ -348,7 +348,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_pod
+        """delete_pod_0
 
 
         :param name: (required)
@@ -381,7 +381,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_pod_serialize(
+        _param = self._delete_pod_0_serialize(
             name=name,
             local=local,
             x_localstack_state_secret=x_localstack_state_secret,
@@ -408,7 +408,7 @@ class PodsApi:
 
 
     @validate_call
-    def delete_pod_with_http_info(
+    def delete_pod_0_with_http_info(
         self,
         name: StrictStr,
         local: Annotated[Optional[StrictStr], Field(description="If true, the pod will be deleted only from the local storage")] = None,
@@ -427,7 +427,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_pod
+        """delete_pod_0
 
 
         :param name: (required)
@@ -460,7 +460,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_pod_serialize(
+        _param = self._delete_pod_0_serialize(
             name=name,
             local=local,
             x_localstack_state_secret=x_localstack_state_secret,
@@ -487,7 +487,7 @@ class PodsApi:
 
 
     @validate_call
-    def delete_pod_without_preload_content(
+    def delete_pod_0_without_preload_content(
         self,
         name: StrictStr,
         local: Annotated[Optional[StrictStr], Field(description="If true, the pod will be deleted only from the local storage")] = None,
@@ -506,7 +506,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_pod
+        """delete_pod_0
 
 
         :param name: (required)
@@ -539,7 +539,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_pod_serialize(
+        _param = self._delete_pod_0_serialize(
             name=name,
             local=local,
             x_localstack_state_secret=x_localstack_state_secret,
@@ -561,7 +561,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _delete_pod_serialize(
+    def _delete_pod_0_serialize(
         self,
         name,
         local,
@@ -642,7 +642,7 @@ class PodsApi:
 
 
     @validate_call
-    def delete_remote(
+    def delete_remote_0(
         self,
         name: Annotated[StrictStr, Field(description="The name of the remote to delete.")],
         _request_timeout: Union[
@@ -686,7 +686,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_remote_serialize(
+        _param = self._delete_remote_0_serialize(
             name=name,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -709,7 +709,7 @@ class PodsApi:
 
 
     @validate_call
-    def delete_remote_with_http_info(
+    def delete_remote_0_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="The name of the remote to delete.")],
         _request_timeout: Union[
@@ -753,7 +753,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_remote_serialize(
+        _param = self._delete_remote_0_serialize(
             name=name,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -776,7 +776,7 @@ class PodsApi:
 
 
     @validate_call
-    def delete_remote_without_preload_content(
+    def delete_remote_0_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="The name of the remote to delete.")],
         _request_timeout: Union[
@@ -820,7 +820,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_remote_serialize(
+        _param = self._delete_remote_0_serialize(
             name=name,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -838,7 +838,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _delete_remote_serialize(
+    def _delete_remote_0_serialize(
         self,
         name,
         _request_auth,
@@ -895,7 +895,7 @@ class PodsApi:
 
 
     @validate_call
-    def get_pod_versions(
+    def get_pod_versions_0(
         self,
         name: Annotated[StrictStr, Field(description="Cloud pod name")],
         x_localstack_state_secret: Annotated[Optional[StrictStr], Field(description="A secret token for authenticating the request against the platform")] = None,
@@ -913,7 +913,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PodVersions:
-        """get_pod_versions
+        """get_pod_versions_0
 
         List versions for a cloud pod
 
@@ -945,7 +945,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_pod_versions_serialize(
+        _param = self._get_pod_versions_0_serialize(
             name=name,
             x_localstack_state_secret=x_localstack_state_secret,
             remote_config=remote_config,
@@ -970,7 +970,7 @@ class PodsApi:
 
 
     @validate_call
-    def get_pod_versions_with_http_info(
+    def get_pod_versions_0_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="Cloud pod name")],
         x_localstack_state_secret: Annotated[Optional[StrictStr], Field(description="A secret token for authenticating the request against the platform")] = None,
@@ -988,7 +988,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PodVersions]:
-        """get_pod_versions
+        """get_pod_versions_0
 
         List versions for a cloud pod
 
@@ -1020,7 +1020,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_pod_versions_serialize(
+        _param = self._get_pod_versions_0_serialize(
             name=name,
             x_localstack_state_secret=x_localstack_state_secret,
             remote_config=remote_config,
@@ -1045,7 +1045,7 @@ class PodsApi:
 
 
     @validate_call
-    def get_pod_versions_without_preload_content(
+    def get_pod_versions_0_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="Cloud pod name")],
         x_localstack_state_secret: Annotated[Optional[StrictStr], Field(description="A secret token for authenticating the request against the platform")] = None,
@@ -1063,7 +1063,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_pod_versions
+        """get_pod_versions_0
 
         List versions for a cloud pod
 
@@ -1095,7 +1095,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_pod_versions_serialize(
+        _param = self._get_pod_versions_0_serialize(
             name=name,
             x_localstack_state_secret=x_localstack_state_secret,
             remote_config=remote_config,
@@ -1115,7 +1115,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _get_pod_versions_serialize(
+    def _get_pod_versions_0_serialize(
         self,
         name,
         x_localstack_state_secret,
@@ -1198,7 +1198,7 @@ class PodsApi:
 
 
     @validate_call
-    def get_remote(
+    def get_remote_0(
         self,
         name: Annotated[StrictStr, Field(description="The name of the remote.")],
         _request_timeout: Union[
@@ -1242,7 +1242,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_remote_serialize(
+        _param = self._get_remote_0_serialize(
             name=name,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1265,7 +1265,7 @@ class PodsApi:
 
 
     @validate_call
-    def get_remote_with_http_info(
+    def get_remote_0_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="The name of the remote.")],
         _request_timeout: Union[
@@ -1309,7 +1309,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_remote_serialize(
+        _param = self._get_remote_0_serialize(
             name=name,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1332,7 +1332,7 @@ class PodsApi:
 
 
     @validate_call
-    def get_remote_without_preload_content(
+    def get_remote_0_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="The name of the remote.")],
         _request_timeout: Union[
@@ -1376,7 +1376,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_remote_serialize(
+        _param = self._get_remote_0_serialize(
             name=name,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1394,7 +1394,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _get_remote_serialize(
+    def _get_remote_0_serialize(
         self,
         name,
         _request_auth,
@@ -1458,7 +1458,7 @@ class PodsApi:
 
 
     @validate_call
-    def list_pods(
+    def list_pods_0(
         self,
         creator: Annotated[Optional[StrictStr], Field(description="User ID of the pod creator. Special values like `me` are accepted.")] = None,
         remote_config: Optional[RemoteConfig] = None,
@@ -1475,7 +1475,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PodList:
-        """list_pods
+        """list_pods_0
 
         List cloud pods
 
@@ -1505,7 +1505,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_pods_serialize(
+        _param = self._list_pods_0_serialize(
             creator=creator,
             remote_config=remote_config,
             _request_auth=_request_auth,
@@ -1529,7 +1529,7 @@ class PodsApi:
 
 
     @validate_call
-    def list_pods_with_http_info(
+    def list_pods_0_with_http_info(
         self,
         creator: Annotated[Optional[StrictStr], Field(description="User ID of the pod creator. Special values like `me` are accepted.")] = None,
         remote_config: Optional[RemoteConfig] = None,
@@ -1546,7 +1546,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PodList]:
-        """list_pods
+        """list_pods_0
 
         List cloud pods
 
@@ -1576,7 +1576,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_pods_serialize(
+        _param = self._list_pods_0_serialize(
             creator=creator,
             remote_config=remote_config,
             _request_auth=_request_auth,
@@ -1600,7 +1600,7 @@ class PodsApi:
 
 
     @validate_call
-    def list_pods_without_preload_content(
+    def list_pods_0_without_preload_content(
         self,
         creator: Annotated[Optional[StrictStr], Field(description="User ID of the pod creator. Special values like `me` are accepted.")] = None,
         remote_config: Optional[RemoteConfig] = None,
@@ -1617,7 +1617,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_pods
+        """list_pods_0
 
         List cloud pods
 
@@ -1647,7 +1647,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_pods_serialize(
+        _param = self._list_pods_0_serialize(
             creator=creator,
             remote_config=remote_config,
             _request_auth=_request_auth,
@@ -1666,7 +1666,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _list_pods_serialize(
+    def _list_pods_0_serialize(
         self,
         creator,
         remote_config,
@@ -1748,7 +1748,7 @@ class PodsApi:
 
 
     @validate_call
-    def list_remotes(
+    def list_remotes_0(
         self,
         _request_timeout: Union[
             None,
@@ -1763,7 +1763,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListRemotes200Response:
-        """list_remotes
+        """list_remotes_0
 
         Retrieves a list of all configured remotes.
 
@@ -1789,7 +1789,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_remotes_serialize(
+        _param = self._list_remotes_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1811,7 +1811,7 @@ class PodsApi:
 
 
     @validate_call
-    def list_remotes_with_http_info(
+    def list_remotes_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -1826,7 +1826,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListRemotes200Response]:
-        """list_remotes
+        """list_remotes_0
 
         Retrieves a list of all configured remotes.
 
@@ -1852,7 +1852,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_remotes_serialize(
+        _param = self._list_remotes_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1874,7 +1874,7 @@ class PodsApi:
 
 
     @validate_call
-    def list_remotes_without_preload_content(
+    def list_remotes_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1889,7 +1889,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_remotes
+        """list_remotes_0
 
         Retrieves a list of all configured remotes.
 
@@ -1915,7 +1915,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_remotes_serialize(
+        _param = self._list_remotes_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1932,7 +1932,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _list_remotes_serialize(
+    def _list_remotes_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1993,7 +1993,7 @@ class PodsApi:
 
 
     @validate_call
-    def load_pod(
+    def load_pod_0(
         self,
         name: Annotated[StrictStr, Field(description="The name of the Cloud Pod to be loaded into the runtime")],
         version: Annotated[Optional[StrictStr], Field(description="The version of the Cloud Pod to be loaded into the runtime")] = None,
@@ -2014,7 +2014,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """load_pod
+        """load_pod_0
 
         Load a cloud pod version
 
@@ -2052,7 +2052,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._load_pod_serialize(
+        _param = self._load_pod_0_serialize(
             name=name,
             version=version,
             merge=merge,
@@ -2080,7 +2080,7 @@ class PodsApi:
 
 
     @validate_call
-    def load_pod_with_http_info(
+    def load_pod_0_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="The name of the Cloud Pod to be loaded into the runtime")],
         version: Annotated[Optional[StrictStr], Field(description="The version of the Cloud Pod to be loaded into the runtime")] = None,
@@ -2101,7 +2101,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """load_pod
+        """load_pod_0
 
         Load a cloud pod version
 
@@ -2139,7 +2139,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._load_pod_serialize(
+        _param = self._load_pod_0_serialize(
             name=name,
             version=version,
             merge=merge,
@@ -2167,7 +2167,7 @@ class PodsApi:
 
 
     @validate_call
-    def load_pod_without_preload_content(
+    def load_pod_0_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="The name of the Cloud Pod to be loaded into the runtime")],
         version: Annotated[Optional[StrictStr], Field(description="The version of the Cloud Pod to be loaded into the runtime")] = None,
@@ -2188,7 +2188,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """load_pod
+        """load_pod_0
 
         Load a cloud pod version
 
@@ -2226,7 +2226,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._load_pod_serialize(
+        _param = self._load_pod_0_serialize(
             name=name,
             version=version,
             merge=merge,
@@ -2249,7 +2249,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _load_pod_serialize(
+    def _load_pod_0_serialize(
         self,
         name,
         version,
@@ -2347,7 +2347,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_environment_get(
+    def localstack_pods_environment_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -2362,7 +2362,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LocalstackPodsEnvironmentGet200Response:
-        """localstack_pods_environment_get
+        """localstack_pods_environment_get_0
 
         Retrieves some information about the current environment, like LocalStack and Moto versions. 
 
@@ -2388,7 +2388,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_environment_get_serialize(
+        _param = self._localstack_pods_environment_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2410,7 +2410,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_environment_get_with_http_info(
+    def localstack_pods_environment_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -2425,7 +2425,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LocalstackPodsEnvironmentGet200Response]:
-        """localstack_pods_environment_get
+        """localstack_pods_environment_get_0
 
         Retrieves some information about the current environment, like LocalStack and Moto versions. 
 
@@ -2451,7 +2451,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_environment_get_serialize(
+        _param = self._localstack_pods_environment_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2473,7 +2473,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_environment_get_without_preload_content(
+    def localstack_pods_environment_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -2488,7 +2488,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_pods_environment_get
+        """localstack_pods_environment_get_0
 
         Retrieves some information about the current environment, like LocalStack and Moto versions. 
 
@@ -2514,7 +2514,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_environment_get_serialize(
+        _param = self._localstack_pods_environment_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2531,7 +2531,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _localstack_pods_environment_get_serialize(
+    def _localstack_pods_environment_get_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -2592,7 +2592,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_state_get(
+    def localstack_pods_state_get_0(
         self,
         pod_name: Annotated[Optional[StrictStr], Field(description="The name of the pod to save. Defaults to a unique name based on the current timestamp.")] = None,
         services: Annotated[Optional[StrictStr], Field(description="Comma-separated list of service names to include in the exported state.")] = None,
@@ -2609,7 +2609,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> bytearray:
-        """localstack_pods_state_get
+        """localstack_pods_state_get_0
 
         Exports the current state of the LocalStack container into a zip file.
 
@@ -2639,7 +2639,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_state_get_serialize(
+        _param = self._localstack_pods_state_get_0_serialize(
             pod_name=pod_name,
             services=services,
             _request_auth=_request_auth,
@@ -2663,7 +2663,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_state_get_with_http_info(
+    def localstack_pods_state_get_0_with_http_info(
         self,
         pod_name: Annotated[Optional[StrictStr], Field(description="The name of the pod to save. Defaults to a unique name based on the current timestamp.")] = None,
         services: Annotated[Optional[StrictStr], Field(description="Comma-separated list of service names to include in the exported state.")] = None,
@@ -2680,7 +2680,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[bytearray]:
-        """localstack_pods_state_get
+        """localstack_pods_state_get_0
 
         Exports the current state of the LocalStack container into a zip file.
 
@@ -2710,7 +2710,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_state_get_serialize(
+        _param = self._localstack_pods_state_get_0_serialize(
             pod_name=pod_name,
             services=services,
             _request_auth=_request_auth,
@@ -2734,7 +2734,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_state_get_without_preload_content(
+    def localstack_pods_state_get_0_without_preload_content(
         self,
         pod_name: Annotated[Optional[StrictStr], Field(description="The name of the pod to save. Defaults to a unique name based on the current timestamp.")] = None,
         services: Annotated[Optional[StrictStr], Field(description="Comma-separated list of service names to include in the exported state.")] = None,
@@ -2751,7 +2751,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_pods_state_get
+        """localstack_pods_state_get_0
 
         Exports the current state of the LocalStack container into a zip file.
 
@@ -2781,7 +2781,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_state_get_serialize(
+        _param = self._localstack_pods_state_get_0_serialize(
             pod_name=pod_name,
             services=services,
             _request_auth=_request_auth,
@@ -2800,7 +2800,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _localstack_pods_state_get_serialize(
+    def _localstack_pods_state_get_0_serialize(
         self,
         pod_name,
         services,
@@ -2871,7 +2871,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_state_metamodel_get(
+    def localstack_pods_state_metamodel_get_0(
         self,
         _request_timeout: Union[
             None,
@@ -2886,7 +2886,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """localstack_pods_state_metamodel_get
+        """localstack_pods_state_metamodel_get_0
 
         Extract a metamodel representing the state of the current LocalStack session
 
@@ -2912,7 +2912,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_state_metamodel_get_serialize(
+        _param = self._localstack_pods_state_metamodel_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2934,7 +2934,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_state_metamodel_get_with_http_info(
+    def localstack_pods_state_metamodel_get_0_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -2949,7 +2949,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """localstack_pods_state_metamodel_get
+        """localstack_pods_state_metamodel_get_0
 
         Extract a metamodel representing the state of the current LocalStack session
 
@@ -2975,7 +2975,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_state_metamodel_get_serialize(
+        _param = self._localstack_pods_state_metamodel_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2997,7 +2997,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_state_metamodel_get_without_preload_content(
+    def localstack_pods_state_metamodel_get_0_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -3012,7 +3012,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_pods_state_metamodel_get
+        """localstack_pods_state_metamodel_get_0
 
         Extract a metamodel representing the state of the current LocalStack session
 
@@ -3038,7 +3038,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_state_metamodel_get_serialize(
+        _param = self._localstack_pods_state_metamodel_get_0_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3055,7 +3055,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _localstack_pods_state_metamodel_get_serialize(
+    def _localstack_pods_state_metamodel_get_0_serialize(
         self,
         _request_auth,
         _content_type,
@@ -3116,7 +3116,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_state_post(
+    def localstack_pods_state_post_0(
         self,
         body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
@@ -3132,7 +3132,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """localstack_pods_state_post
+        """localstack_pods_state_post_0
 
         Loads a pod state from a zip file and restores its services.
 
@@ -3160,7 +3160,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_state_post_serialize(
+        _param = self._localstack_pods_state_post_0_serialize(
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3184,7 +3184,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_state_post_with_http_info(
+    def localstack_pods_state_post_0_with_http_info(
         self,
         body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
@@ -3200,7 +3200,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """localstack_pods_state_post
+        """localstack_pods_state_post_0
 
         Loads a pod state from a zip file and restores its services.
 
@@ -3228,7 +3228,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_state_post_serialize(
+        _param = self._localstack_pods_state_post_0_serialize(
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3252,7 +3252,7 @@ class PodsApi:
 
 
     @validate_call
-    def localstack_pods_state_post_without_preload_content(
+    def localstack_pods_state_post_0_without_preload_content(
         self,
         body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
@@ -3268,7 +3268,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_pods_state_post
+        """localstack_pods_state_post_0
 
         Loads a pod state from a zip file and restores its services.
 
@@ -3296,7 +3296,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_pods_state_post_serialize(
+        _param = self._localstack_pods_state_post_0_serialize(
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3315,7 +3315,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _localstack_pods_state_post_serialize(
+    def _localstack_pods_state_post_0_serialize(
         self,
         body,
         _request_auth,
@@ -3394,7 +3394,7 @@ class PodsApi:
 
 
     @validate_call
-    def save_pod(
+    def save_pod_0(
         self,
         name: Annotated[StrictStr, Field(description="Cloud pod name")],
         local: Optional[StrictBool] = None,
@@ -3414,7 +3414,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """save_pod
+        """save_pod_0
 
         Create and register a cloud pod version
 
@@ -3450,7 +3450,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._save_pod_serialize(
+        _param = self._save_pod_0_serialize(
             name=name,
             local=local,
             version=version,
@@ -3477,7 +3477,7 @@ class PodsApi:
 
 
     @validate_call
-    def save_pod_with_http_info(
+    def save_pod_0_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="Cloud pod name")],
         local: Optional[StrictBool] = None,
@@ -3497,7 +3497,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """save_pod
+        """save_pod_0
 
         Create and register a cloud pod version
 
@@ -3533,7 +3533,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._save_pod_serialize(
+        _param = self._save_pod_0_serialize(
             name=name,
             local=local,
             version=version,
@@ -3560,7 +3560,7 @@ class PodsApi:
 
 
     @validate_call
-    def save_pod_without_preload_content(
+    def save_pod_0_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="Cloud pod name")],
         local: Optional[StrictBool] = None,
@@ -3580,7 +3580,7 @@ class PodsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """save_pod
+        """save_pod_0
 
         Create and register a cloud pod version
 
@@ -3616,7 +3616,7 @@ class PodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._save_pod_serialize(
+        _param = self._save_pod_0_serialize(
             name=name,
             local=local,
             version=version,
@@ -3638,7 +3638,7 @@ class PodsApi:
         return response_data.response
 
 
-    def _save_pod_serialize(
+    def _save_pod_0_serialize(
         self,
         name,
         local,

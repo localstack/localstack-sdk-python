@@ -9,7 +9,6 @@ README.md
 tox.ini
 localstack/sdk/__init__.py
 localstack/__init__.py
-pyproject.toml
 setup.py
 setup.cfg
 test-requirements.txt
