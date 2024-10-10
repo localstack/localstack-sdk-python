@@ -22,9 +22,9 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-package-dir = { "" = "."}
+package-dir = { "" = "src"}
 
 [tool.setuptools.packages.find]
-where = ["localstack-sdk-generated"]
-include = ["localstack*"]
+where = ["src"]
+include = ["*"]
 exclude = ["tests*"]
