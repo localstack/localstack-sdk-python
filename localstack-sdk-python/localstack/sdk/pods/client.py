@@ -1,31 +1,26 @@
 import base64
 import json
 
-from localstack.sdk.api import PodsApi
 from localstack.clients import BaseClient
-from localstack.sdk.models import RemoteConfig, PodSaveRequest
+from localstack.sdk.api import PodsApi
+from localstack.sdk.models import PodSaveRequest, RemoteConfig
 
 
 def _empty_remote_config() -> RemoteConfig:
-    return RemoteConfig(
-        oneof_schema_1_validator={},
-        actual_instance={}
-    )
+    return RemoteConfig(oneof_schema_1_validator={}, actual_instance={})
 
 
 def _read_ndjson(raw_content: bytes) -> list[dict]:
-    ndjson_str = raw_content.decode('utf-8')
+    ndjson_str = raw_content.decode("utf-8")
     return [json.loads(line) for line in ndjson_str.splitlines()]
 
 
 def _get_completion_event(streamed_response: list[dict]) -> dict | None:
-    completion_events = [
-        line for line in streamed_response if line.get("event") == "completion"
-    ]
+    completion_events = [line for line in streamed_response if line.get("event") == "completion"]
     return completion_events[0] if completion_events else None
 
-class PodsClient(BaseClient):
 
+class PodsClient(BaseClient):
     def __init__(self, **args) -> None:
         super().__init__(**args)
         self._client = PodsApi(self._api_client)
@@ -39,9 +34,11 @@ class PodsClient(BaseClient):
         :raise exception if the save does not succeed
         """
         try:
-            response = self._client.save_pod_0_with_http_info(name=pod_name, pod_save_request=PodSaveRequest())
+            response = self._client.save_pod_0_with_http_info(
+                name=pod_name, pod_save_request=PodSaveRequest()
+            )
         except Exception as e:
-            raise(e)
+            raise (e)
         if response.status_code != 200:
             pass
         streamed_response = _read_ndjson(response.raw_data)
@@ -54,7 +51,9 @@ class PodsClient(BaseClient):
         """
         :raise exception if the load does not succeed
         """
-        response = self._client.load_pod_0_with_http_info(name=pod_name, remote_config=_empty_remote_config())
+        response = self._client.load_pod_0_with_http_info(
+            name=pod_name, remote_config=_empty_remote_config()
+        )
         if response.status_code != 200:
             pass
         streamed_response = _read_ndjson(response.raw_data)
@@ -74,6 +73,5 @@ class PodsClient(BaseClient):
 
 def get_platform_auth_header(token: str) -> dict[str, str]:
     _token = f":{token}"
-    auth_encoded = base64.b64encode(_token.encode('utf-8')).decode('utf-8')
+    auth_encoded = base64.b64encode(_token.encode("utf-8")).decode("utf-8")
     return {"Authorization": f"Basic {auth_encoded}"}
-

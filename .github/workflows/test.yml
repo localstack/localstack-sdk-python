@@ -30,7 +30,7 @@ jobs:
 
     - name: Install project
       run: |
-        uv sync
+        make install-dev
 
     - name: Install LocalStack
       run: |

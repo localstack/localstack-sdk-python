@@ -1,9 +1,9 @@
 from localstack.sdk.pods import PodsClient
 
-POD_NAME = f"ls-sdk-integration"
+POD_NAME = "ls-sdk-integration"
 
 
-class TestPodsClient():
+class TestPodsClient:
     client = PodsClient()
 
     def test_pod_list(self):

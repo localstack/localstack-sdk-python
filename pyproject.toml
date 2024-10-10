@@ -29,18 +29,18 @@ members = ["packages/*"]
 [tool.setuptools]
 include-package-data = false
 
+package-dir = { "" = "localstack-sdk-python"}
+
 [tool.setuptools.packages.find]
-where = ["src"]
-include = ["*"]
+where = ["localstack-sdk-python/"]
+include = ["localstack*"]
 exclude = ["tests*"]
 
 [tool.ruff]
-# Extend the ruff config in the root dir
-extend = "../ruff.toml"
 # Always generate Python 3.8-compatible code.
 target-version = "py38"
 line-length = 100
-src = ["tests", "localstack"]
+src = ["localstack-sdk-python", "tests"]
 exclude = [
     ".venv*",
     "venv*",
@@ -48,5 +48,27 @@ exclude = [
     "build",
     "target",
     "*.egg-info",
+    "localstack-sdk-python/*.egg-info",
     ".git",
+    ]
+
+[tool.ruff.lint]
+ignore = [
+    "B007", # TODO Loop control variable x not used within loop body
+    "B017", # TODO `pytest.raises(Exception)` should be considered evil
+    "B019", # TODO Use of `functools.lru_cache` or `functools.cache` on methods can lead to memory leaks
+    "B022", # TODO No arguments passed to `contextlib.suppress`. No exceptions will be suppressed and therefore this context manager is redundant
+    "B023", # TODO Function definition does not bind loop variable `server`
+    "B024", # TODO x is an abstract base class, but it has no abstract methods
+    "B027", # TODO `Server.do_shutdown` is an empty method in an abstract base class, but has no abstract decorator
+    "B904", # TODO Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling
+    "C408", # TODO Unnecessary `list` call (rewrite as a literal)
+    "C416", # TODO Unnecessary `set` comprehension
+    "C901", # TODO function is too complex
+    "E402", # TODO Module level import not at top of file
+    "E501", # E501 Line too long - handled by black, see https://docs.astral.sh/ruff/faq/#is-ruff-compatible-with-black
+    "E721", # TODO Do not compare types, use `isinstance()`
+    "T201", # TODO `print` found
+    "T203", # TODO `pprint` found
 ]
+select = ["B", "C", "E", "F", "I", "W", "T", "B9", "G"]
