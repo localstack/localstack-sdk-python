@@ -19,6 +19,7 @@ build-spec:			## build the entire localstack api spec (openapi.yaml in the root 
 
 clean:         		## Clean up the virtual environment
 	rm -rf $(VENV_DIR)
+	rm -rf dist/
 
 clean-generated:	## Cleanup generated code
 	rm -rf packages/localstack-sdk-generated/localstack/
