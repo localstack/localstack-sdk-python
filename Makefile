@@ -8,32 +8,23 @@ TEST_EXEC ?= python -m
 PYTEST_LOGLEVEL ?= warning
 PIP_CMD ?= pip
 
-venv: $(VENV_ACTIVATE)    ## Create a new (empty) virtual environment
+install:			## omit dev dependencies
+	uv sync --no-dev
 
-$(VENV_ACTIVATE): src
-	test -d $(VENV_DIR) || $(VENV_BIN) $(VENV_DIR)
-	$(VENV_RUN); $(PIP_CMD) install --upgrade pip
-	touch $(VENV_ACTIVATE)
-
-install: venv	#
-	$(VENV_RUN); $(PIP_CMD) install -r ./localstack-sdk-generated/requirements.txt
-	$(VENV_RUN); pip install -e ./localstack-sdk-generated
-	$(VENV_RUN); pip install -e ./localstack-sdk-python
-
-install-dev: install
-	$(VENV_RUN); pip install -e ./localstack-sdk-python[test]
+install-dev:		## create the venv and install
+	uv sync
 
 build-spec:			## build the entire localstack api spec (openapi.yaml in the root folder)
 	$(VENV_RUN); python scripts/create_spec.py
 
-clean:         	## Clean up
+clean:         		## Clean up the virtual environment
 	rm -rf $(VENV_DIR)
 
 clean-generated:	## Cleanup generated code
 	rm -rf packages/localstack-sdk-generated/localstack/
 
-format:            		  ## Run ruff to format the whole codebase
-	($(VENV_RUN); python -m ruff format .; python -m ruff check --output-format=full --exclude packages --fix .)
+format:
+	($(VENV_RUN); python -m ruff format --exclude packages .; python -m ruff check --output-format=full --exclude packages --fix .)
 
 lint:
 	($(VENV_RUN); python -m ruff check --exclude packages --output-format=full . && python -m ruff format --exclude packages --check .)
@@ -41,4 +32,4 @@ lint:
 test:              		  ## Run automated tests
 	($(VENV_RUN); $(TEST_EXEC) pytest --durations=10 --log-cli-level=$(PYTEST_LOGLEVEL) $(PYTEST_ARGS) $(TEST_PATH))
 
-.PHONY: venv clean
+.PHONY: clean install install-dev
