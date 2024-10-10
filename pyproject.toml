@@ -10,6 +10,12 @@ dependencies = [
     "localstack-sdk-generated"
 ]
 
+[project.urls]
+Homepage = "https://localstack.cloud"
+Documentation = "https://docs.localstack.cloud"
+Repository = "https://github.com/localstack/localstack-sdk-python.git"
+Issues = "https://github.com/localstack/localstack-sdk-python/issues"
+
 [build-system]
 requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
