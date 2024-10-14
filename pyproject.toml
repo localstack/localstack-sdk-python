@@ -26,7 +26,8 @@ readme = { file = ["README.md"], content-type = "text/markdown"}
 [tool.uv]
 dev-dependencies=[
     "pytest",
-    "ruff"
+    "ruff",
+    "boto3"
 ]
 
 [tool.uv.sources]
