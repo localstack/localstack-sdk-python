@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=$(cat VERSION)
+version=$(uvx --from setuptools-scm python -m setuptools_scm)
 
 docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:v7.10.0 generate \
     -i https://raw.githubusercontent.com/localstack/openapi/refs/heads/main/openapi/emulators/localstack-spec-latest.yml \
