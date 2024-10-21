@@ -12,6 +12,7 @@ localstack/sdk/api_response.py
 localstack/sdk/configuration.py
 localstack/sdk/exceptions.py
 localstack/sdk/models/__init__.py
+localstack/sdk/models/aws_pinpoint_application_id_reference_id_get200_response.py
 localstack/sdk/models/cloud_watch_metrics.py
 localstack/sdk/models/cloud_watch_metrics_metrics_inner.py
 localstack/sdk/models/cloud_watch_metrics_metrics_inner_d_inner.py
@@ -30,7 +31,6 @@ localstack/sdk/models/get_diagnostics200_response_version_image_version.py
 localstack/sdk/models/get_diagnostics200_response_version_localstack_version.py
 localstack/sdk/models/get_features_and_services200_response.py
 localstack/sdk/models/get_lambda_runtimes200_response.py
-localstack/sdk/models/get_remote200_response.py
 localstack/sdk/models/get_ses_messages200_response.py
 localstack/sdk/models/get_sns_messages200_response.py
 localstack/sdk/models/get_sns_sms_messages200_response.py
@@ -41,16 +41,19 @@ localstack/sdk/models/init_scripts_scripts_inner.py
 localstack/sdk/models/init_scripts_stage.py
 localstack/sdk/models/init_scripts_stage_scripts_inner.py
 localstack/sdk/models/list_remotes200_response.py
-localstack/sdk/models/list_remotes200_response_remotes_inner.py
 localstack/sdk/models/localstack_pods_environment_get200_response.py
 localstack/sdk/models/localstack_stackinfo_get200_response.py
 localstack/sdk/models/manage_session_request.py
+localstack/sdk/models/message.py
 localstack/sdk/models/network_effects_config.py
 localstack/sdk/models/pod_list.py
 localstack/sdk/models/pod_list_cloudpods_inner.py
+localstack/sdk/models/pod_remote.py
 localstack/sdk/models/pod_save_request.py
 localstack/sdk/models/pod_versions.py
 localstack/sdk/models/pod_versions_versions_inner.py
+localstack/sdk/models/receive_message_request.py
+localstack/sdk/models/receive_message_result.py
 localstack/sdk/models/remote_config.py
 localstack/sdk/models/remote_config_one_of.py
 localstack/sdk/models/ses_sent_email.py
