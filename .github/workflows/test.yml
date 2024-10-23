@@ -4,9 +4,9 @@ on:
   pull_request:
     paths:
       - .github/workflows/test.yml
-      - localstack-sdk-python/*
-      - tests/*
-      - packages/*
+      - localstack-sdk-python/**
+      - tests/**
+      - packages/**
   push:
     branches:
       - main
