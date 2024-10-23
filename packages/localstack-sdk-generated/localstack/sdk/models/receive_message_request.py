@@ -18,19 +18,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GetSnsSmsMessages200Response(BaseModel):
+class ReceiveMessageRequest(BaseModel):
     """
-    GetSnsSmsMessages200Response
+    https://github.com/boto/botocore/blob/develop/botocore/data/sqs/2012-11-05/service-2.json
     """ # noqa: E501
-    region: StrictStr
-    sms_messages: Dict[str, Any]
-    additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["region", "sms_messages"]
+    queue_url: StrictStr = Field(alias="QueueUrl")
+    attribute_names: Optional[List[StrictStr]] = Field(default=None, alias="AttributeNames")
+    message_system_attribute_names: Optional[List[StrictStr]] = Field(default=None, alias="MessageSystemAttributeNames")
+    message_attribute_names: Optional[List[StrictStr]] = Field(default=None, alias="MessageAttributeNames")
+    max_number_of_messages: Optional[StrictInt] = Field(default=None, alias="MaxNumberOfMessages")
+    visibility_timeout: Optional[StrictInt] = Field(default=None, alias="VisibilityTimeout")
+    wait_time_seconds: Optional[StrictInt] = Field(default=None, alias="WaitTimeSeconds")
+    receive_request_attempt_id: Optional[StrictStr] = Field(default=None, alias="ReceiveRequestAttemptId")
+    __properties: ClassVar[List[str]] = ["QueueUrl", "AttributeNames", "MessageSystemAttributeNames", "MessageAttributeNames", "MaxNumberOfMessages", "VisibilityTimeout", "WaitTimeSeconds", "ReceiveRequestAttemptId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +55,7 @@ class GetSnsSmsMessages200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetSnsSmsMessages200Response from a JSON string"""
+        """Create an instance of ReceiveMessageRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -62,10 +67,8 @@ class GetSnsSmsMessages200Response(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -73,16 +76,11 @@ class GetSnsSmsMessages200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetSnsSmsMessages200Response from a dict"""
+        """Create an instance of ReceiveMessageRequest from a dict"""
         if obj is None:
             return None
 
@@ -90,14 +88,15 @@ class GetSnsSmsMessages200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "region": obj.get("region"),
-            "sms_messages": obj.get("sms_messages")
+            "QueueUrl": obj.get("QueueUrl"),
+            "AttributeNames": obj.get("AttributeNames"),
+            "MessageSystemAttributeNames": obj.get("MessageSystemAttributeNames"),
+            "MessageAttributeNames": obj.get("MessageAttributeNames"),
+            "MaxNumberOfMessages": obj.get("MaxNumberOfMessages"),
+            "VisibilityTimeout": obj.get("VisibilityTimeout"),
+            "WaitTimeSeconds": obj.get("WaitTimeSeconds"),
+            "ReceiveRequestAttemptId": obj.get("ReceiveRequestAttemptId")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

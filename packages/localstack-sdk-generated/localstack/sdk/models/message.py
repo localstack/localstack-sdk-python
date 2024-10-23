@@ -18,19 +18,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GetSnsSmsMessages200Response(BaseModel):
+class Message(BaseModel):
     """
-    GetSnsSmsMessages200Response
+    Message
     """ # noqa: E501
-    region: StrictStr
-    sms_messages: Dict[str, Any]
-    additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["region", "sms_messages"]
+    message_id: Optional[StrictStr] = Field(default=None, alias="MessageId")
+    receipt_handle: Optional[StrictStr] = Field(default=None, alias="ReceiptHandle")
+    md5_of_body: Optional[StrictStr] = Field(default=None, alias="MD5OfBody")
+    body: Optional[StrictStr] = Field(default=None, alias="Body")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, alias="Attributes")
+    message_attributes: Optional[Dict[str, Any]] = Field(default=None, alias="MessageAttributes")
+    __properties: ClassVar[List[str]] = ["MessageId", "ReceiptHandle", "MD5OfBody", "Body", "Attributes", "MessageAttributes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +53,7 @@ class GetSnsSmsMessages200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetSnsSmsMessages200Response from a JSON string"""
+        """Create an instance of Message from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -62,10 +65,8 @@ class GetSnsSmsMessages200Response(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -73,16 +74,31 @@ class GetSnsSmsMessages200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
+        # set to None if message_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.message_id is None and "message_id" in self.model_fields_set:
+            _dict['MessageId'] = None
+
+        # set to None if receipt_handle (nullable) is None
+        # and model_fields_set contains the field
+        if self.receipt_handle is None and "receipt_handle" in self.model_fields_set:
+            _dict['ReceiptHandle'] = None
+
+        # set to None if md5_of_body (nullable) is None
+        # and model_fields_set contains the field
+        if self.md5_of_body is None and "md5_of_body" in self.model_fields_set:
+            _dict['MD5OfBody'] = None
+
+        # set to None if body (nullable) is None
+        # and model_fields_set contains the field
+        if self.body is None and "body" in self.model_fields_set:
+            _dict['Body'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetSnsSmsMessages200Response from a dict"""
+        """Create an instance of Message from a dict"""
         if obj is None:
             return None
 
@@ -90,14 +106,13 @@ class GetSnsSmsMessages200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "region": obj.get("region"),
-            "sms_messages": obj.get("sms_messages")
+            "MessageId": obj.get("MessageId"),
+            "ReceiptHandle": obj.get("ReceiptHandle"),
+            "MD5OfBody": obj.get("MD5OfBody"),
+            "Body": obj.get("Body"),
+            "Attributes": obj.get("Attributes"),
+            "MessageAttributes": obj.get("MessageAttributes")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 
