@@ -22,9 +22,11 @@ class TestLocalStackAWS:
         for i in range(5):
             send_result = sqs_client.send_message(
                 QueueUrl=queue_url,
-                MessageBody=json.dumps({"event": f"random-event-{i}", "message": f"random-message-{i}"}),
+                MessageBody=json.dumps(
+                    {"event": f"random-event-{i}", "message": f"random-message-{i}"}
+                ),
             )
             assert send_result["MessageId"]
 
-        response = self.client.list_all_sqs_messages(queue_url=queue_url)
-        assert len(response.messages) == 5
+        messages = self.client.list_all_sqs_messages(queue_url=queue_url)
+        assert len(messages) == 5

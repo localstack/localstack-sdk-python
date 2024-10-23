@@ -2,10 +2,10 @@ import json
 
 from localstack.clients import BaseClient
 from localstack.sdk.api.aws_api import AwsApi
-from localstack.sdk.models import Message, ReceiveMessageResult
+from localstack.sdk.models import Message
 
 
-def _from_sqs_query_to_json(xml_dict: dict) -> ReceiveMessageResult:
+def _from_sqs_query_to_json(xml_dict: dict) -> list[Message]:
     """
     todo: developer endpoint implements sqs-query protocol. Remove this workaround one we move them to json.
     """
@@ -27,9 +27,7 @@ def _from_sqs_query_to_json(xml_dict: dict) -> ReceiveMessageResult:
         }
         m = Message.from_dict(_m)
         messages.append(m)
-    result = ReceiveMessageResult()
-    result.messages = messages
-    return result
+    return messages
 
 
 class AWSClient(BaseClient):
@@ -37,13 +35,13 @@ class AWSClient(BaseClient):
         super().__init__(**kwargs)
         self._client = AwsApi(self._api_client)
 
-    def list_sqs_messages(self, account_id: str, region: str, queue_name: str) -> ReceiveMessageResult:
+    def list_sqs_messages(self, account_id: str, region: str, queue_name: str) -> list[Message]:
         response = self._client.list_sqs_messages_with_http_info(
             account_id=account_id, region=region, queue_name=queue_name
         )
         return _from_sqs_query_to_json(response.raw_data)
 
-    def list_all_sqs_messages(self, queue_url) -> ReceiveMessageResult:
+    def list_all_sqs_messages(self, queue_url) -> list[Message]:
         response = self._client.list_all_sqs_messages_with_http_info(queue_url=queue_url)
         return _from_sqs_query_to_json(json.loads(response.raw_data))
 
