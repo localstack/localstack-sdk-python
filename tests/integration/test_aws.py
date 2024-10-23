@@ -3,7 +3,7 @@ import json
 import boto3
 
 import localstack.sdk.aws
-from utils import short_uid
+from tests.utils import short_uid
 
 
 class TestLocalStackAWS:
