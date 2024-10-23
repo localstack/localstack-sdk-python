@@ -10,10 +10,10 @@ def _from_sqs_query_to_json(xml_dict: dict) -> list[Message]:
     todo: developer endpoint implements sqs-query protocol. Remove this workaround one we move them to json.
     """
     raw_messages = (
-        xml_dict.get("ReceiveMessageResponse", {})
-        .get("ReceiveMessageResult", {})
-        .get("Message", [])
-    )
+        xml_dict.get("ReceiveMessageResponse", {}).get("ReceiveMessageResult", {}) or {}
+    ).get("Message", [])
+    if isinstance(raw_messages, dict):
+        raw_messages = [raw_messages]
     messages = []
     for msg in raw_messages:
         _attributes = msg.get("Attribute", [])
@@ -39,9 +39,9 @@ class AWSClient(BaseClient):
         response = self._client.list_sqs_messages_with_http_info(
             account_id=account_id, region=region, queue_name=queue_name
         )
-        return _from_sqs_query_to_json(response.raw_data)
+        return _from_sqs_query_to_json(json.loads(response.raw_data))
 
-    def list_all_sqs_messages(self, queue_url) -> list[Message]:
+    def list_sqs_messages_from_queue_url(self, queue_url) -> list[Message]:
         response = self._client.list_all_sqs_messages_with_http_info(queue_url=queue_url)
         return _from_sqs_query_to_json(json.loads(response.raw_data))
 
