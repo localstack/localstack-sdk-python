@@ -59,7 +59,7 @@ class AWSClient(BaseClient):
         response = self._client.get_ses_messages(id=id_filter, email=email_filter)
         return response.messages
 
-    def discard_ses_messages(self, id_filter: str | None = None):
+    def discard_ses_messages(self, id_filter: str | None = None) -> None:
         return self._client.discard_ses_messages(id=id_filter)
 
 
