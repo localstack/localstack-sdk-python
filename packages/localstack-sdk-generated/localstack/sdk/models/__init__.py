@@ -59,6 +59,7 @@ from localstack.sdk.models.receive_message_request import ReceiveMessageRequest
 from localstack.sdk.models.receive_message_result import ReceiveMessageResult
 from localstack.sdk.models.remote_config import RemoteConfig
 from localstack.sdk.models.remote_config_one_of import RemoteConfigOneOf
+from localstack.sdk.models.ses_destination import SESDestination
 from localstack.sdk.models.ses_sent_email import SesSentEmail
 from localstack.sdk.models.ses_sent_email_body import SesSentEmailBody
 from localstack.sdk.models.session_info import SessionInfo

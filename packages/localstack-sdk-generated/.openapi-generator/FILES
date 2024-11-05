@@ -56,6 +56,7 @@ localstack/sdk/models/receive_message_request.py
 localstack/sdk/models/receive_message_result.py
 localstack/sdk/models/remote_config.py
 localstack/sdk/models/remote_config_one_of.py
+localstack/sdk/models/ses_destination.py
 localstack/sdk/models/ses_sent_email.py
 localstack/sdk/models/ses_sent_email_body.py
 localstack/sdk/models/session_info.py
