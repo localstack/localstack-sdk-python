@@ -28,6 +28,7 @@ from localstack.sdk.models.get_ses_messages200_response import GetSesMessages200
 from localstack.sdk.models.get_sns_messages200_response import GetSnsMessages200Response
 from localstack.sdk.models.get_sns_sms_messages200_response import GetSnsSmsMessages200Response
 from localstack.sdk.models.get_sns_subscription_token200_response import GetSnsSubscriptionToken200Response
+from localstack.sdk.models.receive_message_result import ReceiveMessageResult
 
 from localstack.sdk.api_client import ApiClient, RequestSerialized
 from localstack.sdk.api_response import ApiResponse
@@ -4095,7 +4096,7 @@ class AwsApi:
     @validate_call
     def discard_ses_messages(
         self,
-        id: Annotated[Optional[StrictStr], Field(description="ID of the message (`id` field of SES message)")] = None,
+        id: Annotated[Optional[StrictStr], Field(description="Filter for the `id` field in SES message")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4113,7 +4114,7 @@ class AwsApi:
 
         Discard sent SES messages
 
-        :param id: ID of the message (`id` field of SES message)
+        :param id: Filter for the `id` field in SES message
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4162,7 +4163,7 @@ class AwsApi:
     @validate_call
     def discard_ses_messages_with_http_info(
         self,
-        id: Annotated[Optional[StrictStr], Field(description="ID of the message (`id` field of SES message)")] = None,
+        id: Annotated[Optional[StrictStr], Field(description="Filter for the `id` field in SES message")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4180,7 +4181,7 @@ class AwsApi:
 
         Discard sent SES messages
 
-        :param id: ID of the message (`id` field of SES message)
+        :param id: Filter for the `id` field in SES message
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4229,7 +4230,7 @@ class AwsApi:
     @validate_call
     def discard_ses_messages_without_preload_content(
         self,
-        id: Annotated[Optional[StrictStr], Field(description="ID of the message (`id` field of SES message)")] = None,
+        id: Annotated[Optional[StrictStr], Field(description="Filter for the `id` field in SES message")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4247,7 +4248,7 @@ class AwsApi:
 
         Discard sent SES messages
 
-        :param id: ID of the message (`id` field of SES message)
+        :param id: Filter for the `id` field in SES message
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5687,8 +5688,8 @@ class AwsApi:
     @validate_call
     def get_ses_messages(
         self,
-        id: Annotated[Optional[StrictStr], Field(description="ID of the message (`id` field of SES message)")] = None,
-        email: Annotated[Optional[StrictStr], Field(description="Source of the message (`source` field of SES message)")] = None,
+        id: Annotated[Optional[StrictStr], Field(description="Filter for the `id` field in SES message")] = None,
+        email: Annotated[Optional[StrictStr], Field(description="Filter for the `source` field in SES message")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5706,9 +5707,9 @@ class AwsApi:
 
         Retrieve sent SES messages
 
-        :param id: ID of the message (`id` field of SES message)
+        :param id: Filter for the `id` field in SES message
         :type id: str
-        :param email: Source of the message (`source` field of SES message)
+        :param email: Filter for the `source` field in SES message
         :type email: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5758,8 +5759,8 @@ class AwsApi:
     @validate_call
     def get_ses_messages_with_http_info(
         self,
-        id: Annotated[Optional[StrictStr], Field(description="ID of the message (`id` field of SES message)")] = None,
-        email: Annotated[Optional[StrictStr], Field(description="Source of the message (`source` field of SES message)")] = None,
+        id: Annotated[Optional[StrictStr], Field(description="Filter for the `id` field in SES message")] = None,
+        email: Annotated[Optional[StrictStr], Field(description="Filter for the `source` field in SES message")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5777,9 +5778,9 @@ class AwsApi:
 
         Retrieve sent SES messages
 
-        :param id: ID of the message (`id` field of SES message)
+        :param id: Filter for the `id` field in SES message
         :type id: str
-        :param email: Source of the message (`source` field of SES message)
+        :param email: Filter for the `source` field in SES message
         :type email: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5829,8 +5830,8 @@ class AwsApi:
     @validate_call
     def get_ses_messages_without_preload_content(
         self,
-        id: Annotated[Optional[StrictStr], Field(description="ID of the message (`id` field of SES message)")] = None,
-        email: Annotated[Optional[StrictStr], Field(description="Source of the message (`source` field of SES message)")] = None,
+        id: Annotated[Optional[StrictStr], Field(description="Filter for the `id` field in SES message")] = None,
+        email: Annotated[Optional[StrictStr], Field(description="Filter for the `source` field in SES message")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5848,9 +5849,9 @@ class AwsApi:
 
         Retrieve sent SES messages
 
-        :param id: ID of the message (`id` field of SES message)
+        :param id: Filter for the `id` field in SES message
         :type id: str
-        :param email: Source of the message (`source` field of SES message)
+        :param email: Filter for the `source` field in SES message
         :type email: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6837,7 +6838,7 @@ class AwsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> ReceiveMessageResult:
         """list_all_sqs_messages
 
         List SQS queue messages without side effects
@@ -6875,7 +6876,7 @@ class AwsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ReceiveMessageResult",
             '400': None,
             '404': None,
         }
@@ -6906,7 +6907,7 @@ class AwsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[ReceiveMessageResult]:
         """list_all_sqs_messages
 
         List SQS queue messages without side effects
@@ -6944,7 +6945,7 @@ class AwsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ReceiveMessageResult",
             '400': None,
             '404': None,
         }
@@ -7013,7 +7014,7 @@ class AwsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ReceiveMessageResult",
             '400': None,
             '404': None,
         }

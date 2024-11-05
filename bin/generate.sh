@@ -3,7 +3,7 @@
 version=$(cat VERSION)
 
 docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:v7.9.0 generate \
-    -i /local/openapi.yaml \
+    -i https://raw.githubusercontent.com/localstack/openapi/refs/heads/main/openapi/emulators/localstack-spec-latest.yml \
     --skip-validate-spec \
     -g python \
     -o /local//packages/localstack-sdk-generated \

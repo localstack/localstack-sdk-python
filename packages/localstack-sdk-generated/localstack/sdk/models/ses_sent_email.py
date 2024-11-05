@@ -19,7 +19,8 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from localstack.sdk.models.ses_destination import SESDestination
 from localstack.sdk.models.ses_sent_email_body import SesSentEmailBody
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,15 +29,15 @@ class SesSentEmail(BaseModel):
     """
     SesSentEmail
     """ # noqa: E501
-    body: SesSentEmailBody = Field(alias="Body")
-    destination: StrictStr = Field(alias="Destination")
+    body: Optional[SesSentEmailBody] = Field(default=None, alias="Body")
+    destination: Optional[SESDestination] = Field(default=None, alias="Destination")
     id: StrictStr = Field(alias="Id")
-    raw_data: StrictStr = Field(alias="RawData")
+    raw_data: Optional[StrictStr] = Field(default=None, alias="RawData")
     region: StrictStr = Field(alias="Region")
     source: StrictStr = Field(alias="Source")
-    subject: StrictStr = Field(alias="Subject")
-    template: StrictStr = Field(alias="Template")
-    template_data: StrictStr = Field(alias="TemplateData")
+    subject: Optional[StrictStr] = Field(default=None, alias="Subject")
+    template: Optional[StrictStr] = Field(default=None, alias="Template")
+    template_data: Optional[StrictStr] = Field(default=None, alias="TemplateData")
     timestamp: StrictStr = Field(alias="Timestamp")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["Body", "Destination", "Id", "RawData", "Region", "Source", "Subject", "Template", "TemplateData", "Timestamp"]
@@ -85,6 +86,9 @@ class SesSentEmail(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of body
         if self.body:
             _dict['Body'] = self.body.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of destination
+        if self.destination:
+            _dict['Destination'] = self.destination.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -103,7 +107,7 @@ class SesSentEmail(BaseModel):
 
         _obj = cls.model_validate({
             "Body": SesSentEmailBody.from_dict(obj["Body"]) if obj.get("Body") is not None else None,
-            "Destination": obj.get("Destination"),
+            "Destination": SESDestination.from_dict(obj["Destination"]) if obj.get("Destination") is not None else None,
             "Id": obj.get("Id"),
             "RawData": obj.get("RawData"),
             "Region": obj.get("Region"),
