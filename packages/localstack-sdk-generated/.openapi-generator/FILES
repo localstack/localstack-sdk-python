@@ -32,8 +32,6 @@ localstack/sdk/models/get_diagnostics200_response_version_localstack_version.py
 localstack/sdk/models/get_features_and_services200_response.py
 localstack/sdk/models/get_lambda_runtimes200_response.py
 localstack/sdk/models/get_ses_messages200_response.py
-localstack/sdk/models/get_sns_messages200_response.py
-localstack/sdk/models/get_sns_sms_messages200_response.py
 localstack/sdk/models/get_sns_subscription_token200_response.py
 localstack/sdk/models/init_scripts.py
 localstack/sdk/models/init_scripts_completed.py
@@ -60,7 +58,11 @@ localstack/sdk/models/ses_destination.py
 localstack/sdk/models/ses_sent_email.py
 localstack/sdk/models/ses_sent_email_body.py
 localstack/sdk/models/session_info.py
+localstack/sdk/models/sns_message.py
+localstack/sdk/models/sns_platform_endpoint_message.py
+localstack/sdk/models/sns_platform_endpoint_response.py
 localstack/sdk/models/sns_subscription_token_error.py
+localstack/sdk/models/snssms_messages_response.py
 localstack/sdk/models/state_result.py
 localstack/sdk/models/store_data200_response.py
 localstack/sdk/models/update_config_option200_response.py

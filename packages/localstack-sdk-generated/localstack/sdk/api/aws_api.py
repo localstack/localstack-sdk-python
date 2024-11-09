@@ -25,10 +25,10 @@ from localstack.sdk.models.cloud_watch_metrics import CloudWatchMetrics
 from localstack.sdk.models.delete_ddb_expired_items200_response import DeleteDdbExpiredItems200Response
 from localstack.sdk.models.get_lambda_runtimes200_response import GetLambdaRuntimes200Response
 from localstack.sdk.models.get_ses_messages200_response import GetSesMessages200Response
-from localstack.sdk.models.get_sns_messages200_response import GetSnsMessages200Response
-from localstack.sdk.models.get_sns_sms_messages200_response import GetSnsSmsMessages200Response
 from localstack.sdk.models.get_sns_subscription_token200_response import GetSnsSubscriptionToken200Response
 from localstack.sdk.models.receive_message_result import ReceiveMessageResult
+from localstack.sdk.models.sns_platform_endpoint_response import SNSPlatformEndpointResponse
+from localstack.sdk.models.snssms_messages_response import SNSSMSMessagesResponse
 
 from localstack.sdk.api_client import ApiClient, RequestSerialized
 from localstack.sdk.api_response import ApiResponse
@@ -4349,7 +4349,7 @@ class AwsApi:
 
 
     @validate_call
-    def discard_sns_messages(
+    def discard_sns_endpoint_messages(
         self,
         account_id: Annotated[Optional[StrictStr], Field(description="`accountId` field of the resource")] = None,
         region: Annotated[Optional[StrictStr], Field(description="`region` field of the resource")] = None,
@@ -4367,9 +4367,9 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """discard_sns_messages
+        """discard_sns_endpoint_messages
 
-        Discard SNS platform endpoint messages
+        Discard the messages published to a platform endpoint via SNS
 
         :param account_id: `accountId` field of the resource
         :type account_id: str
@@ -4399,7 +4399,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._discard_sns_messages_serialize(
+        _param = self._discard_sns_endpoint_messages_serialize(
             account_id=account_id,
             region=region,
             endpoint_arn=endpoint_arn,
@@ -4424,7 +4424,7 @@ class AwsApi:
 
 
     @validate_call
-    def discard_sns_messages_with_http_info(
+    def discard_sns_endpoint_messages_with_http_info(
         self,
         account_id: Annotated[Optional[StrictStr], Field(description="`accountId` field of the resource")] = None,
         region: Annotated[Optional[StrictStr], Field(description="`region` field of the resource")] = None,
@@ -4442,9 +4442,9 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """discard_sns_messages
+        """discard_sns_endpoint_messages
 
-        Discard SNS platform endpoint messages
+        Discard the messages published to a platform endpoint via SNS
 
         :param account_id: `accountId` field of the resource
         :type account_id: str
@@ -4474,7 +4474,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._discard_sns_messages_serialize(
+        _param = self._discard_sns_endpoint_messages_serialize(
             account_id=account_id,
             region=region,
             endpoint_arn=endpoint_arn,
@@ -4499,7 +4499,7 @@ class AwsApi:
 
 
     @validate_call
-    def discard_sns_messages_without_preload_content(
+    def discard_sns_endpoint_messages_without_preload_content(
         self,
         account_id: Annotated[Optional[StrictStr], Field(description="`accountId` field of the resource")] = None,
         region: Annotated[Optional[StrictStr], Field(description="`region` field of the resource")] = None,
@@ -4517,9 +4517,9 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """discard_sns_messages
+        """discard_sns_endpoint_messages
 
-        Discard SNS platform endpoint messages
+        Discard the messages published to a platform endpoint via SNS
 
         :param account_id: `accountId` field of the resource
         :type account_id: str
@@ -4549,7 +4549,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._discard_sns_messages_serialize(
+        _param = self._discard_sns_endpoint_messages_serialize(
             account_id=account_id,
             region=region,
             endpoint_arn=endpoint_arn,
@@ -4569,7 +4569,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _discard_sns_messages_serialize(
+    def _discard_sns_endpoint_messages_serialize(
         self,
         account_id,
         region,
@@ -4902,13 +4902,6 @@ class AwsApi:
         # process the body parameter
 
 
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'text/plain'
-                ]
-            )
 
 
         # authentication setting
@@ -5965,7 +5958,7 @@ class AwsApi:
 
 
     @validate_call
-    def get_sns_messages(
+    def get_sns_endpoint_messages(
         self,
         account_id: Annotated[Optional[StrictStr], Field(description="`accountId` field of the resource")] = None,
         region: Annotated[Optional[StrictStr], Field(description="`region` field of the resource")] = None,
@@ -5982,10 +5975,10 @@ class AwsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> GetSnsMessages200Response:
-        """get_sns_messages
+    ) -> SNSPlatformEndpointResponse:
+        """get_sns_endpoint_messages
 
-        Retrieve SNS platform endpoint messages
+        Retrieve the messages sent to a platform endpoint via SNS
 
         :param account_id: `accountId` field of the resource
         :type account_id: str
@@ -6015,7 +6008,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_sns_messages_serialize(
+        _param = self._get_sns_endpoint_messages_serialize(
             account_id=account_id,
             region=region,
             endpoint_arn=endpoint_arn,
@@ -6026,7 +6019,7 @@ class AwsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetSnsMessages200Response",
+            '200': "SNSPlatformEndpointResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6040,7 +6033,7 @@ class AwsApi:
 
 
     @validate_call
-    def get_sns_messages_with_http_info(
+    def get_sns_endpoint_messages_with_http_info(
         self,
         account_id: Annotated[Optional[StrictStr], Field(description="`accountId` field of the resource")] = None,
         region: Annotated[Optional[StrictStr], Field(description="`region` field of the resource")] = None,
@@ -6057,10 +6050,10 @@ class AwsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[GetSnsMessages200Response]:
-        """get_sns_messages
+    ) -> ApiResponse[SNSPlatformEndpointResponse]:
+        """get_sns_endpoint_messages
 
-        Retrieve SNS platform endpoint messages
+        Retrieve the messages sent to a platform endpoint via SNS
 
         :param account_id: `accountId` field of the resource
         :type account_id: str
@@ -6090,7 +6083,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_sns_messages_serialize(
+        _param = self._get_sns_endpoint_messages_serialize(
             account_id=account_id,
             region=region,
             endpoint_arn=endpoint_arn,
@@ -6101,7 +6094,7 @@ class AwsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetSnsMessages200Response",
+            '200': "SNSPlatformEndpointResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6115,7 +6108,7 @@ class AwsApi:
 
 
     @validate_call
-    def get_sns_messages_without_preload_content(
+    def get_sns_endpoint_messages_without_preload_content(
         self,
         account_id: Annotated[Optional[StrictStr], Field(description="`accountId` field of the resource")] = None,
         region: Annotated[Optional[StrictStr], Field(description="`region` field of the resource")] = None,
@@ -6133,9 +6126,9 @@ class AwsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_sns_messages
+        """get_sns_endpoint_messages
 
-        Retrieve SNS platform endpoint messages
+        Retrieve the messages sent to a platform endpoint via SNS
 
         :param account_id: `accountId` field of the resource
         :type account_id: str
@@ -6165,7 +6158,7 @@ class AwsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_sns_messages_serialize(
+        _param = self._get_sns_endpoint_messages_serialize(
             account_id=account_id,
             region=region,
             endpoint_arn=endpoint_arn,
@@ -6176,7 +6169,7 @@ class AwsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetSnsMessages200Response",
+            '200': "SNSPlatformEndpointResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6185,7 +6178,7 @@ class AwsApi:
         return response_data.response
 
 
-    def _get_sns_messages_serialize(
+    def _get_sns_endpoint_messages_serialize(
         self,
         account_id,
         region,
@@ -6278,7 +6271,7 @@ class AwsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> GetSnsSmsMessages200Response:
+    ) -> SNSSMSMessagesResponse:
         """get_sns_sms_messages
 
         Retrieve SNS SMS messages
@@ -6322,7 +6315,7 @@ class AwsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetSnsSmsMessages200Response",
+            '200': "SNSSMSMessagesResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6353,7 +6346,7 @@ class AwsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[GetSnsSmsMessages200Response]:
+    ) -> ApiResponse[SNSSMSMessagesResponse]:
         """get_sns_sms_messages
 
         Retrieve SNS SMS messages
@@ -6397,7 +6390,7 @@ class AwsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetSnsSmsMessages200Response",
+            '200': "SNSSMSMessagesResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6472,7 +6465,7 @@ class AwsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetSnsSmsMessages200Response",
+            '200': "SNSSMSMessagesResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
