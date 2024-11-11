@@ -1,9 +1,10 @@
 import json
+import random
 
 import boto3
 
 import localstack.sdk.aws
-from tests.utils import short_uid
+from tests.utils import retry, short_uid
 
 SAMPLE_SIMPLE_EMAIL = {
     "Subject": {
@@ -140,3 +141,126 @@ class TestLocalStackAWS:
 
         self.client.discard_ses_messages()
         assert not self.client.get_ses_messages()
+
+    def test_sns_platform_endpoint_messages(self):
+        client = boto3.client(
+            "sns",
+            endpoint_url=self.client.configuration.host,
+            region_name="us-east-1",
+            aws_access_key_id="test",
+            aws_secret_access_key="test",
+        )
+
+        # create a topic
+        topic_name = f"topic-{short_uid()}"
+        topic_arn = client.create_topic(Name=topic_name)["TopicArn"]
+
+        app_name = f"app-name-{short_uid()}"
+        platform_arn = client.create_platform_application(
+            Name=app_name,
+            Platform="APNS",
+            Attributes={},
+        )["PlatformApplicationArn"]
+
+        endpoint_arn = client.create_platform_endpoint(
+            PlatformApplicationArn=platform_arn, Token=short_uid()
+        )["EndpointArn"]
+
+        client.subscribe(
+            TopicArn=topic_arn,
+            Protocol="application",
+            Endpoint=endpoint_arn,
+        )
+
+        message_for_topic = {
+            "default": "This is the default message which must be present when publishing a message to a topic.",
+            "APNS": json.dumps({"aps": {"content-available": 1}}),
+        }
+        message_for_topic_string = json.dumps(message_for_topic)
+        message_attributes = {
+            "AWS.SNS.MOBILE.APNS.TOPIC": {
+                "DataType": "String",
+                "StringValue": "com.amazon.mobile.messaging.myapp",
+            },
+            "AWS.SNS.MOBILE.APNS.PUSH_TYPE": {
+                "DataType": "String",
+                "StringValue": "background",
+            },
+            "AWS.SNS.MOBILE.APNS.PRIORITY": {
+                "DataType": "String",
+                "StringValue": "5",
+            },
+        }
+
+        client.publish(
+            TopicArn=topic_arn,
+            Message=message_for_topic_string,
+            MessageAttributes=message_attributes,
+            MessageStructure="json",
+        )
+
+        msg_response = self.client.get_sns_endpoint_messages(endpoint_arn=endpoint_arn)
+        assert msg_response.region == "us-east-1"
+        assert len(msg_response.platform_endpoint_messages[endpoint_arn]) >= 0
+
+        assert msg_response.platform_endpoint_messages[endpoint_arn][0].message == json.dumps(
+            message_for_topic["APNS"]
+        )
+        assert (
+            msg_response.platform_endpoint_messages[endpoint_arn][0].message_attributes
+            == message_attributes
+        )
+
+        self.client.discard_sns_endpoint_messages(endpoint_arn=endpoint_arn)
+        msg_response = self.client.get_sns_endpoint_messages(endpoint_arn=endpoint_arn)
+        # todo: the endpoint arn remains as key; verify that this is intended behavior
+        assert not msg_response.platform_endpoint_messages[
+            endpoint_arn
+        ], "platform messages not cleared"
+
+    def test_sns_messages(self):
+        client = boto3.client(
+            "sns",
+            endpoint_url=self.client.configuration.host,
+            region_name="us-east-1",
+            aws_access_key_id="test",
+            aws_secret_access_key="test",
+        )
+
+        numbers = [
+            f"+{random.randint(100000000, 9999999999)}",
+            f"+{random.randint(100000000, 9999999999)}",
+            f"+{random.randint(100000000, 9999999999)}",
+        ]
+
+        topic_name = f"topic-{short_uid()}"
+        topic_arn = client.create_topic(Name=topic_name)["TopicArn"]
+
+        for number in numbers:
+            client.subscribe(
+                TopicArn=topic_arn,
+                Protocol="sms",
+                Endpoint=number,
+            )
+
+        client.publish(Message="Hello World", TopicArn=topic_arn)
+        client.publish(PhoneNumber=numbers[0], Message="Hello World")
+
+        def _check_messages():
+            msg_response = self.client.get_sns_sms_messages()
+            assert len(msg_response.sms_messages) == 3
+            return msg_response.sms_messages
+
+        msgs = retry(_check_messages)
+        assert len(msgs[numbers[0]]) == 2
+        assert len(msgs[numbers[1]]) == 1
+        assert len(msgs[numbers[2]]) == 1
+
+        # selective discard
+        self.client.discard_sns_sms_messages(phone_number=numbers[0])
+        msg_response = self.client.get_sns_sms_messages()
+        assert numbers[0] not in msg_response.sms_messages
+
+        self.client.discard_sns_sms_messages()
+        msg_response = self.client.get_sns_sms_messages()
+        assert not msg_response.sms_messages

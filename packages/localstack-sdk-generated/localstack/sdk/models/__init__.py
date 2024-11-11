@@ -35,8 +35,6 @@ from localstack.sdk.models.get_diagnostics200_response_version_localstack_versio
 from localstack.sdk.models.get_features_and_services200_response import GetFeaturesAndServices200Response
 from localstack.sdk.models.get_lambda_runtimes200_response import GetLambdaRuntimes200Response
 from localstack.sdk.models.get_ses_messages200_response import GetSesMessages200Response
-from localstack.sdk.models.get_sns_messages200_response import GetSnsMessages200Response
-from localstack.sdk.models.get_sns_sms_messages200_response import GetSnsSmsMessages200Response
 from localstack.sdk.models.get_sns_subscription_token200_response import GetSnsSubscriptionToken200Response
 from localstack.sdk.models.init_scripts import InitScripts
 from localstack.sdk.models.init_scripts_completed import InitScriptsCompleted
@@ -60,6 +58,10 @@ from localstack.sdk.models.receive_message_result import ReceiveMessageResult
 from localstack.sdk.models.remote_config import RemoteConfig
 from localstack.sdk.models.remote_config_one_of import RemoteConfigOneOf
 from localstack.sdk.models.ses_destination import SESDestination
+from localstack.sdk.models.sns_message import SNSMessage
+from localstack.sdk.models.sns_platform_endpoint_message import SNSPlatformEndpointMessage
+from localstack.sdk.models.sns_platform_endpoint_response import SNSPlatformEndpointResponse
+from localstack.sdk.models.snssms_messages_response import SNSSMSMessagesResponse
 from localstack.sdk.models.ses_sent_email import SesSentEmail
 from localstack.sdk.models.ses_sent_email_body import SesSentEmailBody
 from localstack.sdk.models.session_info import SessionInfo
