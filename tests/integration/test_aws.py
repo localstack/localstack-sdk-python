@@ -140,3 +140,64 @@ class TestLocalStackAWS:
 
         self.client.discard_ses_messages()
         assert not self.client.get_ses_messages()
+
+    def test_sns_platform_endpoint_messages(self):
+        client = boto3.client(
+            "sns",
+            endpoint_url=self.client.configuration.host,
+            region_name="us-east-1",
+            aws_access_key_id="test",
+            aws_secret_access_key="test",
+        )
+
+        # create a topic
+        topic_name = f"topic-{short_uid()}"
+        topic_arn = client.create_topic(Name=topic_name)["TopicArn"]
+
+        app_name = f"app-name-{short_uid()}"
+        platform_arn = client.create_platform_application(
+            Name=app_name,
+            Platform="APNS",
+            Attributes={},
+        )["PlatformApplicationArn"]
+
+        endpoint_arn = client.create_platform_endpoint(
+            PlatformApplicationArn=platform_arn, Token=short_uid()
+        )["EndpointArn"]
+
+        client.subscribe(
+            TopicArn=topic_arn,
+            Protocol="application",
+            Endpoint=endpoint_arn,
+        )
+
+        message_for_topic = {
+            "default": "This is the default message which must be present when publishing a message to a topic.",
+            "APNS": json.dumps({"aps": {"content-available": 1}}),
+        }
+        message_for_topic_string = json.dumps(message_for_topic)
+        message_attributes = {
+            "AWS.SNS.MOBILE.APNS.TOPIC": {
+                "DataType": "String",
+                "StringValue": "com.amazon.mobile.messaging.myapp",
+            },
+            "AWS.SNS.MOBILE.APNS.PUSH_TYPE": {
+                "DataType": "String",
+                "StringValue": "background",
+            },
+            "AWS.SNS.MOBILE.APNS.PRIORITY": {
+                "DataType": "String",
+                "StringValue": "5",
+            },
+        }
+        # publish to a topic which has a platform subscribed to it
+        client.sns.publish(
+            TopicArn=topic_arn,
+            Message=message_for_topic_string,
+            MessageAttributes=message_attributes,
+            MessageStructure="json",
+        )
+
+        msg_response = self.client.get_sns_endpoint_messages(endpoint_arn=endpoint_arn)
+        assert msg_response.region == "us-east-1"
+        assert len(msg_response.platform_endpoint_messages[endpoint_arn]) > 1
