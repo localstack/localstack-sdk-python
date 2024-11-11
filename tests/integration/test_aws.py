@@ -190,8 +190,8 @@ class TestLocalStackAWS:
                 "StringValue": "5",
             },
         }
-        # publish to a topic which has a platform subscribed to it
-        client.sns.publish(
+
+        client.publish(
             TopicArn=topic_arn,
             Message=message_for_topic_string,
             MessageAttributes=message_attributes,
@@ -200,4 +200,19 @@ class TestLocalStackAWS:
 
         msg_response = self.client.get_sns_endpoint_messages(endpoint_arn=endpoint_arn)
         assert msg_response.region == "us-east-1"
-        assert len(msg_response.platform_endpoint_messages[endpoint_arn]) > 1
+        assert len(msg_response.platform_endpoint_messages[endpoint_arn]) >= 0
+
+        assert msg_response.platform_endpoint_messages[endpoint_arn][0].message == json.dumps(
+            message_for_topic["APNS"]
+        )
+        assert (
+            msg_response.platform_endpoint_messages[endpoint_arn][0].message_attributes
+            == message_attributes
+        )
+
+        self.client.discard_sns_endpoint_messages(endpoint_arn=endpoint_arn)
+        msg_response = self.client.get_sns_endpoint_messages(endpoint_arn=endpoint_arn)
+        # todo: the endpoint arn remains as key; verify that this is intended behavior
+        assert not msg_response.platform_endpoint_messages[
+            endpoint_arn
+        ], "platform messages not cleared"

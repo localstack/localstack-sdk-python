@@ -81,6 +81,16 @@ class AWSClient(BaseClient):
             phone_number=phone_number, account_id=account_id, region=region
         )
 
+    def discard_sns_sms_messages(
+        self,
+        phone_number: str | None = None,
+        account_id: str = "000000000000",
+        region: str = "us-east-1",
+    ) -> None:
+        return self._client.discard_sns_sms_messages(
+            phone_number=phone_number, account_id=account_id, region=region
+        )
+
     def get_sns_endpoint_messages(
         self,
         endpoint_arn: str | None = None,
@@ -88,6 +98,16 @@ class AWSClient(BaseClient):
         region: str = "us-east-1",
     ) -> SNSPlatformEndpointResponse:
         return self._client.get_sns_endpoint_messages(
+            endpoint_arn=endpoint_arn, account_id=account_id, region=region
+        )
+
+    def discard_sns_endpoint_messages(
+        self,
+        endpoint_arn: str | None = None,
+        account_id: str = "000000000000",
+        region: str = "us-east-1",
+    ) -> None:
+        return self._client.discard_sns_endpoint_messages(
             endpoint_arn=endpoint_arn, account_id=account_id, region=region
         )
 
