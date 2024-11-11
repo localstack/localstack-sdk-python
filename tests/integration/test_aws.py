@@ -1,9 +1,10 @@
 import json
+import random
 
 import boto3
 
 import localstack.sdk.aws
-from tests.utils import short_uid
+from tests.utils import retry, short_uid
 
 SAMPLE_SIMPLE_EMAIL = {
     "Subject": {
@@ -216,3 +217,50 @@ class TestLocalStackAWS:
         assert not msg_response.platform_endpoint_messages[
             endpoint_arn
         ], "platform messages not cleared"
+
+    def test_sns_messages(self):
+        client = boto3.client(
+            "sns",
+            endpoint_url=self.client.configuration.host,
+            region_name="us-east-1",
+            aws_access_key_id="test",
+            aws_secret_access_key="test",
+        )
+
+        numbers = [
+            f"+{random.randint(100000000, 9999999999)}",
+            f"+{random.randint(100000000, 9999999999)}",
+            f"+{random.randint(100000000, 9999999999)}",
+        ]
+
+        topic_name = f"topic-{short_uid()}"
+        topic_arn = client.create_topic(Name=topic_name)["TopicArn"]
+
+        for number in numbers:
+            client.subscribe(
+                TopicArn=topic_arn,
+                Protocol="sms",
+                Endpoint=number,
+            )
+
+        client.publish(Message="Hello World", TopicArn=topic_arn)
+        client.publish(PhoneNumber=numbers[0], Message="Hello World")
+
+        def _check_messages():
+            msg_response = self.client.get_sns_sms_messages()
+            assert len(msg_response.sms_messages) == 3
+            return msg_response.sms_messages
+
+        msgs = retry(_check_messages)
+        assert len(msgs[numbers[0]]) == 2
+        assert len(msgs[numbers[1]]) == 1
+        assert len(msgs[numbers[2]]) == 1
+
+        # selective discard
+        self.client.discard_sns_sms_messages(phone_number=numbers[0])
+        msg_response = self.client.get_sns_sms_messages()
+        assert numbers[0] not in msg_response.sms_messages
+
+        self.client.discard_sns_sms_messages()
+        msg_response = self.client.get_sns_sms_messages()
+        assert not msg_response.sms_messages
