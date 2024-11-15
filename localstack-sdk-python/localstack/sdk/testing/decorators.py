@@ -8,7 +8,7 @@ LOG = logging.getLogger(__name__)
 
 
 def cloudpods(*args, **kwargs):
-    """This is a decorator that loads a"""
+    """This is a decorator that loads a cloud pod before a test and resets the state afterward."""
 
     def decorator(func):
         @wraps(func)
