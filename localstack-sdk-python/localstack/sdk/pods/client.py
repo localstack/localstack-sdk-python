@@ -24,10 +24,12 @@ class PodsClient(BaseClient):
     def __init__(self, **args) -> None:
         super().__init__(**args)
         self._client = PodsApi(self._api_client)
-        # https://github.com/localstack/localstack-ext/pull/3469 could be avoided after this
-        assert self.auth_token
-        auth_header = get_platform_auth_header(self.auth_token)
-        self._api_client.set_default_header("Authorization", auth_header["Authorization"])
+        if self.auth_token:
+            # If an auth token is provided, it will be used to authenticate platform calls for Cloud Pods.
+            #   Only the pods tied to this token will be visible. If not provided, the token will be fetched from the
+            #   container. This allows to separate container identity for caller identity, if needed.
+            auth_header = get_platform_auth_header(self.auth_token)
+            self._api_client.set_default_header("Authorization", auth_header["Authorization"])
 
     def save_pod(self, pod_name: str) -> None:
         """
