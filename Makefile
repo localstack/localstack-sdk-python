@@ -23,6 +23,11 @@ clean-generated:	## Cleanup generated code
 generate:			## Generate the code from the OpenAPI specs
 	./bin/generate.sh
 
+sphinx-docs:				## Generate the documentation
+	($(VENV_RUN); sphinx-apidoc --implicit-namespaces -o docs localstack-sdk-python/localstack)
+	$(MAKE) -C docs clean
+	$(MAKE) -C docs html
+
 format:
 	($(VENV_RUN); python -m ruff format --exclude packages .; python -m ruff check --output-format=full --exclude packages --fix .)
 
