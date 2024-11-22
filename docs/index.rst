@@ -1,17 +1,17 @@
-.. LocalStack Python SDK documentation master file, created by
-   sphinx-quickstart on Fri Nov 22 08:14:19 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-LocalStack Python SDK documentation
+LocalStack Python SDK docs
 ===================================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+This is the documentation for the Python
+`LocalStack's SDK <https://github.com/localstack/localstack-sdk-python>`_.
 
+LocalStack offers a number of developer endpoints to programmatically interact
+with LocalStack's features.
+
+The complete OpenAPI spec can be found in the
+`OpenAPI repository <https://github.com/localstack/openapi>`_.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Documentation:
 
+   modules
