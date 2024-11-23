@@ -1,8 +1,7 @@
-LocalStack SDK modules
-======================
+API Reference
+=============
 
 .. toctree::
    :maxdepth: 4
 
-   localstack
    localstack.sdk

@@ -37,3 +37,22 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+
+html_sidebars = {
+    '**': [
+        'about.html',
+        'searchfield.html',
+        'navigation.html',
+    ]
+}
+
+html_theme_options = {
+    'extra_nav_links': {
+        'Source': 'https://github.com/localstack/localstack-sdk-python',
+        'Issues': 'https://github.com/localstack/localstack-sdk-python/issues',
+        'PyPI': 'https://pypi.org/project/localstack-sdk-python/',
+    },
+    'description': 'Python SDK to interact with LocalStack developer endpoints',
+    'github_user': 'localstack',
+    'github_repo': 'localstack-sdk-python'
+}
