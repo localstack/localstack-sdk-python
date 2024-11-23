@@ -1,8 +1,8 @@
 import base64
 import json
 
-from localstack.clients import BaseClient
 from localstack.sdk.api import PodsApi
+from localstack.sdk.clients import BaseClient
 from localstack.sdk.models import PodList, PodSaveRequest, RemoteConfig
 from localstack.sdk.pods.exceptions import PodLoadException, PodSaveException
 

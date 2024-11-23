@@ -1,7 +1,7 @@
 import json
 
-from localstack.clients import BaseClient
 from localstack.sdk.api.aws_api import AwsApi
+from localstack.sdk.clients import BaseClient
 from localstack.sdk.models import (
     Message,
     SesSentEmail,

@@ -1,5 +1,5 @@
-from localstack.clients import BaseClient
 from localstack.sdk.api import StateApi
+from localstack.sdk.clients import BaseClient
 
 
 class StateClient(BaseClient):
