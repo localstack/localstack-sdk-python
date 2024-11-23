@@ -26,7 +26,7 @@ class BaseClient:
             LocalStack runtime will use the one used to start the container. The token used determines the Cloud
             Pods identity, i.e., which pods are available.
         """
-        self.host = host or "http://localhost.localstack.cloud"
+        self.host = host or "http://localhost.localstack.cloud:4566"
         self.auth_token = auth_token
         self.configuration = Configuration(host=self.host)
         self._api_client = ApiClient(configuration=self.configuration)
