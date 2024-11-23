@@ -12,6 +12,8 @@ class BaseClient:
     """The configuration for the base client"""
     _api_client: ApiClient
     """The OpenAPI client"""
+    host: str
+    """The LocalStack host (http://localhost.localstack.cloud:4566 by default)"""
     auth_token: str | None
     """A client can be injected with a LocalStack auth token. If not provided, the one used to start up the
     LocalStack instance will be used (for the features needing it, e.g., Cloud Pods)."""
@@ -24,6 +26,7 @@ class BaseClient:
             LocalStack runtime will use the one used to start the container. The token used determines the Cloud
             Pods identity, i.e., which pods are available.
         """
+        self.host = host or "http://localhost.localstack.cloud"
         self.auth_token = auth_token
-        self.configuration = Configuration(host=host or "http://localhost.localstack.cloud:4566")
+        self.configuration = Configuration(host=self.host)
         self._api_client = ApiClient(configuration=self.configuration)
