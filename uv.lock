@@ -224,7 +224,7 @@ dev = [{ name = "pytest", specifier = ">=7.2.1" }]
 
 [[package]]
 name = "localstack-sdk-python"
-version = "0.0.2"
+version = "0.0.3"
 source = { editable = "." }
 dependencies = [
     { name = "localstack-sdk-generated" },
