@@ -1,4 +1,5 @@
 # Minimal makefile for Sphinx documentation
+# Mostly use by the project Makefile to access the clean and html targets
 #
 
 # You can set these variables from the command line, and also
