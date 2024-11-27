@@ -1,10 +1,8 @@
 import json
 import random
 
-import boto3
-
 import localstack.sdk.aws
-from tests.utils import retry, short_uid
+from tests.utils import boto_client, retry, short_uid
 
 SAMPLE_SIMPLE_EMAIL = {
     "Subject": {
@@ -25,13 +23,7 @@ class TestLocalStackAWS:
     client = localstack.sdk.aws.AWSClient()
 
     def test_list_sqs_messages(self):
-        sqs_client = boto3.client(
-            "sqs",
-            endpoint_url=self.client.configuration.host,
-            region_name="us-east-1",
-            aws_access_key_id="test",
-            aws_secret_access_key="test",
-        )
+        sqs_client = boto_client("sqs")
         queue_name = f"queue-{short_uid()}"
         sqs_client.create_queue(QueueName=queue_name)
         queue_url = sqs_client.get_queue_url(QueueName=queue_name)["QueueUrl"]
@@ -49,18 +41,12 @@ class TestLocalStackAWS:
         assert len(messages) == 5
 
     def test_list_sqs_messages_from_account_region(self):
-        sqs_client_us = boto3.client(
-            "sqs",
-            endpoint_url=self.client.configuration.host,
-            region_name="us-east-1",
-            aws_access_key_id="test",
-            aws_secret_access_key="test",
-        )
+        sqs_client = boto_client("sqs")
         queue_name = f"queue-{short_uid()}"
-        sqs_client_us.create_queue(QueueName=queue_name)
-        queue_url = sqs_client_us.get_queue_url(QueueName=queue_name)["QueueUrl"]
+        sqs_client.create_queue(QueueName=queue_name)
+        queue_url = sqs_client.get_queue_url(QueueName=queue_name)["QueueUrl"]
 
-        send_result = sqs_client_us.send_message(
+        send_result = sqs_client.send_message(
             QueueUrl=queue_url,
             MessageBody=json.dumps({"event": "random-event", "message": "random-message"}),
         )
@@ -72,13 +58,7 @@ class TestLocalStackAWS:
         assert messages[0].message_id == send_result["MessageId"]
 
     def test_empty_queue(self):
-        sqs_client = boto3.client(
-            "sqs",
-            endpoint_url=self.client.configuration.host,
-            region_name="us-east-1",
-            aws_access_key_id="test",
-            aws_secret_access_key="test",
-        )
+        sqs_client = boto_client("sqs")
         queue_name = f"queue-{short_uid()}"
         sqs_client.create_queue(QueueName=queue_name)
         messages = self.client.list_sqs_messages(
@@ -87,14 +67,7 @@ class TestLocalStackAWS:
         assert messages == []
 
     def test_get_and_discard_ses_messages(self):
-        aws_client = boto3.client(
-            "ses",
-            endpoint_url=self.client.configuration.host,
-            region_name="us-east-1",
-            aws_access_key_id="test",
-            aws_secret_access_key="test",
-        )
-
+        aws_client = boto_client("ses")
         email = f"user-{short_uid()}@example.com"
         aws_client.verify_email_address(EmailAddress=email)
 
@@ -143,14 +116,7 @@ class TestLocalStackAWS:
         assert not self.client.get_ses_messages()
 
     def test_sns_platform_endpoint_messages(self):
-        client = boto3.client(
-            "sns",
-            endpoint_url=self.client.configuration.host,
-            region_name="us-east-1",
-            aws_access_key_id="test",
-            aws_secret_access_key="test",
-        )
-
+        client = boto_client("sns")
         # create a topic
         topic_name = f"topic-{short_uid()}"
         topic_arn = client.create_topic(Name=topic_name)["TopicArn"]
@@ -219,14 +185,7 @@ class TestLocalStackAWS:
         ], "platform messages not cleared"
 
     def test_sns_messages(self):
-        client = boto3.client(
-            "sns",
-            endpoint_url=self.client.configuration.host,
-            region_name="us-east-1",
-            aws_access_key_id="test",
-            aws_secret_access_key="test",
-        )
-
+        client = boto_client("sns")
         numbers = [
             f"+{random.randint(100000000, 9999999999)}",
             f"+{random.randint(100000000, 9999999999)}",

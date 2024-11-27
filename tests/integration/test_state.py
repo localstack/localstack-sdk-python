@@ -1,20 +1,14 @@
-import boto3
 import pytest
 
 from localstack.sdk.state import StateClient
+from utils import boto_client
 
 
 class TestStateClient:
     client = StateClient()
 
     def test_reset_state(self):
-        sqs_client = boto3.client(
-            "sqs",
-            endpoint_url=self.client.configuration.host,
-            region_name="us-east-1",
-            aws_access_key_id="test",
-            aws_secret_access_key="test",
-        )
+        sqs_client = boto_client("sqs")
         sqs_client.create_queue(QueueName="test-queue")
         url = sqs_client.get_queue_url(QueueName="test-queue")["QueueUrl"]
         assert url
