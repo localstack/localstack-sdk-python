@@ -1,7 +1,7 @@
 import pytest
 
 from localstack.sdk.state import StateClient
-from utils import boto_client
+from tests.utils import boto_client
 
 
 class TestStateClient:

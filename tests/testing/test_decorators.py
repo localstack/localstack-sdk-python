@@ -3,7 +3,7 @@ import pytest
 from localstack.sdk.pods import PodsClient
 from localstack.sdk.state import StateClient
 from localstack.sdk.testing import cloudpods
-from utils import boto_client
+from tests.utils import boto_client
 
 DECORATOR_POD_NAME = "ls-sdk-pod-decorator"
 QUEUE_NAME = "ls-decorator-queue"
