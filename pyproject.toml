@@ -47,6 +47,9 @@ where = ["localstack-sdk-python/"]
 include = ["localstack*"]
 exclude = ["tests*"]
 
+[project.entry-points.pytest11]
+localstack = "localstack.sdk.testing.pytest.plugins"
+
 [tool.ruff]
 # Always generate Python 3.8-compatible code.
 target-version = "py38"
