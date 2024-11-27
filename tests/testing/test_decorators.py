@@ -35,7 +35,7 @@ class TestPodsDecorators:
     def test_pod_load_decorator(self):
         sqs_client = boto3.client(
             "sqs",
-            endpoint_url="http://localhost.localstack.cloud:4566",
+            endpoint_url=sdk_client.configuration.host,
             region_name="us-east-1",
             aws_access_key_id="test",
             aws_secret_access_key="test",
