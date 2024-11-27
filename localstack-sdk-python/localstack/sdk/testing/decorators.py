@@ -14,7 +14,7 @@ def cloudpods(*args, **kwargs):
         @wraps(func)
         def wrapper(*test_args, **test_kwargs):
             if not (pod_name := kwargs.get("name")):
-                raise Exception("Specify a Cloud Pod name")
+                raise Exception("Specify a Cloud Pod name in the `name` arg")
             pods_client = PodsClient()
             LOG.debug("Loading %s", pod_name)
             pods_client.load_pod(pod_name=pod_name)
