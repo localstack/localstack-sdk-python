@@ -36,6 +36,7 @@ from localstack.sdk.models.get_features_and_services200_response import GetFeatu
 from localstack.sdk.models.get_lambda_runtimes200_response import GetLambdaRuntimes200Response
 from localstack.sdk.models.get_ses_messages200_response import GetSesMessages200Response
 from localstack.sdk.models.get_sns_subscription_token200_response import GetSnsSubscriptionToken200Response
+from localstack.sdk.models.iam_config import IamConfig
 from localstack.sdk.models.init_scripts import InitScripts
 from localstack.sdk.models.init_scripts_completed import InitScriptsCompleted
 from localstack.sdk.models.init_scripts_scripts_inner import InitScriptsScriptsInner

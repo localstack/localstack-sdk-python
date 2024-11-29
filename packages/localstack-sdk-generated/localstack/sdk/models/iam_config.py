@@ -18,20 +18,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PodRemote(BaseModel):
+class IamConfig(BaseModel):
     """
-    Details of a pod remote
+    IAM Config
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="Name of the remote.")
-    protocols: Optional[List[StrictStr]] = Field(default=None, description="Supported protocols of the remote.")
-    token: Optional[Dict[str, Any]] = Field(default=None, description="The token for this remote.")
-    url: Optional[StrictStr] = Field(default=None, description="URL of the remote server.")
-    __properties: ClassVar[List[str]] = ["name", "protocols", "token", "url"]
+    state: Optional[StrictStr] = Field(default=None, description="Engine state")
+    config_enforce_iam: Optional[StrictBool] = Field(default=None, description="Whether the ENFORCE_IAM flag was set on startup of LocalStack.")
+    config_iam_soft_mode: Optional[StrictBool] = Field(default=None, description="Supported protocols of the remote.")
+    __properties: ClassVar[List[str]] = ["state", "config_enforce_iam", "config_iam_soft_mode"]
+
+    @field_validator('state')
+    def state_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['DISABLED', 'ENGINE_ONLY', 'SOFT_MODE', 'ENFORCED']):
+            raise ValueError("must be one of enum values ('DISABLED', 'ENGINE_ONLY', 'SOFT_MODE', 'ENFORCED')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +60,7 @@ class PodRemote(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PodRemote from a JSON string"""
+        """Create an instance of IamConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -63,8 +72,12 @@ class PodRemote(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "config_enforce_iam",
+            "config_iam_soft_mode",
         ])
 
         _dict = self.model_dump(
@@ -76,7 +89,7 @@ class PodRemote(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PodRemote from a dict"""
+        """Create an instance of IamConfig from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +97,9 @@ class PodRemote(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "protocols": obj.get("protocols"),
-            "token": obj.get("token"),
-            "url": obj.get("url")
+            "state": obj.get("state"),
+            "config_enforce_iam": obj.get("config_enforce_iam"),
+            "config_iam_soft_mode": obj.get("config_iam_soft_mode")
         })
         return _obj
 

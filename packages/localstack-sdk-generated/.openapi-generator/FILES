@@ -33,6 +33,7 @@ localstack/sdk/models/get_features_and_services200_response.py
 localstack/sdk/models/get_lambda_runtimes200_response.py
 localstack/sdk/models/get_ses_messages200_response.py
 localstack/sdk/models/get_sns_subscription_token200_response.py
+localstack/sdk/models/iam_config.py
 localstack/sdk/models/init_scripts.py
 localstack/sdk/models/init_scripts_completed.py
 localstack/sdk/models/init_scripts_scripts_inner.py

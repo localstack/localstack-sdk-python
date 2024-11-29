@@ -1,6 +1,6 @@
 [project]
 name = "localstack-sdk-generated"
-version = "0.0.3"
+version = "0.0.4"
 description = "LocalStack REST API - Generated Code"
 authors = [
         { name = "LocalStack Contributors", email = "info@localstack.cloud" }
