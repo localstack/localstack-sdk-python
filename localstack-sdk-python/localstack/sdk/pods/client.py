@@ -60,7 +60,7 @@ class PodsClient(BaseClient):
         :return: None
         :raises PodSaveException: if the save operation returns an error
         """
-        response = self._client.save_pod_0_with_http_info(
+        response = self._client.save_pod_with_http_info(
             name=pod_name, pod_save_request=PodSaveRequest()
         )
         if response.status_code != 200:
@@ -77,7 +77,7 @@ class PodsClient(BaseClient):
         :return: None
         :raises PodLoadException: if the load operation returns an error
         """
-        response = self._client.load_pod_0_with_http_info(
+        response = self._client.load_pod_with_http_info(
             name=pod_name, remote_config=_empty_remote_config()
         )
         if response.status_code != 200:
@@ -93,14 +93,14 @@ class PodsClient(BaseClient):
         :param pod_name: the name of the Cloud Pod to be deleted.
         :return: None
         """
-        return self._client.delete_pod_0(name=pod_name, remote_config=_empty_remote_config())
+        return self._client.delete_pod(name=pod_name, remote_config=_empty_remote_config())
 
     def list_pods(self) -> PodList:
         """
         Returns the list of the Cloud Pods visible in the organization.
         :return: a PodList object
         """
-        pods = self._client.list_pods_0(remote_config=_empty_remote_config())
+        pods = self._client.list_pods(remote_config=_empty_remote_config())
         return pods
 
 

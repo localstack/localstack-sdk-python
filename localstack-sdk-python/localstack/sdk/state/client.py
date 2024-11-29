@@ -16,4 +16,4 @@ class StateClient(BaseClient):
         Resets the state of LocalStack for all running services.
         :return: None
         """
-        self._client.localstack_state_reset_post_0()
+        self._client.localstack_state_reset_post()

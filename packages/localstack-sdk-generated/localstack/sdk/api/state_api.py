@@ -40,7 +40,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_load_post_0(
+    def localstack_state_load_post(
         self,
         _request_timeout: Union[
             None,
@@ -55,7 +55,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> StateResult:
-        """localstack_state_load_post_0
+        """localstack_state_load_post
 
         Load all service states
 
@@ -81,7 +81,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_load_post_0_serialize(
+        _param = self._localstack_state_load_post_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -103,7 +103,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_load_post_0_with_http_info(
+    def localstack_state_load_post_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -118,7 +118,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[StateResult]:
-        """localstack_state_load_post_0
+        """localstack_state_load_post
 
         Load all service states
 
@@ -144,7 +144,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_load_post_0_serialize(
+        _param = self._localstack_state_load_post_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -166,7 +166,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_load_post_0_without_preload_content(
+    def localstack_state_load_post_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -181,7 +181,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_state_load_post_0
+        """localstack_state_load_post
 
         Load all service states
 
@@ -207,7 +207,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_load_post_0_serialize(
+        _param = self._localstack_state_load_post_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -224,7 +224,7 @@ class StateApi:
         return response_data.response
 
 
-    def _localstack_state_load_post_0_serialize(
+    def _localstack_state_load_post_serialize(
         self,
         _request_auth,
         _content_type,
@@ -285,7 +285,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_reset_post_0(
+    def localstack_state_reset_post(
         self,
         _request_timeout: Union[
             None,
@@ -300,7 +300,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """localstack_state_reset_post_0
+        """localstack_state_reset_post
 
         Reset all service states
 
@@ -326,7 +326,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_reset_post_0_serialize(
+        _param = self._localstack_state_reset_post_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -348,7 +348,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_reset_post_0_with_http_info(
+    def localstack_state_reset_post_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -363,7 +363,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """localstack_state_reset_post_0
+        """localstack_state_reset_post
 
         Reset all service states
 
@@ -389,7 +389,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_reset_post_0_serialize(
+        _param = self._localstack_state_reset_post_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -411,7 +411,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_reset_post_0_without_preload_content(
+    def localstack_state_reset_post_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -426,7 +426,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_state_reset_post_0
+        """localstack_state_reset_post
 
         Reset all service states
 
@@ -452,7 +452,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_reset_post_0_serialize(
+        _param = self._localstack_state_reset_post_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -469,7 +469,7 @@ class StateApi:
         return response_data.response
 
 
-    def _localstack_state_reset_post_0_serialize(
+    def _localstack_state_reset_post_serialize(
         self,
         _request_auth,
         _content_type,
@@ -523,7 +523,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_save_post_0(
+    def localstack_state_save_post(
         self,
         _request_timeout: Union[
             None,
@@ -538,7 +538,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> StateResult:
-        """localstack_state_save_post_0
+        """localstack_state_save_post
 
         Save all service states
 
@@ -564,7 +564,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_save_post_0_serialize(
+        _param = self._localstack_state_save_post_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -586,7 +586,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_save_post_0_with_http_info(
+    def localstack_state_save_post_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -601,7 +601,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[StateResult]:
-        """localstack_state_save_post_0
+        """localstack_state_save_post
 
         Save all service states
 
@@ -627,7 +627,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_save_post_0_serialize(
+        _param = self._localstack_state_save_post_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -649,7 +649,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_save_post_0_without_preload_content(
+    def localstack_state_save_post_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -664,7 +664,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_state_save_post_0
+        """localstack_state_save_post
 
         Save all service states
 
@@ -690,7 +690,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_save_post_0_serialize(
+        _param = self._localstack_state_save_post_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -707,7 +707,7 @@ class StateApi:
         return response_data.response
 
 
-    def _localstack_state_save_post_0_serialize(
+    def _localstack_state_save_post_serialize(
         self,
         _request_auth,
         _content_type,
@@ -768,7 +768,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_service_load_post_0(
+    def localstack_state_service_load_post(
         self,
         service: Annotated[StrictStr, Field(description="Service name")],
         _request_timeout: Union[
@@ -784,7 +784,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """localstack_state_service_load_post_0
+        """localstack_state_service_load_post
 
         Load a service state
 
@@ -812,7 +812,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_service_load_post_0_serialize(
+        _param = self._localstack_state_service_load_post_serialize(
             service=service,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -836,7 +836,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_service_load_post_0_with_http_info(
+    def localstack_state_service_load_post_with_http_info(
         self,
         service: Annotated[StrictStr, Field(description="Service name")],
         _request_timeout: Union[
@@ -852,7 +852,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """localstack_state_service_load_post_0
+        """localstack_state_service_load_post
 
         Load a service state
 
@@ -880,7 +880,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_service_load_post_0_serialize(
+        _param = self._localstack_state_service_load_post_serialize(
             service=service,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -904,7 +904,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_service_load_post_0_without_preload_content(
+    def localstack_state_service_load_post_without_preload_content(
         self,
         service: Annotated[StrictStr, Field(description="Service name")],
         _request_timeout: Union[
@@ -920,7 +920,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_state_service_load_post_0
+        """localstack_state_service_load_post
 
         Load a service state
 
@@ -948,7 +948,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_service_load_post_0_serialize(
+        _param = self._localstack_state_service_load_post_serialize(
             service=service,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -967,7 +967,7 @@ class StateApi:
         return response_data.response
 
 
-    def _localstack_state_service_load_post_0_serialize(
+    def _localstack_state_service_load_post_serialize(
         self,
         service,
         _request_auth,
@@ -1031,7 +1031,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_service_reset_post_0(
+    def localstack_state_service_reset_post(
         self,
         service: Annotated[StrictStr, Field(description="Service name")],
         _request_timeout: Union[
@@ -1047,7 +1047,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """localstack_state_service_reset_post_0
+        """localstack_state_service_reset_post
 
         Reset a service state
 
@@ -1075,7 +1075,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_service_reset_post_0_serialize(
+        _param = self._localstack_state_service_reset_post_serialize(
             service=service,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1098,7 +1098,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_service_reset_post_0_with_http_info(
+    def localstack_state_service_reset_post_with_http_info(
         self,
         service: Annotated[StrictStr, Field(description="Service name")],
         _request_timeout: Union[
@@ -1114,7 +1114,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """localstack_state_service_reset_post_0
+        """localstack_state_service_reset_post
 
         Reset a service state
 
@@ -1142,7 +1142,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_service_reset_post_0_serialize(
+        _param = self._localstack_state_service_reset_post_serialize(
             service=service,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1165,7 +1165,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_service_reset_post_0_without_preload_content(
+    def localstack_state_service_reset_post_without_preload_content(
         self,
         service: Annotated[StrictStr, Field(description="Service name")],
         _request_timeout: Union[
@@ -1181,7 +1181,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_state_service_reset_post_0
+        """localstack_state_service_reset_post
 
         Reset a service state
 
@@ -1209,7 +1209,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_service_reset_post_0_serialize(
+        _param = self._localstack_state_service_reset_post_serialize(
             service=service,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1227,7 +1227,7 @@ class StateApi:
         return response_data.response
 
 
-    def _localstack_state_service_reset_post_0_serialize(
+    def _localstack_state_service_reset_post_serialize(
         self,
         service,
         _request_auth,
@@ -1284,7 +1284,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_service_save_post_0(
+    def localstack_state_service_save_post(
         self,
         service: Annotated[StrictStr, Field(description="Service name")],
         _request_timeout: Union[
@@ -1300,7 +1300,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """localstack_state_service_save_post_0
+        """localstack_state_service_save_post
 
         Save a service state
 
@@ -1328,7 +1328,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_service_save_post_0_serialize(
+        _param = self._localstack_state_service_save_post_serialize(
             service=service,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1352,7 +1352,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_service_save_post_0_with_http_info(
+    def localstack_state_service_save_post_with_http_info(
         self,
         service: Annotated[StrictStr, Field(description="Service name")],
         _request_timeout: Union[
@@ -1368,7 +1368,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """localstack_state_service_save_post_0
+        """localstack_state_service_save_post
 
         Save a service state
 
@@ -1396,7 +1396,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_service_save_post_0_serialize(
+        _param = self._localstack_state_service_save_post_serialize(
             service=service,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1420,7 +1420,7 @@ class StateApi:
 
 
     @validate_call
-    def localstack_state_service_save_post_0_without_preload_content(
+    def localstack_state_service_save_post_without_preload_content(
         self,
         service: Annotated[StrictStr, Field(description="Service name")],
         _request_timeout: Union[
@@ -1436,7 +1436,7 @@ class StateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """localstack_state_service_save_post_0
+        """localstack_state_service_save_post
 
         Save a service state
 
@@ -1464,7 +1464,7 @@ class StateApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._localstack_state_service_save_post_0_serialize(
+        _param = self._localstack_state_service_save_post_serialize(
             service=service,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1483,7 +1483,7 @@ class StateApi:
         return response_data.response
 
 
-    def _localstack_state_service_save_post_0_serialize(
+    def _localstack_state_service_save_post_serialize(
         self,
         service,
         _request_auth,

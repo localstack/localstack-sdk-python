@@ -40,7 +40,7 @@ class ChaosApi:
 
 
     @validate_call
-    def add_fault_rules_0(
+    def add_fault_rules(
         self,
         fault_rule: List[FaultRule],
         _request_timeout: Union[
@@ -84,7 +84,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_fault_rules_0_serialize(
+        _param = self._add_fault_rules_serialize(
             fault_rule=fault_rule,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -107,7 +107,7 @@ class ChaosApi:
 
 
     @validate_call
-    def add_fault_rules_0_with_http_info(
+    def add_fault_rules_with_http_info(
         self,
         fault_rule: List[FaultRule],
         _request_timeout: Union[
@@ -151,7 +151,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_fault_rules_0_serialize(
+        _param = self._add_fault_rules_serialize(
             fault_rule=fault_rule,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -174,7 +174,7 @@ class ChaosApi:
 
 
     @validate_call
-    def add_fault_rules_0_without_preload_content(
+    def add_fault_rules_without_preload_content(
         self,
         fault_rule: List[FaultRule],
         _request_timeout: Union[
@@ -218,7 +218,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_fault_rules_0_serialize(
+        _param = self._add_fault_rules_serialize(
             fault_rule=fault_rule,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -236,7 +236,7 @@ class ChaosApi:
         return response_data.response
 
 
-    def _add_fault_rules_0_serialize(
+    def _add_fault_rules_serialize(
         self,
         fault_rule,
         _request_auth,
@@ -314,7 +314,7 @@ class ChaosApi:
 
 
     @validate_call
-    def delete_fault_rules_0(
+    def delete_fault_rules(
         self,
         fault_rule: List[FaultRule],
         _request_timeout: Union[
@@ -358,7 +358,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_fault_rules_0_serialize(
+        _param = self._delete_fault_rules_serialize(
             fault_rule=fault_rule,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -381,7 +381,7 @@ class ChaosApi:
 
 
     @validate_call
-    def delete_fault_rules_0_with_http_info(
+    def delete_fault_rules_with_http_info(
         self,
         fault_rule: List[FaultRule],
         _request_timeout: Union[
@@ -425,7 +425,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_fault_rules_0_serialize(
+        _param = self._delete_fault_rules_serialize(
             fault_rule=fault_rule,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -448,7 +448,7 @@ class ChaosApi:
 
 
     @validate_call
-    def delete_fault_rules_0_without_preload_content(
+    def delete_fault_rules_without_preload_content(
         self,
         fault_rule: List[FaultRule],
         _request_timeout: Union[
@@ -492,7 +492,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_fault_rules_0_serialize(
+        _param = self._delete_fault_rules_serialize(
             fault_rule=fault_rule,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -510,7 +510,7 @@ class ChaosApi:
         return response_data.response
 
 
-    def _delete_fault_rules_0_serialize(
+    def _delete_fault_rules_serialize(
         self,
         fault_rule,
         _request_auth,
@@ -588,7 +588,7 @@ class ChaosApi:
 
 
     @validate_call
-    def get_fault_rules_0(
+    def get_fault_rules(
         self,
         _request_timeout: Union[
             None,
@@ -629,7 +629,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_fault_rules_0_serialize(
+        _param = self._get_fault_rules_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -651,7 +651,7 @@ class ChaosApi:
 
 
     @validate_call
-    def get_fault_rules_0_with_http_info(
+    def get_fault_rules_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -692,7 +692,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_fault_rules_0_serialize(
+        _param = self._get_fault_rules_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -714,7 +714,7 @@ class ChaosApi:
 
 
     @validate_call
-    def get_fault_rules_0_without_preload_content(
+    def get_fault_rules_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -755,7 +755,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_fault_rules_0_serialize(
+        _param = self._get_fault_rules_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -772,7 +772,7 @@ class ChaosApi:
         return response_data.response
 
 
-    def _get_fault_rules_0_serialize(
+    def _get_fault_rules_serialize(
         self,
         _request_auth,
         _content_type,
@@ -833,7 +833,7 @@ class ChaosApi:
 
 
     @validate_call
-    def get_network_effects_0(
+    def get_network_effects(
         self,
         _request_timeout: Union[
             None,
@@ -874,7 +874,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_network_effects_0_serialize(
+        _param = self._get_network_effects_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -896,7 +896,7 @@ class ChaosApi:
 
 
     @validate_call
-    def get_network_effects_0_with_http_info(
+    def get_network_effects_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -937,7 +937,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_network_effects_0_serialize(
+        _param = self._get_network_effects_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -959,7 +959,7 @@ class ChaosApi:
 
 
     @validate_call
-    def get_network_effects_0_without_preload_content(
+    def get_network_effects_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1000,7 +1000,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_network_effects_0_serialize(
+        _param = self._get_network_effects_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1017,7 +1017,7 @@ class ChaosApi:
         return response_data.response
 
 
-    def _get_network_effects_0_serialize(
+    def _get_network_effects_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1078,7 +1078,7 @@ class ChaosApi:
 
 
     @validate_call
-    def set_fault_rules_0(
+    def set_fault_rules(
         self,
         fault_rule: List[FaultRule],
         _request_timeout: Union[
@@ -1122,7 +1122,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_fault_rules_0_serialize(
+        _param = self._set_fault_rules_serialize(
             fault_rule=fault_rule,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1145,7 +1145,7 @@ class ChaosApi:
 
 
     @validate_call
-    def set_fault_rules_0_with_http_info(
+    def set_fault_rules_with_http_info(
         self,
         fault_rule: List[FaultRule],
         _request_timeout: Union[
@@ -1189,7 +1189,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_fault_rules_0_serialize(
+        _param = self._set_fault_rules_serialize(
             fault_rule=fault_rule,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1212,7 +1212,7 @@ class ChaosApi:
 
 
     @validate_call
-    def set_fault_rules_0_without_preload_content(
+    def set_fault_rules_without_preload_content(
         self,
         fault_rule: List[FaultRule],
         _request_timeout: Union[
@@ -1256,7 +1256,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_fault_rules_0_serialize(
+        _param = self._set_fault_rules_serialize(
             fault_rule=fault_rule,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1274,7 +1274,7 @@ class ChaosApi:
         return response_data.response
 
 
-    def _set_fault_rules_0_serialize(
+    def _set_fault_rules_serialize(
         self,
         fault_rule,
         _request_auth,
@@ -1352,7 +1352,7 @@ class ChaosApi:
 
 
     @validate_call
-    def set_network_effects_0(
+    def set_network_effects(
         self,
         network_effects_config: NetworkEffectsConfig,
         _request_timeout: Union[
@@ -1396,7 +1396,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_network_effects_0_serialize(
+        _param = self._set_network_effects_serialize(
             network_effects_config=network_effects_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1419,7 +1419,7 @@ class ChaosApi:
 
 
     @validate_call
-    def set_network_effects_0_with_http_info(
+    def set_network_effects_with_http_info(
         self,
         network_effects_config: NetworkEffectsConfig,
         _request_timeout: Union[
@@ -1463,7 +1463,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_network_effects_0_serialize(
+        _param = self._set_network_effects_serialize(
             network_effects_config=network_effects_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1486,7 +1486,7 @@ class ChaosApi:
 
 
     @validate_call
-    def set_network_effects_0_without_preload_content(
+    def set_network_effects_without_preload_content(
         self,
         network_effects_config: NetworkEffectsConfig,
         _request_timeout: Union[
@@ -1530,7 +1530,7 @@ class ChaosApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_network_effects_0_serialize(
+        _param = self._set_network_effects_serialize(
             network_effects_config=network_effects_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1548,7 +1548,7 @@ class ChaosApi:
         return response_data.response
 
 
-    def _set_network_effects_0_serialize(
+    def _set_network_effects_serialize(
         self,
         network_effects_config,
         _request_auth,
