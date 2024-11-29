@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class SesSentEmailBody(BaseModel):
     """
     SesSentEmailBody
     """ # noqa: E501
-    html_part: StrictStr
+    html_part: Optional[StrictStr] = None
     text_part: StrictStr
     __properties: ClassVar[List[str]] = ["html_part", "text_part"]
 
