@@ -5,7 +5,7 @@ description = "Python SDK for LocalStack"
 authors = [
         { name = "LocalStack Team", email = "info@localstack.cloud"}
 ]
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
     "localstack-sdk-generated"
 ]
