@@ -20,7 +20,7 @@ This package is not meant to be manually modified, as it needs to be generated e
 
 ### Installation
 
-Create and activate a virtual environment and then install the Python SDK:
+You can install the LocalStack Python SDK with `pip`:
 
 ```shell
 pip install localstack-sdk-python
