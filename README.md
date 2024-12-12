@@ -51,6 +51,6 @@ Note that LocalStack (pro) should be running in the background to execute the te
 
 ### Quickstart
 
-To get started with our SDK, check out the [official documentation](https://docs.localstack.cloud/user-guide/tools/localstack-sdk/python/). 
+To get started with our SDK, check out the [official documentation on https://docs.localstack.cloud](https://docs.localstack.cloud/user-guide/tools/localstack-sdk/python/). 
 You'll find comprehensive guides and detailed code samples that demonstrate how to use the various features provided
 by the SDK.
