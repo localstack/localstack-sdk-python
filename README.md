@@ -14,7 +14,7 @@ This SDK provides a programmatic and easy way to interact with them.
 This project is composed by two Python packages:
 
 - `packages/localstack-sdk-generated`: generated from the LocalStack's OpenAPI specs with [openapi-generator](https://github.com/OpenAPITools/openapi-generator).
-The LocalStack's OpenAPI specs are available in the [openapi repository](https://github.com/localstack/openapi).
+The LocalStack's OpenAPI specs are available in [localstack/openapi](https://github.com/localstack/openapi).
 This package is not meant to be manually modified, as it needs to be generated every time from the specs.
 - `localstack-sdk-python`: the user-facing SDK that consumed `localstack-sdk-generated` as its main dependency.
 
