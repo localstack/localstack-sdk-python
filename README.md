@@ -1,6 +1,6 @@
 # LocalStack Python SDK
 [![PyPI version](https://img.shields.io/pypi/v/localstack-sdk-python)](https://pypi.org/project/localstack-sdk-python/)
-![Integration Tests](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+[![Integration Tests](https://github.com/localstack/localstack-sdk-python/actions/workflows/test.yml/badge.svg)](https://github.com/localstack/localstack-sdk-python/actions/workflows/test.yml)
 
 This is the Python SDK for LocalStack.
 LocalStack offers a number of developer endpoints (see [docs](https://docs.localstack.cloud/references/internal-endpoints/)).
