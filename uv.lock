@@ -77,7 +77,6 @@ wheels = [
 
 [[package]]
 name = "localstack-sdk-generated"
-version = "0.0.4"
 source = { editable = "packages/localstack-sdk-generated" }
 dependencies = [
     { name = "pydantic" },
@@ -104,7 +103,6 @@ dev = [{ name = "pytest", specifier = ">=7.2.1" }]
 
 [[package]]
 name = "localstack-sdk-python"
-version = "0.0.4"
 source = { editable = "." }
 dependencies = [
     { name = "localstack-sdk-generated" },
