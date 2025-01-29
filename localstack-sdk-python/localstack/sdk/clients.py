@@ -32,4 +32,4 @@ class BaseClient:
         self.configuration = Configuration(host=self.host)
         self._api_client = ApiClient(configuration=self.configuration)
         # The generated code comes with 1.0.0 hard-coded. We set here the correct version
-        self._api_client.user_agent = f"OpenAPI-Generator/{version.version}/python"
+        self._api_client.user_agent = f"LocalStack SDK/{version.version}/python"
