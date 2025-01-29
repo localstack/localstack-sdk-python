@@ -1,3 +1,4 @@
+from localstack.sdk import version
 from localstack.sdk.api_client import ApiClient
 from localstack.sdk.configuration import Configuration
 
@@ -30,3 +31,5 @@ class BaseClient:
         self.auth_token = auth_token
         self.configuration = Configuration(host=self.host)
         self._api_client = ApiClient(configuration=self.configuration)
+        # The generated code comes with 1.0.0 hard-coded. We set here the correct version
+        self._api_client.user_agent = f"OpenAPI-Generator/{version.version}/python"
