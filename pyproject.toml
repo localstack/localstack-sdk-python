@@ -5,7 +5,7 @@ description = "Python SDK for LocalStack"
 authors = [
         { name = "LocalStack Team", email = "info@localstack.cloud"}
 ]
-version = "0.0.4"
+dynamic = ["version"]
 dependencies = [
     "localstack-sdk-generated"
 ]
@@ -17,8 +17,12 @@ Repository = "https://github.com/localstack/localstack-sdk-python.git"
 Issues = "https://github.com/localstack/localstack-sdk-python/issues"
 
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+version_file = "localstack-sdk-python/localstack/sdk/version.py"
+local_scheme = "no-local-version"
 
 [tool.setuptools.dynamic]
 readme = { file = ["README.md"], content-type = "text/markdown"}
@@ -29,6 +33,8 @@ dev-dependencies=[
     "ruff>=0.6.9",
     "boto3>=1.35.40",
 ]
+
+cache-keys = [{ file = "pyproject.toml" }, { git = { commit = true , tags = true }}]
 
 [tool.uv.sources]
 localstack-sdk-generated = { workspace = true }

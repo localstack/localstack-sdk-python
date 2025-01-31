@@ -1,6 +1,6 @@
 [project]
 name = "localstack-sdk-generated"
-version = "{{{packageVersion}}}"
+dynamic = ["version"]
 description = "LocalStack REST API - Generated Code"
 authors = [
         { name = "LocalStack Contributors", email = "info@localstack.cloud" }
@@ -18,8 +18,12 @@ dev-dependencies = [
 ]
 
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+local_scheme = "no-local-version"
+root = "../.."
 
 [tool.setuptools]
 package-dir = { "" = "."}

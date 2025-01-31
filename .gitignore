@@ -64,3 +64,6 @@ localstack-pro-azure/tests/otherlangs/dotnet/*/obj
 # setuptools_scm version.py
 */*/*/*/version.py
 localstack-sdk-python-2/.openapi-generator/
+
+# setuptools_scm version.py
+**/version.py
