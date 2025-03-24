@@ -67,3 +67,6 @@ localstack-sdk-python-2/.openapi-generator/
 
 # setuptools_scm version.py
 **/version.py
+
+# release helper
+bin/release-helper.sh
