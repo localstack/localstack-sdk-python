@@ -18,7 +18,7 @@ clean:         		## Clean up the virtual environment
 	rm -rf dist/
 
 clean-dist:
-    rm -rf dist/
+	rm -rf dist/
 
 clean-generated:	## Cleanup generated code
 	rm -rf packages/localstack-sdk-generated/localstack/
@@ -27,10 +27,10 @@ generate:			## Generate the code from the OpenAPI specs
 	./bin/generate.sh
 
 build:
-    uv build
+	uv build
 
 publish: clean-dist build
-    uv publish
+	uv publish
 
 format:
 	($(VENV_RUN); python -m ruff format --exclude packages .; python -m ruff check --output-format=full --exclude packages --fix .)
