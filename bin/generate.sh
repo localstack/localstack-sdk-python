@@ -10,7 +10,7 @@ if ! wget --spider -q "$SPEC_URL"; then
 fi
 
 docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:v7.10.0 generate \
-    -i "$LATEST_SPEC" \
+    -i "$SPEC_URL" \
     --skip-validate-spec \
     -g python \
     -o /local//packages/localstack-sdk-generated \
