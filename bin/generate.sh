@@ -1,7 +1,11 @@
 #!/bin/bash
 
-LATEST_SPEC="https://raw.githubusercontent.com/localstack/openapi/refs/heads/main/openapi/emulators/localstack-spec-latest.yml"
-SPEC_URL="${1:-$LATEST_SPEC}"
+# Use the latest spec by default
+SPEC_URL="https://raw.githubusercontent.com/localstack/openapi/refs/heads/main/openapi/emulators/localstack-spec-latest.yml"
+
+if [ -n "$1" ]; then
+  SPEC_URL="https://github.com/localstack/openapi/releases/download/v$1/localstack-spec.yml"
+fi
 
 # Check if the URL is valid
 if ! wget --spider -q "$SPEC_URL"; then

@@ -21,18 +21,6 @@ jobs:
       release: ${{ github.event_name == 'workflow_dispatch' && inputs.version || github.event.client_payload.version}}
 
     steps:
-    - name: "Set the URL of the spec"
-      run: |
-        echo "SPEC_URL=https://github.com/localstack/openapi/releases/download/v${{ env.release }}/localstack-spec.yml" >> $GITHUB_ENV
-
-    - name: "Verify OpenAPI version"
-      run: |
-        # Check if the URL is valid
-        if ! wget --spider -q "${SPEC_URL}"; then
-          echo "Invalid spec to build from: ${SPEC_URL}. Aborting ..."
-          exit 1
-        fi
-
     - name: "Pull image"
       run: |
         docker pull localstack/localstack-pro:${{ env.release }}
@@ -54,7 +42,7 @@ jobs:
     - name: "Generate code from spec"
       run: |
         make clean-generated
-        ./bin/generate.sh ${SPEC_URL}
+        ./bin/generate.sh ${{ env.release }}
 
     - name: "Prepare git config"
       run: |
