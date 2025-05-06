@@ -1,0 +1,133 @@
+name: Release LocalStack Python Client
+
+on:
+  repository_dispatch:
+    types: [release-sdk]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: The version of the OpenAPI spec to release the client for
+        required: true
+
+env:
+  git_user_name: localstack[bot]
+  git_user_email: localstack-bot@users.noreply.github.com
+
+jobs:
+
+  test_python:
+    runs-on: ubuntu-latest
+    env:
+      release: ${{ github.event_name == 'workflow_dispatch' && inputs.version || github.event.client_payload.version}}
+
+    steps:
+    - name: "Pull image"
+      run: |
+        docker pull localstack/localstack-pro:${{ env.release }}
+
+    - name: "Checkout"
+      uses: actions/checkout@v4
+      with:
+        # setuptools_scm requires git history to determine the version
+        fetch-depth: 0
+
+    - name: "Set up Python 3.11"
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: "Install uv"
+      uses: astral-sh/setup-uv@v3
+
+    - name: "Generate code from spec"
+      run: |
+        make clean-generated
+        ./bin/generate.sh ${{ env.release }}
+
+    - name: "Prepare git config"
+      run: |
+        git config user.name ${{ env.git_user_name }}
+        git config user.email ${{ env.git_user_email }}
+
+    - name: "Commit changed code"
+      run: |
+        # Code automatically generated goes into the packages directory.
+        # As we generate code for the version to be released, we commit those changes.
+        if git status --porcelain packages/ | grep -q '^'; then
+          git add packages/
+          git commit -m "Generate code for ${{ env.release }}"
+
+          echo "Changes committed successfully"
+        else
+          echo "No changes detected after generating the code"
+        fi
+
+    - name: "Install project"
+      run: |
+        make install-dev
+
+    - name: "Install LocalStack"
+      run: |
+        pip install localstack==${{ env.release }}
+
+    - name: "Start Localstack"
+      env:
+       LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+      run: |
+          source .venv/bin/activate
+          DEBUG=1 DISABLE_EVENTS="1" IMAGE_NAME="localstack/localstack-pro:${{ env.release }}" localstack start -d
+          localstack wait -t 120 || (python -m localstack.cli.main logs && false)
+
+    - name: "Run Python Tests"
+      env:
+        LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+      run: |
+        make test
+
+    - name: "Stop Localstack"
+      if: success() || failure()
+      run: |
+          source .venv/bin/activate
+          localstack logs
+          localstack stop
+
+    - name: "Install release helper"
+      run: |
+        curl -o bin/release-helper.sh -L https://api.github.com/repos/localstack/localstack/contents/bin/release-helper.sh -H 'Accept: application/vnd.github.v3.raw'
+        chmod +x bin/release-helper.sh
+
+    - name: "Create the release commit and tag"
+      run: |
+        bin/release-helper.sh git-commit-release ${{ env.release }}
+
+    - name: "Publish release to pypi"
+      run: |
+        make install publish
+      with:
+        UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
+
+    - name: "Push the release commit and tag"
+      run: |
+        git push --follow-tags
+
+    - name: "Create GitHub release"
+      env:
+        GITHUB_TOKEN: ${{ secrets.LOCALSTACK_GITHUB_TOKEN }}
+      run: gh release create "${{ env.release }}" --generate-notes --draft
+
+    - name: "Commit and push next development version"
+      run: |
+        bin/release-helper.sh git-commit-increment
+        git push
+
+    - name: "Publish development version to pypi"
+      run: |
+        make install publish
+      with:
+        UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
+
+    - name: "Show git modifications"
+      run: |
+        git log --oneline -n 4
+        git show HEAD~1
+        git show HEAD
