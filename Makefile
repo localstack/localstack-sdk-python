@@ -27,7 +27,7 @@ generate:			## Generate the code from the OpenAPI specs
 	./bin/generate.sh
 
 build:
-	uv build
+	uv build --all-packages
 
 publish: clean-dist build
 	uv publish
