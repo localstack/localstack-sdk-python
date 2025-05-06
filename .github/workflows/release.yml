@@ -83,7 +83,7 @@ jobs:
         make test
 
     - name: "Stop Localstack"
-      if: always()
+      if: success() || failure()
       run: |
           source .venv/bin/activate
           localstack logs
