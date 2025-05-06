@@ -121,7 +121,7 @@ jobs:
 
     - name: "Publish development version to pypi"
       run: |
-        make install && make publish
+        make install publish
       with:
         UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
 
