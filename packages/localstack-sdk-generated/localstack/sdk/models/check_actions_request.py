@@ -18,20 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
+from localstack.sdk.models.check_actions_request_required_permission_inner import CheckActionsRequestRequiredPermissionInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class LocalstackPodsEnvironmentGet200Response(BaseModel):
+class CheckActionsRequest(BaseModel):
     """
-    LocalstackPodsEnvironmentGet200Response
+    check actions request
     """ # noqa: E501
-    localstack_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack.")
-    localstack_ext_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack Pro.")
-    moto_ext_version: Optional[StrictStr] = Field(default=None, description="Version of Moto used within LocalStack.")
-    pro: Optional[StrictBool] = Field(default=None, description="Indicates whether LocalStack PRO is activated.")
-    __properties: ClassVar[List[str]] = ["localstack_version", "localstack_ext_version", "moto_ext_version", "pro"]
+    access_key_id: StrictStr = Field(description="Access key id of the user/assumed role")
+    region_name: StrictStr = Field(description="region name for the current authenticated session")
+    required_permission: List[CheckActionsRequestRequiredPermissionInner] = Field(description="list of resources and actions to verify user access")
+    __properties: ClassVar[List[str]] = ["access_key_id", "region_name", "required_permission"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +51,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a JSON string"""
+        """Create an instance of CheckActionsRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,11 +72,18 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in required_permission (list)
+        _items = []
+        if self.required_permission:
+            for _item_required_permission in self.required_permission:
+                if _item_required_permission:
+                    _items.append(_item_required_permission.to_dict())
+            _dict['required_permission'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a dict"""
+        """Create an instance of CheckActionsRequest from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +91,9 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "localstack_version": obj.get("localstack_version"),
-            "localstack_ext_version": obj.get("localstack_ext_version"),
-            "moto_ext_version": obj.get("moto_ext_version"),
-            "pro": obj.get("pro")
+            "access_key_id": obj.get("access_key_id"),
+            "region_name": obj.get("region_name"),
+            "required_permission": [CheckActionsRequestRequiredPermissionInner.from_dict(_item) for _item in obj["required_permission"]] if obj.get("required_permission") is not None else None
         })
         return _obj
 

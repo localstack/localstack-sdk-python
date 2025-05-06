@@ -18,20 +18,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class LocalstackPodsEnvironmentGet200Response(BaseModel):
+class CheckActionsResponseSourcePrincipal(BaseModel):
     """
-    LocalstackPodsEnvironmentGet200Response
+    information about the source principal evaluated from the access key id
     """ # noqa: E501
-    localstack_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack.")
-    localstack_ext_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack Pro.")
-    moto_ext_version: Optional[StrictStr] = Field(default=None, description="Version of Moto used within LocalStack.")
-    pro: Optional[StrictBool] = Field(default=None, description="Indicates whether LocalStack PRO is activated.")
-    __properties: ClassVar[List[str]] = ["localstack_version", "localstack_ext_version", "moto_ext_version", "pro"]
+    arn: Optional[StrictStr] = Field(default=None, description="arn of the user or assumed role")
+    account: Optional[StrictStr] = Field(default=None, description="account where the user permission were evaluated")
+    __properties: ClassVar[List[str]] = ["arn", "account"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +49,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a JSON string"""
+        """Create an instance of CheckActionsResponseSourcePrincipal from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +74,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a dict"""
+        """Create an instance of CheckActionsResponseSourcePrincipal from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +82,8 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "localstack_version": obj.get("localstack_version"),
-            "localstack_ext_version": obj.get("localstack_ext_version"),
-            "moto_ext_version": obj.get("moto_ext_version"),
-            "pro": obj.get("pro")
+            "arn": obj.get("arn"),
+            "account": obj.get("account")
         })
         return _obj
 

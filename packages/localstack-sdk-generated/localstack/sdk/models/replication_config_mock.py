@@ -18,20 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class LocalstackPodsEnvironmentGet200Response(BaseModel):
+class ReplicationConfigMock(BaseModel):
     """
-    LocalstackPodsEnvironmentGet200Response
+    Mostly use for testing.
     """ # noqa: E501
-    localstack_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack.")
-    localstack_ext_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack Pro.")
-    moto_ext_version: Optional[StrictStr] = Field(default=None, description="Version of Moto used within LocalStack.")
-    pro: Optional[StrictBool] = Field(default=None, description="Indicates whether LocalStack PRO is activated.")
-    __properties: ClassVar[List[str]] = ["localstack_version", "localstack_ext_version", "moto_ext_version", "pro"]
+    delay: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Number of seconds for mock replication job to take.")
+    __properties: ClassVar[List[str]] = ["delay"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +48,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a JSON string"""
+        """Create an instance of ReplicationConfigMock from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +73,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a dict"""
+        """Create an instance of ReplicationConfigMock from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +81,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "localstack_version": obj.get("localstack_version"),
-            "localstack_ext_version": obj.get("localstack_ext_version"),
-            "moto_ext_version": obj.get("moto_ext_version"),
-            "pro": obj.get("pro")
+            "delay": obj.get("delay")
         })
         return _obj
 

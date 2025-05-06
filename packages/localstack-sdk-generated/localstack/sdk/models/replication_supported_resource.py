@@ -18,20 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class LocalstackPodsEnvironmentGet200Response(BaseModel):
+class ReplicationSupportedResource(BaseModel):
     """
-    LocalstackPodsEnvironmentGet200Response
+    ReplicationSupportedResource
     """ # noqa: E501
-    localstack_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack.")
-    localstack_ext_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack Pro.")
-    moto_ext_version: Optional[StrictStr] = Field(default=None, description="Version of Moto used within LocalStack.")
-    pro: Optional[StrictBool] = Field(default=None, description="Indicates whether LocalStack PRO is activated.")
-    __properties: ClassVar[List[str]] = ["localstack_version", "localstack_ext_version", "moto_ext_version", "pro"]
+    resource_type: Optional[StrictStr] = Field(default=None, description="Type of resource")
+    policy_statements: Optional[List[Any]] = Field(default=None, description="Required IAM permissions to replicate resource.")
+    service: Optional[StrictStr] = Field(default=None, description="AWS service.")
+    identifier: Optional[StrictStr] = Field(default=None, description="Resource property or properties used as identifier. In case there are multiple properties, join them with ':'. ie. `RepositoryName:<ImageTag[Optional]>` for ecr repository can be used as `my-repo` or `my-repo:latest`")
+    __properties: ClassVar[List[str]] = ["resource_type", "policy_statements", "service", "identifier"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +51,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a JSON string"""
+        """Create an instance of ReplicationSupportedResource from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a dict"""
+        """Create an instance of ReplicationSupportedResource from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +84,10 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "localstack_version": obj.get("localstack_version"),
-            "localstack_ext_version": obj.get("localstack_ext_version"),
-            "moto_ext_version": obj.get("moto_ext_version"),
-            "pro": obj.get("pro")
+            "resource_type": obj.get("resource_type"),
+            "policy_statements": obj.get("policy_statements"),
+            "service": obj.get("service"),
+            "identifier": obj.get("identifier")
         })
         return _obj
 

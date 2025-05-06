@@ -18,20 +18,28 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from localstack.sdk.models.replication_request_source_aws_config import ReplicationRequestSourceAwsConfig
+from localstack.sdk.models.replication_request_target_aws_config import ReplicationRequestTargetAwsConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
-class LocalstackPodsEnvironmentGet200Response(BaseModel):
+class ReplicationRequest(BaseModel):
     """
-    LocalstackPodsEnvironmentGet200Response
+    ReplicationRequest
     """ # noqa: E501
-    localstack_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack.")
-    localstack_ext_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack Pro.")
-    moto_ext_version: Optional[StrictStr] = Field(default=None, description="Version of Moto used within LocalStack.")
-    pro: Optional[StrictBool] = Field(default=None, description="Indicates whether LocalStack PRO is activated.")
-    __properties: ClassVar[List[str]] = ["localstack_version", "localstack_ext_version", "moto_ext_version", "pro"]
+    replication_type: StrictStr = Field(description="The type of replication job")
+    source_aws_config: ReplicationRequestSourceAwsConfig
+    target_aws_config: Optional[ReplicationRequestTargetAwsConfig] = None
+    __properties: ClassVar[List[str]] = ["replication_type", "source_aws_config", "target_aws_config"]
+
+    @field_validator('replication_type')
+    def replication_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['MOCK', 'SINGLE_RESOURCE']):
+            raise ValueError("must be one of enum values ('MOCK', 'SINGLE_RESOURCE')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +59,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a JSON string"""
+        """Create an instance of ReplicationRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,11 +80,17 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of source_aws_config
+        if self.source_aws_config:
+            _dict['source_aws_config'] = self.source_aws_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of target_aws_config
+        if self.target_aws_config:
+            _dict['target_aws_config'] = self.target_aws_config.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a dict"""
+        """Create an instance of ReplicationRequest from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +98,9 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "localstack_version": obj.get("localstack_version"),
-            "localstack_ext_version": obj.get("localstack_ext_version"),
-            "moto_ext_version": obj.get("moto_ext_version"),
-            "pro": obj.get("pro")
+            "replication_type": obj.get("replication_type"),
+            "source_aws_config": ReplicationRequestSourceAwsConfig.from_dict(obj["source_aws_config"]) if obj.get("source_aws_config") is not None else None,
+            "target_aws_config": ReplicationRequestTargetAwsConfig.from_dict(obj["target_aws_config"]) if obj.get("target_aws_config") is not None else None
         })
         return _obj
 

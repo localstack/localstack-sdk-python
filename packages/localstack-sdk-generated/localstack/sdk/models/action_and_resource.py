@@ -18,20 +18,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class LocalstackPodsEnvironmentGet200Response(BaseModel):
+class ActionAndResource(BaseModel):
     """
-    LocalstackPodsEnvironmentGet200Response
+    Action and resource access evaluation
     """ # noqa: E501
-    localstack_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack.")
-    localstack_ext_version: Optional[StrictStr] = Field(default=None, description="Version of LocalStack Pro.")
-    moto_ext_version: Optional[StrictStr] = Field(default=None, description="Version of Moto used within LocalStack.")
-    pro: Optional[StrictBool] = Field(default=None, description="Indicates whether LocalStack PRO is activated.")
-    __properties: ClassVar[List[str]] = ["localstack_version", "localstack_ext_version", "moto_ext_version", "pro"]
+    action: StrictStr = Field(description="iam action")
+    resource: StrictStr = Field(description="resource arn")
+    account: StrictStr = Field(description="account where the resource is deployed")
+    condition_keys: Optional[List[StrictStr]] = Field(default=None, description="permission test evaluation")
+    description: Optional[StrictStr] = Field(default=None, description="permission test evaluation")
+    access_level: Optional[StrictStr] = Field(default=None, description="permission test evaluation")
+    __properties: ClassVar[List[str]] = ["action", "resource", "account", "condition_keys", "description", "access_level"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +53,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a JSON string"""
+        """Create an instance of ActionAndResource from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +78,7 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of LocalstackPodsEnvironmentGet200Response from a dict"""
+        """Create an instance of ActionAndResource from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +86,12 @@ class LocalstackPodsEnvironmentGet200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "localstack_version": obj.get("localstack_version"),
-            "localstack_ext_version": obj.get("localstack_ext_version"),
-            "moto_ext_version": obj.get("moto_ext_version"),
-            "pro": obj.get("pro")
+            "action": obj.get("action"),
+            "resource": obj.get("resource"),
+            "account": obj.get("account"),
+            "condition_keys": obj.get("condition_keys"),
+            "description": obj.get("description"),
+            "access_level": obj.get("access_level")
         })
         return _obj
 
