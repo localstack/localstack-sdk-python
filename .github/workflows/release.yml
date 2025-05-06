@@ -101,10 +101,10 @@ jobs:
         bin/release-helper.sh git-commit-release ${{ env.release }}
 
     - name: "Publish release to pypi"
+      env:
+        UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
       run: |
         make install publish
-      with:
-        UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
 
     - name: "Push the release commit and tag"
       run: |
@@ -121,10 +121,10 @@ jobs:
         git push
 
     - name: "Publish development version to pypi"
+      env:
+        UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
       run: |
         make install publish
-      with:
-        UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
 
     - name: "Show git modifications"
       run: |
