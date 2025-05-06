@@ -47,7 +47,7 @@ To run the integration test suite:
 make test
 ```
 
-Note that LocalStack (pro) should be running in the background to execute the test.
+Note that LocalStack Pro (with the same version as the SDK) should be running in the background to execute the test.
 
 ### Quickstart
 

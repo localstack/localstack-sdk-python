@@ -51,6 +51,8 @@ jobs:
 
     - name: "Commit changed code"
       run: |
+        # Code automatically generated goes into the packages directory.
+        # As we generate code for the version to be released, we commit those changes.
         if git status --porcelain packages/ | grep -q '^'; then
           git add packages/
           git commit -m "Generate code for ${{ env.release }}"
@@ -100,8 +102,7 @@ jobs:
 
     - name: "Publish release to pypi"
       run: |
-        make clean && make install
-        make publish
+        make install publish
       with:
         UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
 
