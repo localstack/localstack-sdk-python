@@ -6,11 +6,11 @@ TEST_EXEC ?= python -m
 PYTEST_LOGLEVEL ?= warning
 
 install:			## omit dev dependencies
-	uv venv
+	uv venv --clear
 	uv sync --no-dev
 
 install-dev:		## create the venv and install
-	uv venv
+	uv venv --clear
 	uv sync
 
 clean:         		## Clean up the virtual environment
