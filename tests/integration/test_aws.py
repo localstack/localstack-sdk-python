@@ -122,10 +122,11 @@ class TestLocalStackAWS:
         topic_arn = client.create_topic(Name=topic_name)["TopicArn"]
 
         app_name = f"app-name-{short_uid()}"
+        attributes = {"PlatformPrincipal": "test", "PlatformCredential": "test"}
         platform_arn = client.create_platform_application(
             Name=app_name,
             Platform="APNS",
-            Attributes={},
+            Attributes=attributes,
         )["PlatformApplicationArn"]
 
         endpoint_arn = client.create_platform_endpoint(
