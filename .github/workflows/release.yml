@@ -18,6 +18,10 @@ env:
 jobs:
   test_python:
     runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: write
+      id-token: write
     env:
       RELEASE_VERSION: ${{ github.event_name == 'workflow_dispatch' && inputs.version || github.event.client_payload.version}}
 
@@ -93,7 +97,7 @@ jobs:
 
     - name: "Publish Release to PyPi"
       env:
-        UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
+        UV_PUBLISH_TRUSTED_PUBLISHING: always
       run: make publish
 
     - name: "Create GitHub Release"
