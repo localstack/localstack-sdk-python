@@ -83,6 +83,14 @@ jobs:
         localstack logs
         localstack stop
 
+    - name: "Check Uncommitted Changes"
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "Uncommitted changes detected. Changes found:"
+          git diff
+          exit 1
+        fi
+
     - name: "Create the Release Commit and Tag"
       run: |
         git commit --allow-empty -m "Release: v${RELEASE_VERSION}"
