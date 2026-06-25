@@ -96,6 +96,8 @@ jobs:
         localstack logs
         localstack stop
 
+
+
       # - name: "Create the Release Commit and Tag"
       #   run: |
       #     git commit --allow-empty -m "Release: v${RELEASE_VERSION}"
