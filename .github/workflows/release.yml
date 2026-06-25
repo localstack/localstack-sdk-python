@@ -44,6 +44,12 @@ jobs:
         make clean-generated
         ./bin/generate.sh ${RELEASE_VERSION}
 
+        echo "UV VERSION"
+        uv --version
+
+        echo "GIT CHANGES FROM CLEAN GENERATED"
+        git status
+
     - name: "Commit Changed Code"
       run: |
         # Code automatically generated goes into the packages directory.
@@ -57,8 +63,15 @@ jobs:
           echo "No changes detected after generating the code"
         fi
 
+        echo "AFTER COMMITTING CODE"
+        git status
+
     - name: "Install Project"
-      run: make install-dev
+      run: |
+        make install-dev
+
+        echo "AFTER INSTALLING"
+        git status
 
     - name: "Install LocalStack"
       run: pip install localstack==${RELEASE_VERSION}
@@ -83,26 +96,26 @@ jobs:
         localstack logs
         localstack stop
 
-    - name: "Create the Release Commit and Tag"
-      run: |
-        git commit --allow-empty -m "Release: v${RELEASE_VERSION}"
-        git tag -a "v${RELEASE_VERSION}" -m "Release: v${RELEASE_VERSION}"
+      # - name: "Create the Release Commit and Tag"
+      #   run: |
+      #     git commit --allow-empty -m "Release: v${RELEASE_VERSION}"
+      #     git tag -a "v${RELEASE_VERSION}" -m "Release: v${RELEASE_VERSION}"
 
-    - name: "Push the release commit and tag"
-      run: git push --follow-tags
+      # - name: "Push the release commit and tag"
+      #   run: git push --follow-tags
 
-    - name: "Publish Release to PyPi"
-      env:
-        UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
-      run: make publish
+      # - name: "Publish Release to PyPi"
+      #   env:
+      #     UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
+      #   run: make publish
 
-    - name: "Create GitHub Release"
-      env:
-        GITHUB_TOKEN: ${{ secrets.LOCALSTACK_GITHUB_TOKEN }}
-      run: gh release create "v${RELEASE_VERSION}" --generate-notes
+      # - name: "Create GitHub Release"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.LOCALSTACK_GITHUB_TOKEN }}
+      #   run: gh release create "v${RELEASE_VERSION}" --generate-notes
 
-    - name: "Show Git Modifications"
-      run: |
-        git log --oneline -n 4
-        git show HEAD~1
-        git show HEAD
+      # - name: "Show Git Modifications"
+      #   run: |
+      #     git log --oneline -n 4
+      #     git show HEAD~1
+      #     git show HEAD
