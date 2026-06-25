@@ -22,7 +22,7 @@ jobs:
       RELEASE_VERSION: ${{ github.event_name == 'workflow_dispatch' && inputs.version || github.event.client_payload.version}}
 
     steps:
-    - name: "Pull Image (localstack/localstack:${{ env.RELEASE_VERSION }})"
+    - name: "Pull Image (localstack/localstack-pro:${{ env.RELEASE_VERSION }})"
       run: docker pull "localstack/localstack-pro:${RELEASE_VERSION}"
 
     - name: "Checkout"
