@@ -86,7 +86,7 @@ jobs:
     - name: "Check Uncommitted Changes"
       run: |
         if [ -n "$(git status --porcelain)" ]; then
-          echo "Uncommitted changes detected. Changes found:"
+          echo "Uncommitted changes detected."
           git diff
           exit 1
         fi
