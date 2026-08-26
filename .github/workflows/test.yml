@@ -33,21 +33,23 @@ jobs:
       run: |
         make install-dev
 
-    - name: Install LocalStack
+    - name: Install lstk
       run: |
-        pip install --pre --upgrade localstack
+        npm install -g @localstack/lstk
 
     - name: Pull image
       run: |
         docker pull localstack/localstack-pro
 
+    # lstk defaults to the aws emulator with image localstack/localstack-pro:latest,
+    # so no config file is needed here.
     - name: Start Localstack
       env:
-       LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+        LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+        LOCALSTACK_DEBUG: "1"
+        LOCALSTACK_DISABLE_EVENTS: "1"
       run: |
-          source .venv/bin/activate
-          DEBUG=1 DISABLE_EVENTS="1" IMAGE_NAME="localstack/localstack-pro:latest" localstack start -d
-          localstack wait -t 120 || (python -m localstack.cli.main logs && false)
+          lstk start --timeout 2m
 
     - name: Run Python Tests
       env:
@@ -58,6 +60,5 @@ jobs:
     - name: Stop Localstack
       if: always()
       run: |
-          source .venv/bin/activate
-          localstack logs
-          localstack stop
+          lstk logs
+          lstk stop
