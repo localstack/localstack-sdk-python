@@ -64,16 +64,27 @@ jobs:
     - name: "Install Project"
       run: make install-dev
 
-    - name: "Install LocalStack"
-      run: pip install localstack==${RELEASE_VERSION}
+    - name: "Install lstk"
+      run: npm install -g @localstack/lstk
+
+    - name: "Configure lstk"
+      # The config pins the emulator image to the release version. It lives outside
+      # the workspace so the "Check Uncommitted Changes" step stays clean.
+      run: |
+        cat > "${RUNNER_TEMP}/lstk-config.toml" <<EOF
+        [[containers]]
+        type = "aws"
+        tag = "${RELEASE_VERSION}"
+        port = "4566"
+        EOF
+        echo "LSTK_CONFIG_FILE=${RUNNER_TEMP}/lstk-config.toml" >> "$GITHUB_ENV"
 
     - name: "Start Localstack"
       env:
-       LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
-      run: |
-        source .venv/bin/activate
-        DEBUG=1 DISABLE_EVENTS="1" IMAGE_NAME="localstack/localstack-pro:${RELEASE_VERSION}" localstack start -d
-        localstack wait -t 120 || (python -m localstack.cli.main logs && false)
+        LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+        LOCALSTACK_DEBUG: "1"
+        LOCALSTACK_DISABLE_EVENTS: "1"
+      run: lstk --config "${LSTK_CONFIG_FILE}" start --timeout 2m
 
     - name: "Run Python Tests"
       env:
@@ -83,9 +94,8 @@ jobs:
     - name: "Stop Localstack"
       if: success() || failure()
       run: |
-        source .venv/bin/activate
-        localstack logs
-        localstack stop
+        lstk --config "${LSTK_CONFIG_FILE}" logs
+        lstk --config "${LSTK_CONFIG_FILE}" stop
 
     - name: "Check Uncommitted Changes"
       run: |
