@@ -14,7 +14,6 @@ localstack/sdk/configuration.py
 localstack/sdk/exceptions.py
 localstack/sdk/models/__init__.py
 localstack/sdk/models/action_and_resource.py
-localstack/sdk/models/aws_pinpoint_application_id_reference_id_get200_response.py
 localstack/sdk/models/aws_s3files_nfs_endpoints_get200_response.py
 localstack/sdk/models/check_actions_request.py
 localstack/sdk/models/check_actions_request_required_permission_inner.py
@@ -27,6 +26,7 @@ localstack/sdk/models/cloud_watch_metrics_metrics_inner_d_inner_v.py
 localstack/sdk/models/cloud_watch_metrics_metrics_inner_t.py
 localstack/sdk/models/cloud_watch_metrics_metrics_inner_v.py
 localstack/sdk/models/create_remote_request.py
+localstack/sdk/models/delete_bedrock_preset_request.py
 localstack/sdk/models/delete_ddb_expired_items200_response.py
 localstack/sdk/models/fault_rule.py
 localstack/sdk/models/fault_rule_error.py
@@ -59,6 +59,7 @@ localstack/sdk/models/pod_remote.py
 localstack/sdk/models/pod_save_request.py
 localstack/sdk/models/pod_versions.py
 localstack/sdk/models/pod_versions_versions_inner.py
+localstack/sdk/models/put_bedrock_preset_request.py
 localstack/sdk/models/receive_message_request.py
 localstack/sdk/models/receive_message_result.py
 localstack/sdk/models/remote_config.py
